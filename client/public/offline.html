@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Offline – Recipes</title>
+    <style>
+      body { font-family: system-ui, sans-serif; display: grid; place-items: center; min-height: 100vh; margin: 0; padding: 1rem; text-align: center; background: #fff; color: #0f172a; }
+      @media (prefers-color-scheme: dark) { body { background: #0f1117; color: #f1f5f9; } }
+      button { font: inherit; padding: .6rem 1.2rem; border: 0; border-radius: .5rem; background: #c2410c; color: #fff; cursor: pointer; }
+      button:focus-visible { outline: 3px solid #fb923c; outline-offset: 2px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>🍲 You're offline</h1>
+      <p>This page isn't saved on your device yet. Reconnect and try again.</p>
+      <p>Recipes you've favorited stay available once the app has loaded online at least once.</p>
+      <button onclick="location.href='/'">Try again</button>
+    </main>
+  </body>
+</html>

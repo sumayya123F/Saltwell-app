@@ -636,6 +636,10 @@ const META = {
   "id-dodol": ["Dessert", "Indonesian"], "id-martabak-manis": ["Dessert", "Indonesian"]
 };
 const ICONS = { Dessert:"🍨", Soup:"🍲", Pasta:"🍝", Seafood:"🐟", Chicken:"🍗", Beef:"🥩", Vegetarian:"🥗", Snacks:"🥟", Breakfast:"🥞", "Rice & Noodles":"🍜", Drinks:"🥤" };
+const YT_OK = /^https:\/\/((www|m)\.)?(youtube\.com|youtu\.be)\//i;
+const validVideo = (u) => (typeof u === "string" && YT_OK.test(u.trim()) ? u.trim() : "");
+// The owner's link if there is one, otherwise a YouTube search for the recipe.
+const videoUrl = (r) => validVideo(r.video) || "https://www.youtube.com/results?search_query=" + encodeURIComponent(r.name + " recipe");
 const categoryOf = (r) => r.category || (META[r.id] && META[r.id][0]) || "";
 const areaOf = (r) => r.area || (META[r.id] && META[r.id][1]) || "";
 const imageOf = (r) => r.image || (META[r.id] && META[r.id][2]) || "";
@@ -693,6 +697,7 @@ function openForm(recipe) {
   $("f-name").value = recipe ? recipe.name : "";
   $("f-category").value = recipe ? categoryOf(recipe) : "";
   $("f-area").value = recipe ? areaOf(recipe) : "";
+  $("f-video").value = recipe ? validVideo(recipe.video) : "";
   fill($("f-ingredients"), recipe ? recipe.ingredients : []);
   fill($("f-steps"), recipe ? recipe.steps : []);
   $("form-dialog").showModal();
@@ -705,7 +710,7 @@ function openView(id) {
   $("view-cover").setAttribute("style", coverStyle(r));
   $("view-cover").innerHTML = coverHtml(r);
   $("view").innerHTML =
-    `<h2>${esc(r.name)}</h2><div class="tags">${tagsOf(r).map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div><h3>Ingredients</h3><ul>${r.ingredients.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>` +
+    `<h2>${esc(r.name)}</h2><div class="tags">${tagsOf(r).map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div><a class="yt" href="${esc(videoUrl(r))}" target="_blank" rel="noopener noreferrer">▶ Watch on YouTube</a><h3>Ingredients</h3><ul>${r.ingredients.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>` +
     `<h3>Steps</h3><ol>${r.steps.map((s) => `<li>${esc(s)}</li>`).join("")}</ol>`;
   $("edit").hidden = !admin;
   $("delete").hidden = !admin;
@@ -777,7 +782,8 @@ $("owner").onclick = async () => {
   if (code && (await checkAdmin(code.trim()))) render();
 };
 $("form").onsubmit = () => {
-  const data = { name: $("f-name").value.trim(), category: $("f-category").value.trim(), area: $("f-area").value.trim(), ingredients: lines($("f-ingredients")), steps: lines($("f-steps")) };
+  const data = { name: $("f-name").value.trim(), category: $("f-category").value.trim(), area: $("f-area").value.trim(), video: validVideo($("f-video").value), ingredients: lines($("f-ingredients")), steps: lines($("f-steps")) };
+  if ($("f-video").value.trim() && !data.video) { alert("Use a YouTube link that starts with https://youtube.com or https://youtu.be"); return false; }
   if (!data.ingredients.length || !data.steps.length) { alert("Add at least one ingredient and one step."); return false; }
   if (editingId) recipes = recipes.map((r) => (r.id === editingId ? { ...r, ...data } : r));
   else recipes.unshift({ id: String(Date.now()), ...data });

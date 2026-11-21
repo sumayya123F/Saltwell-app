@@ -17,7 +17,9 @@ export function MealCard({ meal, favorite, onToggle }: Props) {
       <Link to={`/meal/${meal.id}`} className="block focus-visible:outline-none">
         {/* Thumbnail; alt text names the dish. Width/height avoid layout shift. */}
         <img
-          src={meal.thumb ? `${meal.thumb}/preview` : ""}
+          src={meal.thumb ? `${meal.thumb}/large` : ""}
+          srcSet={meal.thumb ? `${meal.thumb}/medium 300w, ${meal.thumb}/large 500w, ${meal.thumb} 700w` : undefined}
+          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 100vw"
           alt={`Photo of ${meal.name}`}
           width={400}
           height={300}

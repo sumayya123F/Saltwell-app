@@ -297,4 +297,7 @@ $("form").onsubmit = () => {
 
 render();
 load();
+// Keep the saved list fresh: refresh when the device reconnects or the app comes back to the front.
+window.addEventListener("online", load);
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && navigator.onLine) load(); });
 if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});

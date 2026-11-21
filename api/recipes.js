@@ -32,6 +32,7 @@ const clean = (list) =>
         name: String(r.name).slice(0, 120),
         category: String(r.category || "").slice(0, 40),
         area: String(r.area || "").slice(0, 40),
+        video: /^https:\/\/((www|m)\.)?(youtube\.com|youtu\.be)\//i.test(String(r.video || "")) ? String(r.video).slice(0, 300) : "",
         ingredients: (r.ingredients || []).map((s) => String(s).slice(0, 300)).slice(0, 100),
         steps: (r.steps || []).map((s) => String(s).slice(0, 1000)).slice(0, 100),
       }))

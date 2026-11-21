@@ -39,9 +39,10 @@ module.exports = async (req, res) => {
   res.setHeader("Cache-Control", "no-store");
   try {
     if (req.method === "GET") {
-      if (!URL_ || !TOKEN) return res.status(200).json({ recipes: null });
+      const configured = { code: !!process.env.ADMIN_CODE, storage: !!(URL_ && TOKEN) };
+      if (!URL_ || !TOKEN) return res.status(200).json({ recipes: null, configured });
       const raw = await redis(`get/${KEY}`);
-      return res.status(200).json({ recipes: raw ? JSON.parse(raw) : null });
+      return res.status(200).json({ recipes: raw ? JSON.parse(raw) : null, configured });
     }
     if (req.method === "POST") {
       const code = process.env.ADMIN_CODE;

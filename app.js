@@ -186,6 +186,7 @@ async function load() {
   try {
     const r = await fetch("/api/recipes", { cache: "no-store" });
     const j = await r.json();
+    serverInfo = j.configured || null;
     if (Array.isArray(j.recipes)) {
       recipes = j.recipes;
       try { localStorage.setItem(CACHE_KEY, JSON.stringify(recipes)); } catch {}
@@ -195,23 +196,37 @@ async function load() {
   render();
 }
 
+let lastStatus = 0, lastWasOurs = false;
+let serverInfo = null;
 async function api(body) {
   const r = await fetch("/api/recipes", {
     method: "POST",
     headers: { "Content-Type": "application/json", "x-admin-code": adminCode },
     body: JSON.stringify(body),
   });
+  lastStatus = r.status;
+  lastWasOurs = false;
+  try { const j = await r.clone().json(); lastWasOurs = typeof j === "object" && j !== null; } catch {}
   return r.ok;
+}
+
+function signInProblem(failed) {
+  if (failed) return "Could not reach the server. Check your internet.";
+  if (serverInfo && !serverInfo.code) return "The owner code isn't set on the server yet. Add ADMIN_CODE in Vercel, then redeploy.";
+  if (lastStatus === 401 && lastWasOurs) return "Wrong code.";
+  if (lastStatus === 401) return "Vercel blocked the request (Deployment Protection is probably on). Turn off Vercel Authentication in Settings → Deployment Protection.";
+  return "Sign-in failed (server error " + lastStatus + "). If this persists, check Vercel's Deployment Protection and logs.";
 }
 
 async function checkAdmin(code, quiet) {
   const prev = adminCode;
   adminCode = code;
   let ok = false;
-  try { ok = await api({ action: "check" }); } catch {}
+  let failed = false;
+  try { ok = await api({ action: "check" }); } catch { failed = true; }
   admin = ok;
   if (ok) { try { localStorage.setItem(ADMIN_KEY, code); } catch {} }
-  else { adminCode = quiet ? "" : prev; try { localStorage.removeItem(ADMIN_KEY); } catch {} if (!quiet) alert("Wrong code."); }
+  else { adminCode = quiet ? "" : prev; try { localStorage.removeItem(ADMIN_KEY); } catch {} if (!quiet) alert(signInProblem(failed)); }
   return ok;
 }
 

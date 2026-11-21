@@ -600,6 +600,36 @@ async function save() {
   if (ok) { try { localStorage.setItem(CACHE_KEY, JSON.stringify(recipes)); } catch {} }
   if (!ok) alert("Could not save. Check your internet and that the owner code is still valid.");
 }
+
+// Category and cuisine tags (and photos) for the built-in recipes. Owner-added recipes carry their own tags.
+const META = {
+  s1: ["Breakfast", "American"], s2: ["Pasta", "Italian"], s3: ["Snacks", "Mexican"], s4: ["Soup", "International"],
+  "sw-chicken-tikka-masala": ["Chicken", "Indian", "img/sw-chicken-tikka-masala.jpg"],
+  "sw-classic-beef-lasagne": ["Pasta", "Italian"],
+  "sw-lasagne": ["Pasta", "Italian", "img/sw-lasagne.jpg"],
+  "sw-grilled-salmon": ["Seafood", "Modern", "img/sw-grilled-salmon.jpg"],
+  "sw-fish-tacos": ["Seafood", "Mexican", "img/sw-fish-tacos.jpg"],
+  "sw-spaghetti-carbonara": ["Pasta", "Italian", "img/sw-spaghetti-carbonara.jpg"],
+  "sw-vegetable-stir-fry": ["Vegetarian", "Chinese"], "sw-mushroom-risotto": ["Vegetarian", "Italian"], "sw-lemon-roast-chicken": ["Chicken", "British"],
+  "id-nasi-goreng": ["Rice & Noodles", "Indonesian"], "id-mie-goreng": ["Rice & Noodles", "Indonesian"], "id-soto-ayam": ["Soup", "Indonesian"],
+  "id-beef-rendang": ["Beef", "Indonesian"], "id-gado-gado": ["Vegetarian", "Indonesian"], "id-sate-ayam": ["Chicken", "Indonesian"],
+  "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian"], "id-pempek": ["Snacks", "Indonesian"],
+  "id-bakso": ["Soup", "Indonesian"], "id-es-campur": ["Dessert", "Indonesian"], "id-es-cendol": ["Dessert", "Indonesian"],
+  "id-dodol": ["Dessert", "Indonesian"], "id-martabak-manis": ["Dessert", "Indonesian"]
+};
+const ICONS = { Dessert:"🍨", Soup:"🍲", Pasta:"🍝", Seafood:"🐟", Chicken:"🍗", Beef:"🥩", Vegetarian:"🥗", Snacks:"🥟", Breakfast:"🥞", "Rice & Noodles":"🍜", Drinks:"🥤" };
+const categoryOf = (r) => r.category || (META[r.id] && META[r.id][0]) || "";
+const areaOf = (r) => r.area || (META[r.id] && META[r.id][1]) || "";
+const imageOf = (r) => r.image || (META[r.id] && META[r.id][2]) || "";
+const tagsOf = (r) => [categoryOf(r), areaOf(r)].filter(Boolean);
+const hue = (s) => [...s].reduce((n, c) => (n * 31 + c.charCodeAt(0)) % 360, 7);
+const coverHtml = (r) => {
+  const img = imageOf(r);
+  if (img) return `<img src="${esc(img)}" alt="${esc(r.name)}" loading="lazy">`;
+  return `<span aria-hidden="true">${ICONS[categoryOf(r)] || "🍽️"}</span>`;
+};
+const coverStyle = (r) => imageOf(r) ? "" : `background:linear-gradient(135deg,hsl(${hue(r.id)} 45% 40%),hsl(${(hue(r.id) + 40) % 360} 50% 28%))`;
+let activeTag = "";
 function addLine(container, value) {
   const div = document.createElement("div");
   div.className = "line";
@@ -619,18 +649,32 @@ const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&
 function render() {
   const q = $("search").value.trim().toLowerCase();
   const shown = recipes.filter((r) =>
-    !q || r.name.toLowerCase().includes(q) || r.ingredients.some((i) => i.toLowerCase().includes(q)));
-  $("empty").hidden = recipes.length > 0;
+    (!activeTag || tagsOf(r).includes(activeTag)) &&
+    (!q || r.name.toLowerCase().includes(q) || r.ingredients.some((i) => i.toLowerCase().includes(q)) || tagsOf(r).some((t) => t.toLowerCase().includes(q))));
   $("add").hidden = !admin;
   $("owner").textContent = admin ? "Owner: sign out" : "Owner sign in";
+  // Chips: categories, then cuisines.
+  const cats = [...new Set(recipes.map(categoryOf).filter(Boolean))].sort();
+  const areas = [...new Set(recipes.map(areaOf).filter(Boolean))].sort();
+  const chip = (t) => `<li><button class="chip" data-tag="${esc(t)}" aria-pressed="${activeTag === t}">${esc(t)}</button></li>`;
+  $("chips").innerHTML = `<li><button class="chip" data-tag="" aria-pressed="${!activeTag}">All</button></li>` +
+    cats.map(chip).join("") + (areas.length ? '<li class="sep"></li>' : "") + areas.map(chip).join("");
+  $("dl-categories").innerHTML = cats.map((c) => `<option value="${esc(c)}">`).join("");
+  $("dl-areas").innerHTML = areas.map((c) => `<option value="${esc(c)}">`).join("");
+  $("heading").textContent = activeTag ? activeTag + " recipes" : q ? `Results for “${$("search").value.trim()}”` : "Browse recipes";
+  $("empty").hidden = shown.length > 0;
   $("list").innerHTML = shown.map((r) =>
-    `<li data-id="${r.id}"><h3>${esc(r.name)}</h3><p>${r.ingredients.length} ingredients · ${r.steps.length} steps</p></li>`).join("");
+    `<li><div class="card"><button class="open" data-id="${esc(r.id)}">
+      <div class="thumb" style="${coverStyle(r)}">${coverHtml(r)}</div>
+      <div class="meta"><h3>${esc(r.name)}</h3><p>${r.ingredients.length} ingredients · ${r.steps.length} steps</p></div></button>
+      <div class="tags">${tagsOf(r).map((t) => `<button class="tag" data-tag="${esc(t)}">${esc(t)}</button>`).join("")}</div></div></li>`).join("");
 }
-
 function openForm(recipe) {
   editingId = recipe ? recipe.id : null;
   $("form-title").textContent = recipe ? "Edit recipe" : "New recipe";
   $("f-name").value = recipe ? recipe.name : "";
+  $("f-category").value = recipe ? categoryOf(recipe) : "";
+  $("f-area").value = recipe ? areaOf(recipe) : "";
   fill($("f-ingredients"), recipe ? recipe.ingredients : []);
   fill($("f-steps"), recipe ? recipe.steps : []);
   $("form-dialog").showModal();
@@ -640,8 +684,10 @@ function openView(id) {
   const r = recipes.find((x) => x.id === id);
   if (!r) return;
   viewingId = id;
+  $("view-cover").setAttribute("style", coverStyle(r));
+  $("view-cover").innerHTML = coverHtml(r);
   $("view").innerHTML =
-    `<h2>${esc(r.name)}</h2><h3>Ingredients</h3><ul>${r.ingredients.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>` +
+    `<h2>${esc(r.name)}</h2><div class="tags">${tagsOf(r).map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div><h3>Ingredients</h3><ul>${r.ingredients.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>` +
     `<h3>Steps</h3><ol>${r.steps.map((s) => `<li>${esc(s)}</li>`).join("")}</ol>`;
   $("edit").hidden = !admin;
   $("delete").hidden = !admin;
@@ -669,8 +715,12 @@ $("view-dialog").addEventListener("cancel", (e) => { e.preventDefault(); closeVi
 
 // Keep the search in the address so it survives Back and reloads.
 function syncSearchToUrl() {
+  const p = new URLSearchParams();
   const q = $("search").value.trim();
-  history.replaceState(history.state, "", location.pathname + (q ? "?q=" + encodeURIComponent(q) : "") + location.hash);
+  if (q) p.set("q", q);
+  if (activeTag) p.set("tag", activeTag);
+  const s = p.toString();
+  history.replaceState(history.state, "", location.pathname + (s ? "?" + s : "") + location.hash);
 }
 
 $("add").onclick = () => openForm(null);
@@ -679,7 +729,20 @@ $("add-step").onclick = () => addLine($("f-steps")).focus();
 $("cancel").onclick = () => $("form-dialog").close();
 $("back").onclick = () => closeView();
 $("search").oninput = () => { syncSearchToUrl(); render(); };
-$("list").onclick = (e) => { const li = e.target.closest("li"); if (li) showRecipe(li.dataset.id); };
+$("list").onclick = (e) => {
+  const tag = e.target.closest(".tag");
+  if (tag) { setTag(tag.dataset.tag); return; }
+  const open = e.target.closest(".open");
+  if (open) showRecipe(open.dataset.id);
+};
+$("chips").onclick = (e) => { const c = e.target.closest(".chip"); if (c) setTag(c.dataset.tag); };
+function setTag(t) { activeTag = t === activeTag ? "" : t; syncSearchToUrl(); render(); scrollTo({ top: 0 }); }
+$("theme").onclick = () => {
+  const dark = document.documentElement.dataset.theme === "dark" || (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+  document.documentElement.dataset.theme = dark ? "light" : "dark";
+  try { localStorage.setItem("pantree-theme", document.documentElement.dataset.theme); } catch {}
+};
+try { const t = localStorage.getItem("pantree-theme"); if (t) document.documentElement.dataset.theme = t; } catch {}
 $("edit").onclick = async () => { const r = recipes.find((x) => x.id === viewingId); await closeView(); openForm(r); };
 $("delete").onclick = async () => {
   if (!confirm("Delete this recipe?")) return;
@@ -694,7 +757,7 @@ $("owner").onclick = async () => {
   if (code && (await checkAdmin(code.trim()))) render();
 };
 $("form").onsubmit = () => {
-  const data = { name: $("f-name").value.trim(), ingredients: lines($("f-ingredients")), steps: lines($("f-steps")) };
+  const data = { name: $("f-name").value.trim(), category: $("f-category").value.trim(), area: $("f-area").value.trim(), ingredients: lines($("f-ingredients")), steps: lines($("f-steps")) };
   if (!data.ingredients.length || !data.steps.length) { alert("Add at least one ingredient and one step."); return false; }
   if (editingId) recipes = recipes.map((r) => (r.id === editingId ? { ...r, ...data } : r));
   else recipes.unshift({ id: String(Date.now()), ...data });
@@ -702,7 +765,7 @@ $("form").onsubmit = () => {
 };
 
 // Restore the search (and an open recipe) from the address.
-try { $("search").value = new URLSearchParams(location.search).get("q") || ""; } catch {}
+try { const sp = new URLSearchParams(location.search); $("search").value = sp.get("q") || ""; activeTag = sp.get("tag") || ""; } catch {}
 render();
 load();
 {

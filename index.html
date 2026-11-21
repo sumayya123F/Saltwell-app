@@ -12,13 +12,18 @@
 </head>
 <body>
   <header>
-    <h1>PanTree</h1>
-    <input id="search" type="search" placeholder="Search recipes or ingredients">
+    <div class="wrap bar">
+      <span class="brand">🌳 PanTree</span>
+      <input id="search" type="search" placeholder="Search recipes or ingredients">
+      <button id="theme" class="btn" aria-label="Switch light or dark">Theme</button>
+    </div>
   </header>
 
-  <main>
-    <p id="empty" hidden>No recipes yet. Tap <b>+ Add recipe</b> to save your first one.</p>
-    <ul id="list"></ul>
+  <main class="wrap">
+    <nav aria-label="Categories"><ul id="chips" class="chips"></ul></nav>
+    <h2 id="heading">Browse recipes</h2>
+    <p id="empty" hidden>No recipes found. Try another search.</p>
+    <ul id="list" class="grid"></ul>
   </main>
 
   <button id="add" class="fab" hidden>+ Add recipe</button>
@@ -28,6 +33,12 @@
     <form id="form" method="dialog">
       <h2 id="form-title">New recipe</h2>
       <label>Name <input id="f-name" required></label>
+      <label>Category <small>(like Dessert or Soup)</small>
+        <input id="f-category" list="dl-categories" placeholder="Dessert"></label>
+      <label>Cuisine <small>(like Indonesian)</small>
+        <input id="f-area" list="dl-areas" placeholder="Indonesian"></label>
+      <datalist id="dl-categories"></datalist>
+      <datalist id="dl-areas"></datalist>
       <fieldset>
         <legend>Ingredients</legend>
         <div id="f-ingredients" class="rows"></div>
@@ -49,6 +60,7 @@
     <div class="topbar">
       <button id="back" aria-label="Back to recipes">← Back</button>
     </div>
+    <div id="view-cover" class="thumb"></div>
     <article id="view"></article>
     <div class="row actions">
       <button id="delete" class="danger">Delete</button>

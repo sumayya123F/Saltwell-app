@@ -30,6 +30,8 @@ const clean = (list) =>
     ? list.map((r) => ({
         id: String(r.id).slice(0, 80),
         name: String(r.name).slice(0, 120),
+        category: String(r.category || "").slice(0, 40),
+        area: String(r.area || "").slice(0, 40),
         ingredients: (r.ingredients || []).map((s) => String(s).slice(0, 300)).slice(0, 100),
         steps: (r.steps || []).map((s) => String(s).slice(0, 1000)).slice(0, 100),
       }))

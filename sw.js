@@ -1,4 +1,4 @@
-const CACHE = "pantree-v3";
+const CACHE = "pantree-v4";
 const FILES = ["./", "index.html", "style.css", "app.js", "manifest.json", "icons/icon.svg"];
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES)));

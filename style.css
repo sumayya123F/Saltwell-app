@@ -22,3 +22,10 @@ label { display:block; margin:12px 0; font-weight:600; }
 small { font-weight:400; opacity:.7; }
 .row { display:flex; gap:10px; justify-content:flex-end; margin-top:16px; }
 #view h2 { margin-top:0; }
+fieldset { border:0; padding:0; margin:12px 0; }
+legend { font-weight:600; padding:0; margin-bottom:6px; }
+.rows { display:grid; gap:8px; margin-bottom:8px; }
+.line { display:flex; gap:8px; align-items:center; }
+.line input { flex:1; }
+.line .x { padding:8px 12px; color:var(--red); border-color:var(--red); }
+button.small { padding:8px 12px; font-size:.9rem; }

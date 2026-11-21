@@ -27,10 +27,16 @@
     <form id="form" method="dialog">
       <h2 id="form-title">New recipe</h2>
       <label>Name <input id="f-name" required></label>
-      <label>Ingredients <small>(one per line)</small>
-        <textarea id="f-ingredients" rows="5" required></textarea></label>
-      <label>Steps <small>(one per line)</small>
-        <textarea id="f-steps" rows="5" required></textarea></label>
+      <fieldset>
+        <legend>Ingredients</legend>
+        <div id="f-ingredients" class="rows"></div>
+        <button type="button" id="add-ingredient" class="small">+ Add ingredient</button>
+      </fieldset>
+      <fieldset>
+        <legend>Steps</legend>
+        <div id="f-steps" class="rows"></div>
+        <button type="button" id="add-step" class="small">+ Add step</button>
+      </fieldset>
       <div class="row">
         <button type="button" id="cancel">Cancel</button>
         <button type="submit" class="primary">Save</button>

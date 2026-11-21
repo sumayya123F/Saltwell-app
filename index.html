@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PanTree</title>
+  <meta name="theme-color" content="#2f6f4f">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>PanTree</h1>
+    <input id="search" type="search" placeholder="Search recipes or ingredients">
+  </header>
+
+  <main>
+    <p id="empty" hidden>No recipes yet. Tap <b>+ Add recipe</b> to save your first one.</p>
+    <ul id="list"></ul>
+  </main>
+
+  <button id="add" class="fab">+ Add recipe</button>
+
+  <dialog id="form-dialog">
+    <form id="form" method="dialog">
+      <h2 id="form-title">New recipe</h2>
+      <label>Name <input id="f-name" required></label>
+      <label>Ingredients <small>(one per line)</small>
+        <textarea id="f-ingredients" rows="5" required></textarea></label>
+      <label>Steps <small>(one per line)</small>
+        <textarea id="f-steps" rows="5" required></textarea></label>
+      <div class="row">
+        <button type="button" id="cancel">Cancel</button>
+        <button type="submit" class="primary">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="view-dialog">
+    <article id="view"></article>
+    <div class="row">
+      <button id="delete" class="danger">Delete</button>
+      <button id="edit">Edit</button>
+      <button id="close" class="primary">Close</button>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

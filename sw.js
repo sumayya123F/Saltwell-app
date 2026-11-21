@@ -1,4 +1,4 @@
-const CACHE = "pantree-v4";
+const CACHE = "pantree-v5";
 const FILES = ["./", "index.html", "style.css", "app.js", "manifest.json", "icons/icon.svg"];
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES)));
@@ -9,6 +9,7 @@ self.addEventListener("activate", (e) => {
   self.clients.claim();
 });
 self.addEventListener("fetch", (e) => {
+  if (e.request.method !== "GET" || new URL(e.request.url).pathname.startsWith("/api/")) return;
   e.respondWith(
     fetch(e.request)
       .then((res) => { const copy = res.clone(); caches.open(CACHE).then((c) => c.put(e.request, copy)); return res; })

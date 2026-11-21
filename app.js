@@ -1046,8 +1046,348 @@ const SHAKSHUKA = [
     ]
   }
 ];
-const BUILTIN_VER = 9;
-const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 }))];
+const ITALIAN_POLISH = [
+  {
+    "id": "it-margherita-pizza",
+    "name": "Margherita Pizza",
+    "ingredients": [
+      "500 g strong bread flour",
+      "1 tsp instant yeast",
+      "2 tsp salt",
+      "1 tbsp olive oil",
+      "320 ml warm water",
+      "400 g canned tomatoes, crushed",
+      "2 balls fresh mozzarella",
+      "Fresh basil leaves",
+      "Olive oil, to finish"
+    ],
+    "steps": [
+      "Mix the flour, yeast and salt, then add the oil and water and knead for 10 minutes until smooth.",
+      "Cover and let the dough rise for 1 to 2 hours until doubled.",
+      "Heat the oven to its highest setting (250°C or more) with a tray or stone inside.",
+      "Divide the dough into 2 or 3 balls and stretch each into a thin round.",
+      "Spread with a thin layer of crushed tomatoes seasoned with salt.",
+      "Top with torn mozzarella and bake for 6 to 8 minutes until the crust is blistered.",
+      "Finish with basil and a drizzle of olive oil."
+    ]
+  },
+  {
+    "id": "it-spaghetti-bolognese",
+    "name": "Spaghetti Bolognese",
+    "ingredients": [
+      "500 g beef mince",
+      "1 onion, finely chopped",
+      "1 carrot, finely chopped",
+      "1 celery stick, finely chopped",
+      "3 cloves garlic",
+      "2 tbsp tomato paste",
+      "400 g canned tomatoes",
+      "1/2 cup red wine",
+      "1/2 cup milk",
+      "1 tsp dried oregano",
+      "400 g spaghetti",
+      "Parmesan, to serve"
+    ],
+    "steps": [
+      "Soften the onion, carrot and celery in olive oil for 8 minutes, then add the garlic.",
+      "Add the mince and brown it well, breaking it up.",
+      "Stir in the tomato paste and cook for 2 minutes, then pour in the wine and let it bubble away.",
+      "Add the tomatoes, milk and oregano, and simmer gently for at least 1 hour, stirring now and then.",
+      "Season well with salt and pepper.",
+      "Boil the spaghetti until al dente, toss with the sauce, and serve with plenty of parmesan."
+    ]
+  },
+  {
+    "id": "it-chicken-parmigiana",
+    "name": "Chicken Parmigiana",
+    "ingredients": [
+      "2 chicken breasts, halved and flattened",
+      "1/2 cup plain flour",
+      "2 eggs, beaten",
+      "1 cup breadcrumbs",
+      "1/2 cup grated parmesan",
+      "1 1/2 cups tomato passata",
+      "1 clove garlic, minced",
+      "1 cup grated mozzarella",
+      "Basil leaves",
+      "Oil for frying"
+    ],
+    "steps": [
+      "Coat the chicken in flour, then egg, then the breadcrumbs mixed with half the parmesan.",
+      "Shallow fry for 3 minutes per side until golden and place in a baking dish.",
+      "Simmer the passata with the garlic and a pinch of salt for 10 minutes.",
+      "Spoon the sauce over the chicken and top with mozzarella and the remaining parmesan.",
+      "Bake at 200°C for 12 to 15 minutes until the cheese is bubbling.",
+      "Scatter with basil and serve with salad or pasta."
+    ]
+  },
+  {
+    "id": "it-minestrone",
+    "name": "Minestrone",
+    "ingredients": [
+      "2 tbsp olive oil",
+      "1 onion, diced",
+      "2 carrots, diced",
+      "2 celery sticks, diced",
+      "3 cloves garlic",
+      "1 courgette, diced",
+      "400 g canned tomatoes",
+      "1 L vegetable stock",
+      "1 can cannellini beans, drained",
+      "1 cup small pasta",
+      "2 cups chopped cabbage or kale",
+      "Parmesan and basil, to serve"
+    ],
+    "steps": [
+      "Soften the onion, carrots, celery and garlic in the olive oil for 8 minutes.",
+      "Add the courgette, tomatoes and stock, and simmer for 15 minutes.",
+      "Add the beans, pasta and greens, and cook for 10 minutes until the pasta is tender.",
+      "Season well and serve topped with parmesan and basil."
+    ]
+  },
+  {
+    "id": "it-bruschetta",
+    "name": "Bruschetta",
+    "ingredients": [
+      "1 baguette or ciabatta, sliced",
+      "4 ripe tomatoes, diced",
+      "2 cloves garlic (1 minced, 1 left whole)",
+      "1/4 cup fresh basil, torn",
+      "3 tbsp olive oil",
+      "1 tbsp balsamic vinegar",
+      "Salt and pepper"
+    ],
+    "steps": [
+      "Toss the tomatoes with the minced garlic, basil, 2 tbsp olive oil, vinegar, salt and pepper, and leave for 15 minutes.",
+      "Brush the bread slices with olive oil and toast or grill until crisp and golden.",
+      "Rub each slice with the whole garlic clove.",
+      "Spoon the tomato mixture on top and serve straight away."
+    ]
+  },
+  {
+    "id": "it-tiramisu",
+    "name": "Tiramisu",
+    "ingredients": [
+      "500 g mascarpone",
+      "4 eggs, separated",
+      "100 g sugar",
+      "300 ml strong cold coffee",
+      "3 tbsp marsala or coffee liqueur (optional)",
+      "24 savoiardi (ladyfinger biscuits)",
+      "Cocoa powder, for dusting"
+    ],
+    "steps": [
+      "Whisk the egg yolks and sugar until pale and thick, then fold in the mascarpone.",
+      "Whisk the egg whites to stiff peaks and gently fold them in.",
+      "Mix the coffee with the liqueur and quickly dip each biscuit, so they are soaked but not falling apart.",
+      "Layer half the biscuits in a dish, cover with half the cream, then repeat.",
+      "Chill for at least 6 hours, preferably overnight.",
+      "Dust with cocoa just before serving."
+    ]
+  },
+  {
+    "id": "it-panna-cotta",
+    "name": "Panna Cotta",
+    "ingredients": [
+      "500 ml double cream",
+      "250 ml milk",
+      "80 g sugar",
+      "1 vanilla pod or 1 tsp vanilla",
+      "3 sheets gelatine (or 2 tsp powder)",
+      "Berry sauce or caramel, to serve"
+    ],
+    "steps": [
+      "Soak the gelatine in cold water for 5 minutes.",
+      "Heat the cream, milk, sugar and vanilla until just steaming, but not boiling.",
+      "Squeeze the gelatine and stir it into the hot cream until dissolved.",
+      "Strain into 6 moulds or glasses and cool.",
+      "Chill for at least 5 hours until set.",
+      "Turn out or serve in the glasses with berry sauce."
+    ]
+  },
+  {
+    "id": "pl-pierogi-ruskie",
+    "name": "Pierogi Ruskie",
+    "ingredients": [
+      "3 cups plain flour",
+      "1 cup warm water",
+      "1 egg",
+      "1 tbsp oil",
+      "1/2 tsp salt",
+      "500 g potatoes, boiled",
+      "250 g farmer's cheese or ricotta",
+      "1 onion, finely chopped and fried",
+      "Salt and pepper",
+      "Butter, fried onion and sour cream (to serve)"
+    ],
+    "steps": [
+      "Mix the flour, water, egg, oil and salt into a smooth dough, knead for 5 minutes, and rest for 30 minutes.",
+      "Mash the potatoes and mix with the cheese, fried onion, salt and pepper for the filling.",
+      "Roll out the dough thinly and cut out circles with a glass.",
+      "Put a spoonful of filling on each circle, fold over and press the edges firmly to seal.",
+      "Boil in salted water until they float, then simmer for 3 minutes.",
+      "Serve with melted butter, fried onion and sour cream."
+    ]
+  },
+  {
+    "id": "pl-bigos",
+    "name": "Bigos (Hunter's Stew)",
+    "ingredients": [
+      "500 g sauerkraut, drained",
+      "500 g fresh white cabbage, shredded",
+      "300 g pork shoulder, cubed",
+      "200 g smoked sausage, sliced",
+      "100 g bacon, diced",
+      "1 onion, chopped",
+      "6 dried mushrooms, soaked",
+      "2 bay leaves",
+      "4 allspice berries",
+      "1 tbsp tomato paste",
+      "1 cup stock or red wine",
+      "Salt and pepper"
+    ],
+    "steps": [
+      "Brown the bacon, pork and onion in a large pot.",
+      "Add the sauerkraut, fresh cabbage, mushrooms with their soaking water, bay leaves, allspice and stock.",
+      "Cover and simmer gently for 1 hour.",
+      "Add the sausage and tomato paste, and cook for another hour, stirring now and then.",
+      "Bigos tastes best reheated the next day. Serve with rye bread or potatoes."
+    ]
+  },
+  {
+    "id": "pl-zurek",
+    "name": "Zurek (Sour Rye Soup)",
+    "ingredients": [
+      "1 cup sour rye starter (zakwas)",
+      "1.5 L stock",
+      "300 g white sausage (biala kielbasa)",
+      "2 potatoes, diced",
+      "1 carrot, diced",
+      "3 cloves garlic",
+      "1 tsp marjoram",
+      "2 bay leaves",
+      "1/2 cup cream",
+      "4 boiled eggs, halved"
+    ],
+    "steps": [
+      "Simmer the stock with the carrot, potatoes, bay leaves and sausage for 20 minutes.",
+      "Stir in the sour rye starter and cook for 10 minutes, whisking so it does not clump.",
+      "Add the garlic and marjoram, and season with salt and pepper.",
+      "Stir in the cream and cook for 2 more minutes.",
+      "Serve hot with half an egg and a slice of sausage in each bowl."
+    ]
+  },
+  {
+    "id": "pl-barszcz",
+    "name": "Barszcz (Beetroot Soup)",
+    "ingredients": [
+      "500 g beetroot, peeled and grated",
+      "1.5 L vegetable or beef stock",
+      "1 carrot",
+      "1 onion",
+      "3 cloves garlic",
+      "2 bay leaves",
+      "4 allspice berries",
+      "2 tbsp lemon juice or vinegar",
+      "1 tsp sugar",
+      "Sour cream and dill, to serve"
+    ],
+    "steps": [
+      "Simmer the stock with the carrot, onion, bay leaves and allspice for 20 minutes.",
+      "Add the beetroot and cook gently for 20 minutes, without boiling hard so the colour stays bright.",
+      "Strain the soup and season with garlic, lemon juice, sugar, salt and pepper.",
+      "Serve hot with sour cream and dill, or with small dumplings (uszka)."
+    ]
+  },
+  {
+    "id": "pl-kotlet-schabowy",
+    "name": "Kotlet Schabowy (Polish Pork Cutlet)",
+    "ingredients": [
+      "4 boneless pork loin chops",
+      "1/2 cup plain flour",
+      "2 eggs, beaten",
+      "1 cup breadcrumbs",
+      "Salt and pepper",
+      "Oil or lard for frying",
+      "Boiled potatoes, dill and pickled cucumber (to serve)"
+    ],
+    "steps": [
+      "Pound the pork chops thin between sheets of baking paper and season with salt and pepper.",
+      "Coat in flour, then egg, then breadcrumbs, pressing so they stick.",
+      "Fry in hot oil for 3 to 4 minutes per side until golden and cooked through.",
+      "Drain on paper and serve with potatoes, dill and pickles."
+    ]
+  },
+  {
+    "id": "pl-placki-ziemniaczane",
+    "name": "Placki Ziemniaczane (Potato Pancakes)",
+    "ingredients": [
+      "600 g potatoes, peeled",
+      "1 small onion",
+      "1 egg",
+      "3 tbsp plain flour",
+      "1 tsp salt",
+      "Pepper",
+      "Oil for frying",
+      "Sour cream or sugar (to serve)"
+    ],
+    "steps": [
+      "Grate the potatoes and onion, squeeze out the liquid, and pour off the water.",
+      "Mix with the egg, flour, salt and pepper.",
+      "Fry spoonfuls in hot oil for 3 to 4 minutes per side until crisp and golden.",
+      "Drain on paper and serve with sour cream, or sprinkle with sugar."
+    ]
+  },
+  {
+    "id": "pl-sernik",
+    "name": "Sernik (Polish Cheesecake)",
+    "ingredients": [
+      "1 kg farmer's cheese or twarog, ground (or ricotta)",
+      "6 eggs, separated",
+      "200 g sugar",
+      "200 g butter, softened",
+      "3 tbsp potato starch",
+      "1 tsp vanilla",
+      "Zest of 1 lemon",
+      "100 g raisins (optional)"
+    ],
+    "steps": [
+      "Heat the oven to 170°C and line a 24 cm tin.",
+      "Beat the butter and sugar until fluffy, then add the yolks one at a time.",
+      "Mix in the cheese, starch, vanilla and lemon zest.",
+      "Whisk the egg whites to stiff peaks and gently fold them in, along with the raisins.",
+      "Pour into the tin and bake for 60 to 70 minutes until set and golden.",
+      "Let it cool in the oven with the door ajar, then chill before serving."
+    ]
+  },
+  {
+    "id": "pl-paczki",
+    "name": "Paczki (Polish Doughnuts)",
+    "ingredients": [
+      "500 g plain flour",
+      "7 g instant yeast",
+      "80 g sugar",
+      "250 ml warm milk",
+      "4 egg yolks",
+      "60 g melted butter",
+      "1 tbsp spirit or vinegar",
+      "Pinch of salt",
+      "Rose jam or plum jam, for filling",
+      "Oil for deep frying",
+      "Icing sugar, to dust"
+    ],
+    "steps": [
+      "Mix the flour, yeast, sugar and salt, then add the milk, yolks, butter and spirit, and knead for 10 minutes until smooth.",
+      "Cover and let it rise for 1 hour until doubled.",
+      "Roll out to 2 cm thick and cut out rounds. Let them rise for 30 minutes.",
+      "Fry in oil at 170°C for 2 to 3 minutes per side until golden, with a pale band around the middle.",
+      "Pipe jam into each doughnut once cooled slightly.",
+      "Dust with icing sugar."
+    ]
+  }
+];
+const BUILTIN_VER = 10;
+const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 }))];
 
 // Favorites are personal and saved on this device only.
 const FAV_KEY = "pantree-favs";
@@ -1160,14 +1500,18 @@ const META = {
   "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian"], "id-pempek": ["Seafood", "Indonesian"],
   "id-bakso": ["Soup", "Indonesian"], "id-es-campur": ["Dessert", "Indonesian"], "id-es-cendol": ["Dessert", "Indonesian"],
   "id-dodol": ["Dessert", "Indonesian"], "id-cheese-tteokbokki": ["Snacks", "Korean"], "id-bubble-tea": ["Drinks", "Taiwanese"],
-  "id-hummus": ["Sides", "Arab"], "id-shakshuka": ["Breakfast", "Arab"], "id-tabbouleh": ["Sides", "Arab"], "id-fattoush": ["Sides", "Arab"],
+  "id-hummus": ["Sides", "Arab"],
+  "it-margherita-pizza": ["Pizza", "Italian"], "it-spaghetti-bolognese": ["Pasta", "Italian"], "it-chicken-parmigiana": ["Chicken", "Italian"],
+  "it-minestrone": ["Soup", "Italian"], "it-bruschetta": ["Sides", "Italian"], "it-tiramisu": ["Dessert", "Italian"], "it-panna-cotta": ["Dessert", "Italian"],
+  "pl-pierogi-ruskie": ["Vegetarian", "Polish"], "pl-bigos": ["Pork", "Polish"], "pl-zurek": ["Soup", "Polish"], "pl-barszcz": ["Soup", "Polish"],
+  "pl-kotlet-schabowy": ["Pork", "Polish"], "pl-placki-ziemniaczane": ["Sides", "Polish"], "pl-sernik": ["Dessert", "Polish"], "pl-paczki": ["Dessert", "Polish"], "id-shakshuka": ["Breakfast", "Arab"], "id-tabbouleh": ["Sides", "Arab"], "id-fattoush": ["Sides", "Arab"],
   "id-chicken-kabsa": ["Chicken", "Arab"], "id-maqluba": ["Chicken", "Arab"], "id-shish-taouk": ["Chicken", "Arab"],
   "id-shorbat-adas": ["Soup", "Arab"], "id-kunafa": ["Dessert", "Arab"], "id-umm-ali": ["Dessert", "Arab"],
   "id-falafel": ["Vegetarian", "Arab"], "id-cheese-sticks": ["Snacks", "American"], "id-cinnamon-roll-biscuits": ["Dessert", "American"],
   "id-cabbage-rolls": ["Beef", "Polish"], "id-nalesniki": ["Dessert", "Polish"], "id-arepa": ["Breakfast", "Venezuelan"],
   "id-flatbread": ["Sides", "Arab"], "id-shawarma": ["Chicken", "Arab"], "id-ice-cream-mochi": ["Dessert", "Japanese"], "id-martabak-manis": ["Dessert", "Indonesian"]
 };
-const ICONS = { Dessert:"🍨", Soup:"🍲", Pasta:"🍝", Seafood:"🐟", Chicken:"🍗", Beef:"🥩", Vegetarian:"🥗", Snacks:"🥟", Breakfast:"🥞", "Rice & Noodles":"🍜", Drinks:"🥤", Sides:"🥑" };
+const ICONS = { Dessert:"🍨", Soup:"🍲", Pasta:"🍝", Seafood:"🐟", Chicken:"🍗", Beef:"🥩", Vegetarian:"🥗", Snacks:"🥟", Breakfast:"🥞", "Rice & Noodles":"🍜", Drinks:"🥤", Sides:"🥑", Pizza:"🍕", Pork:"🥓" };
 const YT_OK = /^https:\/\/((www|m)\.)?(youtube\.com|youtu\.be)\//i;
 const validVideo = (u) => (typeof u === "string" && YT_OK.test(u.trim()) ? u.trim() : "");
 // The owner's link if there is one, otherwise a YouTube search for the recipe.

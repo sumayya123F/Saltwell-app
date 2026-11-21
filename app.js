@@ -535,6 +535,24 @@ const EVEN_MORE = [
 const BUILTIN_VER = 4;
 const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 }))];
 
+// Favorites are personal and saved on this device only.
+const FAV_KEY = "pantree-favs";
+let favs = new Set();
+try { favs = new Set(JSON.parse(localStorage.getItem(FAV_KEY)) || []); } catch {}
+const saveFavs = () => { try { localStorage.setItem(FAV_KEY, JSON.stringify([...favs])); } catch {} };
+let favView = false;
+const HEART = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.6-9.3-9.1C1 8.6 2.9 5 6.4 5c2 0 3.600 1.100 4.600 2.700h2C14 6.100 15.600 5 17.600 5c3.500 0 5.400 3.600 3.700 6.900C19 16.400 12 21 12 21z"/></svg>';
+function toggleFav(id) {
+  if (favs.has(id)) favs.delete(id); else favs.add(id);
+  saveFavs(); render();
+  if (viewingId === id) updateFavDetail();
+}
+function updateFavDetail() {
+  const on = favs.has(viewingId);
+  $("fav-detail").setAttribute("aria-pressed", on);
+  $("fav-detail").textContent = on ? "♥ Saved" : "♡ Save";
+}
+
 const ADMIN_KEY = "pantree-admin-code";
 let admin = false;
 let adminCode = "";
@@ -648,6 +666,7 @@ const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&
 function render() {
   const q = $("search").value.trim().toLowerCase();
   const shown = recipes.filter((r) =>
+    (!favView || favs.has(r.id)) &&
     (!q || r.name.toLowerCase().includes(q) || r.ingredients.some((i) => i.toLowerCase().includes(q)) || tagsOf(r).some((t) => t.toLowerCase().includes(q))));
   $("add").hidden = !admin;
   $("owner").textContent = admin ? "Owner: sign out" : "Owner sign in";
@@ -655,13 +674,18 @@ function render() {
   const areas = [...new Set(recipes.map(areaOf).filter(Boolean))].sort();
   $("dl-categories").innerHTML = cats.map((c) => `<option value="${esc(c)}">`).join("");
   $("dl-areas").innerHTML = areas.map((c) => `<option value="${esc(c)}">`).join("");
-  $("heading").textContent = q ? `Results for “${$("search").value.trim()}”` : "Browse recipes";
+  $("favn").textContent = recipes.filter((r) => favs.has(r.id)).length;
+  $("tHome").setAttribute("aria-pressed", !favView);
+  $("tFav").setAttribute("aria-pressed", favView);
+  $("heading").textContent = favView ? "Favorites" : q ? `Results for “${$("search").value.trim()}”` : "Browse recipes";
+  $("empty").textContent = favView && !q ? "No favorites yet. Tap the heart on a recipe to save it." : "No recipes found. Try another search.";
   $("empty").hidden = shown.length > 0;
   $("list").innerHTML = shown.map((r) =>
     `<li><div class="card"><button class="open" data-id="${esc(r.id)}">
       <div class="thumb" style="${coverStyle(r)}">${coverHtml(r)}</div>
       <div class="meta"><h3>${esc(r.name)}</h3><p>${r.ingredients.length} ingredients · ${r.steps.length} steps</p></div></button>
-      <div class="tags">${tagsOf(r).map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div></div></li>`).join("");
+      <div class="tags">${tagsOf(r).map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+      <button class="fav" data-fav="${esc(r.id)}" aria-pressed="${favs.has(r.id)}" aria-label="${favs.has(r.id) ? "Remove from" : "Add to"} favorites: ${esc(r.name)}">${HEART}</button></div></li>`).join("");
 }
 function openForm(recipe) {
   editingId = recipe ? recipe.id : null;
@@ -685,6 +709,7 @@ function openView(id) {
     `<h3>Steps</h3><ol>${r.steps.map((s) => `<li>${esc(s)}</li>`).join("")}</ol>`;
   $("edit").hidden = !admin;
   $("delete").hidden = !admin;
+  updateFavDetail();
   if (!$("view-dialog").open) $("view-dialog").showModal();
   $("view-dialog").scrollTop = 0;
 }
@@ -712,6 +737,7 @@ function syncSearchToUrl() {
   const p = new URLSearchParams();
   const q = $("search").value.trim();
   if (q) p.set("q", q);
+  if (favView) p.set("fav", "1");
   const s = p.toString();
   history.replaceState(history.state, "", location.pathname + (s ? "?" + s : "") + location.hash);
 }
@@ -721,8 +747,13 @@ $("add-ingredient").onclick = () => addLine($("f-ingredients")).focus();
 $("add-step").onclick = () => addLine($("f-steps")).focus();
 $("cancel").onclick = () => $("form-dialog").close();
 $("back").onclick = () => closeView();
+$("fav-detail").onclick = () => toggleFav(viewingId);
+$("tHome").onclick = () => { favView = false; syncSearchToUrl(); render(); scrollTo({ top: 0 }); };
+$("tFav").onclick = () => { favView = true; syncSearchToUrl(); render(); scrollTo({ top: 0 }); };
 $("search").oninput = () => { syncSearchToUrl(); render(); };
 $("list").onclick = (e) => {
+  const fav = e.target.closest(".fav");
+  if (fav) { toggleFav(fav.dataset.fav); return; }
   const open = e.target.closest(".open");
   if (open) showRecipe(open.dataset.id);
 };
@@ -754,7 +785,7 @@ $("form").onsubmit = () => {
 };
 
 // Restore the search (and an open recipe) from the address.
-try { const sp = new URLSearchParams(location.search); $("search").value = sp.get("q") || ""; } catch {}
+try { const sp = new URLSearchParams(location.search); $("search").value = sp.get("q") || ""; favView = sp.get("fav") === "1"; } catch {}
 render();
 load();
 {

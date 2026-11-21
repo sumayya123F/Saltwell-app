@@ -752,23 +752,24 @@ const MORE_RECIPES = [
   },
   {
     "id": "id-flatbread",
-    "name": "Flatbread",
+    "name": "Khubz (Arab Flatbread)",
     "ingredients": [
-      "2 cups plain flour",
-      "1 tsp baking powder",
-      "1/2 tsp salt",
+      "3 cups (400 g) plain flour",
+      "1 tsp instant yeast",
+      "1 tsp sugar",
+      "1 tsp salt",
       "1 tbsp olive oil",
-      "3/4 cup plain yoghurt",
-      "A little water, if needed",
-      "Garlic butter (optional)"
+      "About 1 1/4 cups warm water"
     ],
     "steps": [
-      "Mix the flour, baking powder and salt.",
-      "Stir in the oil and yoghurt to form a soft dough, adding a splash of water if it is dry.",
-      "Knead for 2 minutes, cover, and rest for 20 minutes.",
-      "Divide into 6 pieces and roll each into a thin round.",
-      "Cook in a hot dry pan for 1 to 2 minutes per side until puffed and spotted brown.",
-      "Brush with garlic butter and keep warm in a cloth."
+      "Mix the flour, yeast, sugar and salt, then add the oil and enough warm water to make a soft dough.",
+      "Knead for 8 to 10 minutes until smooth and elastic.",
+      "Cover and let it rise for 1 hour until doubled.",
+      "Divide into 8 balls and rest them for 10 minutes.",
+      "Roll each ball into a round about 5 mm thick, and let them rest for 15 minutes.",
+      "Heat the oven to 250°C with a baking tray or pizza stone inside until very hot.",
+      "Bake the rounds 1 or 2 at a time for 3 to 4 minutes, until they puff up like a balloon and turn lightly golden.",
+      "Wrap in a clean cloth to keep soft, and serve warm with dips, kebabs or shawarma."
     ]
   },
   {
@@ -797,8 +798,244 @@ const MORE_RECIPES = [
     ]
   }
 ];
-const BUILTIN_VER = 7;
-const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 }))];
+const ARAB_FOOD = [
+  {
+    "id": "id-hummus",
+    "name": "Hummus",
+    "ingredients": [
+      "2 cups cooked chickpeas (one 400 g can, drained)",
+      "1/3 cup tahini",
+      "3 tbsp lemon juice",
+      "1 clove garlic",
+      "1/2 tsp salt",
+      "1/2 tsp ground cumin",
+      "3 to 4 tbsp ice-cold water",
+      "Olive oil, paprika and parsley (to serve)"
+    ],
+    "steps": [
+      "Blend the tahini and lemon juice for 1 minute until pale and creamy.",
+      "Add the garlic, salt, cumin and half the chickpeas, and blend until smooth.",
+      "Add the remaining chickpeas and blend again, adding the cold water a spoonful at a time until very smooth and fluffy.",
+      "Spread in a shallow bowl, make a well in the centre with a spoon, and fill with olive oil.",
+      "Finish with paprika and parsley, and serve with khubz or vegetables."
+    ]
+  },
+  {
+    "id": "id-baba-ganoush",
+    "name": "Baba Ganoush",
+    "ingredients": [
+      "2 large eggplants",
+      "3 tbsp tahini",
+      "2 tbsp lemon juice",
+      "1 clove garlic, crushed",
+      "1/2 tsp salt",
+      "2 tbsp olive oil",
+      "Parsley and pomegranate seeds (to serve)"
+    ],
+    "steps": [
+      "Prick the eggplants and char them over a flame or under a hot grill, turning, for 20 to 25 minutes until the skin is blackened and the flesh is soft.",
+      "Let them cool, then scoop out the flesh and drain it in a sieve for 10 minutes.",
+      "Mash the flesh with the tahini, lemon juice, garlic and salt.",
+      "Spread in a bowl, drizzle with olive oil, and top with parsley and pomegranate seeds."
+    ]
+  },
+  {
+    "id": "id-tabbouleh",
+    "name": "Tabbouleh",
+    "ingredients": [
+      "3 large bunches flat-leaf parsley, very finely chopped",
+      "1/4 cup fine bulgur, soaked in water for 15 minutes",
+      "3 ripe tomatoes, finely diced",
+      "1/2 cup fresh mint, finely chopped",
+      "4 spring onions, finely sliced",
+      "1/4 cup lemon juice",
+      "1/4 cup olive oil",
+      "1/2 tsp allspice",
+      "Salt"
+    ],
+    "steps": [
+      "Wash the parsley well and dry it thoroughly, then chop it very finely.",
+      "Drain the bulgur and squeeze out the extra water.",
+      "Toss the parsley, mint, tomatoes, spring onions and bulgur together.",
+      "Whisk the lemon juice, olive oil, allspice and salt, and pour over the salad.",
+      "Toss well and serve fresh with lettuce leaves."
+    ]
+  },
+  {
+    "id": "id-fattoush",
+    "name": "Fattoush",
+    "ingredients": [
+      "2 pita or khubz, torn into pieces",
+      "Oil for frying or brushing",
+      "1 romaine lettuce, chopped",
+      "2 tomatoes, diced",
+      "1 cucumber, diced",
+      "4 radishes, sliced",
+      "4 spring onions, sliced",
+      "1/2 cup mint and parsley leaves",
+      "3 tbsp olive oil",
+      "2 tbsp lemon juice",
+      "1 tbsp pomegranate molasses",
+      "1 clove garlic, crushed",
+      "1 tbsp sumac",
+      "Salt"
+    ],
+    "steps": [
+      "Fry or bake the bread pieces with a little oil until crisp and golden.",
+      "Whisk the olive oil, lemon juice, pomegranate molasses, garlic, half the sumac and salt.",
+      "Toss the lettuce, tomatoes, cucumber, radishes, spring onions and herbs in a large bowl.",
+      "Pour the dressing over and toss.",
+      "Add the crispy bread just before serving and sprinkle with the remaining sumac."
+    ]
+  },
+  {
+    "id": "id-chicken-kabsa",
+    "name": "Chicken Kabsa",
+    "ingredients": [
+      "1 kg chicken pieces",
+      "2 cups basmati rice, soaked for 30 minutes",
+      "3 tbsp oil or ghee",
+      "2 onions, sliced",
+      "4 cloves garlic, minced",
+      "3 tomatoes, grated",
+      "2 tbsp tomato paste",
+      "2 tbsp kabsa spice mix",
+      "3 cardamom pods",
+      "1 cinnamon stick",
+      "3 dried limes (loomi), pierced",
+      "3 1/2 cups chicken stock",
+      "Toasted almonds and raisins (to serve)"
+    ],
+    "steps": [
+      "Brown the chicken in the oil in a large pot, then set it aside.",
+      "Fry the onions until golden, then add the garlic, tomatoes, tomato paste, spice mix, cardamom and cinnamon, and cook for 5 minutes.",
+      "Return the chicken, add the dried limes and stock, and simmer for 30 minutes until the chicken is tender.",
+      "Lift out the chicken and stir the drained rice into the broth.",
+      "Cook, covered, on low heat for about 20 minutes until the rice is fluffy.",
+      "Grill or oven-roast the chicken for 10 minutes until golden, place it over the rice, and top with almonds and raisins."
+    ]
+  },
+  {
+    "id": "id-maqluba",
+    "name": "Maqluba",
+    "ingredients": [
+      "1 kg chicken pieces",
+      "2 eggplants, sliced",
+      "1 small cauliflower, in florets",
+      "2 tomatoes, sliced",
+      "1 onion, sliced",
+      "2 cups basmati rice, soaked",
+      "2 tsp Arab seven-spice (baharat)",
+      "1 tsp turmeric",
+      "3 cups chicken stock",
+      "Oil for frying",
+      "Toasted nuts and yoghurt (to serve)"
+    ],
+    "steps": [
+      "Boil the chicken with the onion and half the spices to make a flavourful stock, then strain and keep both the chicken and the stock.",
+      "Fry the eggplant slices and cauliflower until golden and drain.",
+      "Line the base of a deep pot with the tomato slices, then arrange the eggplant, chicken and cauliflower in layers.",
+      "Mix the rice with the remaining spices and spread it over the top.",
+      "Pour in the hot stock until it just covers the rice, cover, and simmer for 40 minutes.",
+      "Rest for 10 minutes, place a large plate on top, and flip the pot over to turn out the dish.",
+      "Top with toasted nuts and serve with yoghurt."
+    ]
+  },
+  {
+    "id": "id-shish-taouk",
+    "name": "Shish Taouk",
+    "ingredients": [
+      "700 g chicken breast, cubed",
+      "1/2 cup plain yoghurt",
+      "3 tbsp lemon juice",
+      "2 tbsp tomato paste",
+      "4 cloves garlic, minced",
+      "2 tbsp olive oil",
+      "1 tsp paprika",
+      "1 tsp salt",
+      "1/2 tsp black pepper",
+      "Skewers",
+      "Garlic sauce (toum) and flatbread (to serve)"
+    ],
+    "steps": [
+      "Mix the yoghurt, lemon juice, tomato paste, garlic, oil, paprika, salt and pepper.",
+      "Add the chicken, coat well, and marinate for at least 4 hours or overnight.",
+      "Thread the chicken onto skewers.",
+      "Grill or roast at 220°C for 12 to 15 minutes, turning, until charred and cooked through.",
+      "Serve with garlic sauce and warm flatbread."
+    ]
+  },
+  {
+    "id": "id-shorbat-adas",
+    "name": "Lentil Soup (Shorbat Adas)",
+    "ingredients": [
+      "1 1/2 cups red lentils, rinsed",
+      "1 onion, chopped",
+      "2 carrots, chopped",
+      "1 potato, diced",
+      "3 cloves garlic",
+      "1 tsp ground cumin",
+      "1/2 tsp turmeric",
+      "6 cups vegetable or chicken stock",
+      "2 tbsp olive oil",
+      "Lemon wedges and parsley (to serve)"
+    ],
+    "steps": [
+      "Soften the onion, carrots and garlic in the olive oil for 5 minutes.",
+      "Stir in the cumin and turmeric for 30 seconds.",
+      "Add the lentils, potato and stock, and simmer for 25 to 30 minutes until everything is soft.",
+      "Blend until smooth and season with salt and pepper.",
+      "Serve hot with a squeeze of lemon and parsley."
+    ]
+  },
+  {
+    "id": "id-kunafa",
+    "name": "Kunafa",
+    "ingredients": [
+      "400 g kataifi (shredded pastry)",
+      "150 g melted butter",
+      "500 g mozzarella or akkawi cheese, shredded",
+      "1 cup sugar",
+      "1/2 cup water",
+      "1 tsp lemon juice",
+      "1 tsp rose water",
+      "Crushed pistachios (to serve)"
+    ],
+    "steps": [
+      "Boil the sugar, water and lemon juice for 8 minutes, add the rose water, and let the syrup cool.",
+      "Pull the kataifi apart, mix it with the melted butter, and rub until every strand is coated.",
+      "Press half of the pastry into a greased round tin and cover it with the cheese.",
+      "Top with the rest of the pastry and press down firmly.",
+      "Bake at 190°C for 35 to 40 minutes until deep golden.",
+      "Turn it onto a plate, pour over the cool syrup right away, and scatter with pistachios. Serve warm."
+    ]
+  },
+  {
+    "id": "id-umm-ali",
+    "name": "Umm Ali",
+    "ingredients": [
+      "2 sheets puff pastry",
+      "2 cups milk",
+      "1 cup cream",
+      "1/2 cup sugar",
+      "1/2 cup mixed chopped nuts",
+      "1/4 cup raisins",
+      "1/4 cup shredded coconut",
+      "1 tsp vanilla",
+      "Cinnamon"
+    ],
+    "steps": [
+      "Bake the puff pastry until golden and crisp, then break it into pieces.",
+      "Heat the oven to 200°C.",
+      "Layer the pastry, nuts, raisins and coconut in a baking dish.",
+      "Heat the milk, cream, sugar and vanilla until the sugar dissolves, and pour it over the pastry.",
+      "Sprinkle with cinnamon and bake for 15 to 20 minutes until bubbling and golden on top.",
+      "Serve warm."
+    ]
+  }
+];
+const BUILTIN_VER = 8;
+const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 }))];
 
 // Favorites are personal and saved on this device only.
 const FAV_KEY = "pantree-favs";
@@ -911,9 +1148,12 @@ const META = {
   "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian"], "id-pempek": ["Seafood", "Indonesian"],
   "id-bakso": ["Soup", "Indonesian"], "id-es-campur": ["Dessert", "Indonesian"], "id-es-cendol": ["Dessert", "Indonesian"],
   "id-dodol": ["Dessert", "Indonesian"], "id-cheese-tteokbokki": ["Snacks", "Korean"], "id-bubble-tea": ["Drinks", "Taiwanese"],
-  "id-falafel": ["Vegetarian", "Middle Eastern"], "id-cheese-sticks": ["Snacks", "American"], "id-cinnamon-roll-biscuits": ["Dessert", "American"],
+  "id-hummus": ["Sides", "Arab"], "id-baba-ganoush": ["Sides", "Arab"], "id-tabbouleh": ["Sides", "Arab"], "id-fattoush": ["Sides", "Arab"],
+  "id-chicken-kabsa": ["Chicken", "Arab"], "id-maqluba": ["Chicken", "Arab"], "id-shish-taouk": ["Chicken", "Arab"],
+  "id-shorbat-adas": ["Soup", "Arab"], "id-kunafa": ["Dessert", "Arab"], "id-umm-ali": ["Dessert", "Arab"],
+  "id-falafel": ["Vegetarian", "Arab"], "id-cheese-sticks": ["Snacks", "American"], "id-cinnamon-roll-biscuits": ["Dessert", "American"],
   "id-cabbage-rolls": ["Beef", "Polish"], "id-nalesniki": ["Dessert", "Polish"], "id-arepa": ["Breakfast", "Venezuelan"],
-  "id-flatbread": ["Sides", "Middle Eastern"], "id-shawarma": ["Chicken", "Middle Eastern"], "id-ice-cream-mochi": ["Dessert", "Japanese"], "id-martabak-manis": ["Dessert", "Indonesian"]
+  "id-flatbread": ["Sides", "Arab"], "id-shawarma": ["Chicken", "Arab"], "id-ice-cream-mochi": ["Dessert", "Japanese"], "id-martabak-manis": ["Dessert", "Indonesian"]
 };
 const ICONS = { Dessert:"🍨", Soup:"🍲", Pasta:"🍝", Seafood:"🐟", Chicken:"🍗", Beef:"🥩", Vegetarian:"🥗", Snacks:"🥟", Breakfast:"🥞", "Rice & Noodles":"🍜", Drinks:"🥤", Sides:"🥑" };
 const YT_OK = /^https:\/\/((www|m)\.)?(youtube\.com|youtu\.be)\//i;
@@ -936,6 +1176,7 @@ const GROUPS = [
   { words: ["meal", "meals", "dinner", "lunch", "main", "mains", "food"], test: (r) => ![...SWEET, ...SIP, ...SIDE].includes(categoryOf(r)) },
   { words: ["sweet", "sweets", "treat", "treats", "dessert", "desserts"], test: (r) => SWEET.includes(categoryOf(r)) },
   { words: ["side", "sides", "snack", "snacks"], test: (r) => [...SIDE, "Snacks"].includes(categoryOf(r)) },
+  { words: ["arabic", "arabian", "middle eastern", "middle-eastern"], test: (r) => areaOf(r) === "Arab" },
   { words: ["drink", "drinks", "beverage", "beverages"], test: (r) => SIP.includes(categoryOf(r)) },
 ];
 const groupFor = (q) => GROUPS.find((g) => g.words.includes(q));

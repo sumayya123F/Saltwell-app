@@ -19,13 +19,167 @@ const SAMPLES = [
     steps: ["Soften the onion and garlic in a little oil.", "Add the tomatoes and stock, and simmer for 20 minutes.", "Blend until smooth.", "Stir in the cream and basil, and season to taste."] }
 ];
 
+// Recipes brought over from the old Saltwell app.
+const SALTWELL = [
+  {
+    "id": "sw-chicken-tikka-masala",
+    "name": "Chicken Tikka Masala",
+    "ingredients": [
+      "600g Chicken thigh, cubed",
+      "150g Yogurt",
+      "2 tbsp Tikka masala spice",
+      "1 Onion, diced",
+      "3 Garlic cloves",
+      "400g Crushed tomatoes",
+      "100ml Cream",
+      "Basmati rice & naan (to serve)"
+    ],
+    "steps": [
+      "Marinate chicken in yogurt and half the spice for 30 min.",
+      "Grill or pan-sear chicken until charred; set aside.",
+      "Fry onion and garlic, add remaining spice and tomatoes; simmer 15 min.",
+      "Stir in cream and chicken; simmer 5 min. Garnish with coriander."
+    ]
+  },
+  {
+    "id": "sw-lasagne",
+    "name": "Classic Beef Lasagne",
+    "ingredients": [
+      "500g Minced beef",
+      "1 Onion",
+      "2 Garlic cloves",
+      "700g Passata",
+      "250g Lasagne sheets",
+      "500ml Béchamel",
+      "200g Mozzarella",
+      "Parmesan & fresh basil (to top)"
+    ],
+    "steps": [
+      "Brown beef with onion and garlic; add passata and simmer 20 min.",
+      "Layer sauce, pasta and béchamel in a baking dish.",
+      "Top with mozzarella and parmesan.",
+      "Bake at 180°C for 40 min until golden. Rest 10 min."
+    ]
+  },
+  {
+    "id": "sw-grilled-salmon",
+    "name": "Grilled Salmon with Asparagus",
+    "ingredients": [
+      "2 Salmon fillets",
+      "1 bunch Asparagus",
+      "2 tbsp Olive oil",
+      "1 tsp Paprika",
+      "1 Lemon",
+      "Mixed salad, cherry tomatoes, red onion (to serve)",
+      "Parsley, salt & pepper (to taste)"
+    ],
+    "steps": [
+      "Rub salmon with oil, paprika, salt and pepper.",
+      "Grill 4–5 min per side.",
+      "Roast or grill asparagus for 6–8 min.",
+      "Serve with salad, lemon wedges and parsley."
+    ]
+  },
+  {
+    "id": "sw-fish-tacos",
+    "name": "Blackened Fish Tacos",
+    "ingredients": [
+      "500g White fish fillets",
+      "2 tbsp Blackening spice",
+      "8 Small corn tortillas",
+      "Red cabbage slaw",
+      "1 Avocado, diced",
+      "Tomato salsa",
+      "Lime-yogurt crema",
+      "Coriander & lime (to serve)"
+    ],
+    "steps": [
+      "Coat fish in spice and sear 3 min per side.",
+      "Warm tortillas in a dry pan.",
+      "Fill with slaw, flaked fish, avocado and salsa.",
+      "Drizzle with crema and serve with lime."
+    ]
+  },
+  {
+    "id": "sw-spaghetti-carbonara",
+    "name": "Spaghetti Carbonara",
+    "ingredients": [
+      "400g Spaghetti",
+      "150g Pancetta, diced",
+      "3 Eggs + 2 yolks",
+      "80g Pecorino or parmesan",
+      "Black pepper",
+      "Parsley"
+    ],
+    "steps": [
+      "Crisp pancetta in a dry pan.",
+      "Boil spaghetti; reserve a cup of pasta water.",
+      "Whisk eggs, cheese and plenty of pepper.",
+      "Off the heat, toss pasta with pancetta and egg mix, loosening with pasta water until creamy."
+    ]
+  },
+  {
+    "id": "sw-vegetable-stir-fry",
+    "name": "Vegetable Stir Fry",
+    "ingredients": [
+      "1 head Broccoli",
+      "2 Carrot",
+      "1 Bell pepper",
+      "3 tbsp Soy sauce",
+      "1 thumb Ginger",
+      "1 tsp Sesame oil"
+    ],
+    "steps": [
+      "Cut vegetables into even, bite-size pieces.",
+      "Stir fry ginger in a very hot wok for 15 seconds.",
+      "Add carrots and broccoli first, then pepper; cook 4 to 5 minutes.",
+      "Season with soy sauce and finish with sesame oil."
+    ]
+  },
+  {
+    "id": "sw-mushroom-risotto",
+    "name": "Mushroom Risotto",
+    "ingredients": [
+      "300 g Arborio rice",
+      "300 g Mushrooms",
+      "1 L Vegetable stock",
+      "100 ml White wine",
+      "50 g Parmesan"
+    ],
+    "steps": [
+      "Keep the stock hot in a pan beside the stove.",
+      "Brown the mushrooms; set aside.",
+      "Toast rice with onion, add wine, then stock a ladle at a time, stirring.",
+      "After about 18 minutes fold in mushrooms and parmesan."
+    ]
+  },
+  {
+    "id": "sw-lemon-roast-chicken",
+    "name": "Lemon Roast Chicken",
+    "ingredients": [
+      "1.6 kg Whole chicken",
+      "1 Lemon",
+      "50 g Butter",
+      "6 sprigs Thyme",
+      "800 g Potatoes"
+    ],
+    "steps": [
+      "Rub the chicken with butter and season generously.",
+      "Stuff the cavity with lemon and thyme.",
+      "Roast at 200°C for 1 hour 15 minutes with potatoes underneath.",
+      "Rest 15 minutes before carving."
+    ]
+  }
+];
+SAMPLES.push(...SALTWELL);
+
 let stored = null, seeded = null;
-try { stored = localStorage.getItem(KEY); seeded = localStorage.getItem(KEY + "-seeded"); } catch {}
+try { stored = localStorage.getItem(KEY); seeded = localStorage.getItem(KEY + "-seeded"); } catch {}  // seeded "2" = Saltwell recipes added
 try { recipes = JSON.parse(stored) || []; } catch { recipes = []; }
-if (!seeded) {
+if (seeded !== "2") {
   const have = new Set(recipes.map((r) => r.id));
   recipes = [...recipes, ...SAMPLES.filter((s) => !have.has(s.id))];
-  try { localStorage.setItem(KEY, JSON.stringify(recipes)); localStorage.setItem(KEY + "-seeded", "1"); } catch {}
+  try { localStorage.setItem(KEY, JSON.stringify(recipes)); localStorage.setItem(KEY + "-seeded", "2"); } catch {}
 }
 const save = () => { try { localStorage.setItem(KEY, JSON.stringify(recipes)); } catch {} };
 function addLine(container, value) {

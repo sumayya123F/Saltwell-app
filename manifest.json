@@ -1,0 +1,13 @@
+{
+  "name": "PanTree",
+  "short_name": "PanTree",
+  "description": "Your recipes, in one place.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbf7ee",
+  "theme_color": "#2f6f4f",
+  "icons": [
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

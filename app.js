@@ -532,8 +532,37 @@ const EVEN_MORE = [
     ]
   }
 ];
-const BUILTIN_VER = 4;
-const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 }))];
+const KOREAN = [
+  {
+    "id": "id-cheese-tteokbokki",
+    "name": "Cheese Tteokbokki",
+    "video": "https://www.youtube.com/watch?v=aGKMwZS6zCM",
+    "ingredients": [
+      "500 g cylinder rice cakes (tteok)",
+      "1 L anchovy stock, or water",
+      "3 tbsp gochujang (Korean chilli paste)",
+      "1 tbsp gochugaru (Korean chilli flakes)",
+      "1 tbsp soy sauce",
+      "1 tbsp sugar",
+      "1 tbsp minced garlic",
+      "2 fish cake sheets (eomuk), cut into pieces",
+      "2 spring onions, cut into lengths",
+      "2 boiled eggs, peeled",
+      "1 cup shredded mozzarella",
+      "1 tsp sesame seeds"
+    ],
+    "steps": [
+      "If the rice cakes are hard or refrigerated, soak them in warm water for 10 minutes, then drain.",
+      "Bring the stock to a boil in a wide pan and stir in the gochujang, gochugaru, soy sauce, sugar and garlic until dissolved.",
+      "Add the rice cakes and fish cakes and simmer for 10 to 12 minutes, stirring often, until the rice cakes are soft and the sauce is thick.",
+      "Add the spring onions and boiled eggs and cook for 1 more minute.",
+      "Sprinkle the mozzarella over the top, cover, and cook on low for 2 minutes until melted.",
+      "Sprinkle with sesame seeds and serve hot."
+    ]
+  }
+];
+const BUILTIN_VER = 5;
+const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 }))];
 
 // Favorites are personal and saved on this device only.
 const FAV_KEY = "pantree-favs";
@@ -633,7 +662,7 @@ const META = {
   "id-beef-rendang": ["Beef", "Indonesian"], "id-gado-gado": ["Vegetarian", "Indonesian"], "id-sate-ayam": ["Chicken", "Indonesian"],
   "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian"], "id-pempek": ["Snacks", "Indonesian"],
   "id-bakso": ["Soup", "Indonesian"], "id-es-campur": ["Dessert", "Indonesian"], "id-es-cendol": ["Dessert", "Indonesian"],
-  "id-dodol": ["Dessert", "Indonesian"], "id-martabak-manis": ["Dessert", "Indonesian"]
+  "id-dodol": ["Dessert", "Indonesian"], "id-cheese-tteokbokki": ["Snacks", "Korean"], "id-martabak-manis": ["Dessert", "Indonesian"]
 };
 const ICONS = { Dessert:"🍨", Soup:"🍲", Pasta:"🍝", Seafood:"🐟", Chicken:"🍗", Beef:"🥩", Vegetarian:"🥗", Snacks:"🥟", Breakfast:"🥞", "Rice & Noodles":"🍜", Drinks:"🥤" };
 const YT_OK = /^https:\/\/((www|m)\.)?(youtube\.com|youtu\.be)\//i;

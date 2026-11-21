@@ -42,7 +42,11 @@ module.exports = async (req, res) => {
       const configured = { code: !!process.env.ADMIN_CODE, storage: !!(URL_ && TOKEN) };
       if (!URL_ || !TOKEN) return res.status(200).json({ recipes: null, configured });
       const raw = await redis(`get/${KEY}`);
-      return res.status(200).json({ recipes: raw ? JSON.parse(raw) : null, configured });
+      const saved = raw ? JSON.parse(raw) : null;
+      // Older saves are a plain array (built-in version 1).
+      const recipes = Array.isArray(saved) ? saved : saved ? saved.recipes : null;
+      const ver = Array.isArray(saved) ? 1 : saved ? saved.ver || 0 : 0;
+      return res.status(200).json({ recipes, ver, configured });
     }
     if (req.method === "POST") {
       const code = process.env.ADMIN_CODE;
@@ -52,7 +56,8 @@ module.exports = async (req, res) => {
       const list = clean(body.recipes);
       if (!list) return res.status(400).json({ error: "bad recipes" });
       if (!URL_ || !TOKEN) return res.status(500).json({ error: "storage not set up" });
-      await redis(`set/${KEY}`, JSON.stringify(list));
+      const ver = Math.max(0, Math.min(1000, parseInt(body.ver, 10) || 0));
+      await redis(`set/${KEY}`, JSON.stringify({ recipes: list, ver }));
       return res.status(200).json({ ok: true });
     }
     res.status(405).json({ error: "method not allowed" });

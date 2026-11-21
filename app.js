@@ -173,13 +173,216 @@ const SALTWELL = [
 ];
 SAMPLES.push(...SALTWELL);
 
+// Indonesian recipes (added in built-in version 2).
+const INDONESIAN = [
+  {
+    "id": "id-nasi-goreng",
+    "name": "Nasi Goreng",
+    "ingredients": [
+      "3 cups cooked rice, cold",
+      "3 shallots, sliced",
+      "3 cloves garlic, minced",
+      "2 red chillies, sliced",
+      "2 tbsp kecap manis (sweet soy sauce)",
+      "1 tbsp soy sauce",
+      "1 tsp shrimp paste (terasi)",
+      "2 eggs",
+      "200 g chicken or shrimp, diced",
+      "Cucumber, tomato and fried shallots (to serve)"
+    ],
+    "steps": [
+      "Fry the shallots, garlic, chillies and shrimp paste in oil until fragrant.",
+      "Add the chicken or shrimp and cook through.",
+      "Add the cold rice and stir fry on high heat, breaking up clumps.",
+      "Season with kecap manis and soy sauce.",
+      "Push the rice aside, scramble an egg, then mix it in.",
+      "Serve topped with a fried egg, cucumber, tomato and fried shallots."
+    ]
+  },
+  {
+    "id": "id-mie-goreng",
+    "name": "Mie Goreng",
+    "ingredients": [
+      "250 g egg noodles",
+      "2 cloves garlic, minced",
+      "3 shallots, sliced",
+      "150 g chicken, sliced",
+      "1 cup cabbage or choy sum",
+      "1 carrot, thinly sliced",
+      "3 tbsp kecap manis",
+      "1 tbsp oyster sauce",
+      "1 egg",
+      "Fried shallots and chilli (to serve)"
+    ],
+    "steps": [
+      "Boil the noodles for 2 minutes, drain and toss with a little oil.",
+      "Fry the garlic and shallots until golden, then add the chicken.",
+      "Add the vegetables and stir fry for 2 minutes.",
+      "Push everything aside, scramble the egg, then mix together.",
+      "Add the noodles, kecap manis and oyster sauce, and toss until coated.",
+      "Serve with fried shallots and sliced chilli."
+    ]
+  },
+  {
+    "id": "id-soto-ayam",
+    "name": "Soto Ayam",
+    "ingredients": [
+      "1 whole chicken, or 800 g thighs",
+      "2 L water",
+      "3 lemongrass stalks, bruised",
+      "4 lime leaves",
+      "1 tbsp ground turmeric",
+      "5 shallots",
+      "4 cloves garlic",
+      "2 cm ginger",
+      "Rice vermicelli or rice",
+      "Boiled eggs, bean sprouts, celery leaf and fried shallots (to serve)",
+      "Lime and sambal (to serve)"
+    ],
+    "steps": [
+      "Blend the shallots, garlic, ginger and turmeric into a paste, and fry it until fragrant.",
+      "Add the chicken, water, lemongrass and lime leaves, and simmer for 45 minutes.",
+      "Remove the chicken, shred the meat, and strain the broth.",
+      "Season the broth with salt and pepper.",
+      "Place noodles in a bowl, add chicken, egg and sprouts, then pour over the hot broth.",
+      "Top with fried shallots, celery leaf, lime and sambal."
+    ]
+  },
+  {
+    "id": "id-beef-rendang",
+    "name": "Beef Rendang",
+    "ingredients": [
+      "1 kg beef chuck, cubed",
+      "400 ml coconut milk",
+      "5 shallots",
+      "4 cloves garlic",
+      "3 cm ginger",
+      "3 cm galangal",
+      "8 dried red chillies, soaked",
+      "2 lemongrass stalks, bruised",
+      "4 lime leaves",
+      "1 tbsp tamarind paste",
+      "2 tbsp toasted grated coconut",
+      "Salt and palm sugar"
+    ],
+    "steps": [
+      "Blend the shallots, garlic, ginger, galangal and chillies into a paste.",
+      "Fry the paste for 5 minutes, then add the beef, lemongrass and lime leaves.",
+      "Pour in the coconut milk and tamarind, and bring to a boil.",
+      "Simmer gently for 2.5 to 3 hours, stirring often, until the sauce is thick and dark.",
+      "Stir in the toasted coconut near the end.",
+      "Season with salt and palm sugar, and serve with rice."
+    ]
+  },
+  {
+    "id": "id-gado-gado",
+    "name": "Gado-Gado",
+    "ingredients": [
+      "200 g green beans",
+      "2 potatoes, boiled",
+      "1 cup bean sprouts",
+      "1/2 cabbage, shredded",
+      "200 g tofu or tempeh, fried",
+      "2 boiled eggs",
+      "1 cucumber, sliced",
+      "Prawn crackers (krupuk)",
+      "150 g roasted peanuts",
+      "2 cloves garlic",
+      "1 red chilli",
+      "2 tbsp palm sugar",
+      "1 tbsp tamarind water",
+      "200 ml warm water"
+    ],
+    "steps": [
+      "Blanch the green beans, sprouts and cabbage for 1 to 2 minutes each, then cool.",
+      "Grind the peanuts, garlic, chilli, palm sugar and a pinch of salt into a rough paste.",
+      "Stir in the tamarind water and warm water to make a thick sauce.",
+      "Arrange the vegetables, potato, tofu, egg and cucumber on a plate.",
+      "Pour over the peanut sauce and top with prawn crackers."
+    ]
+  },
+  {
+    "id": "id-sate-ayam",
+    "name": "Chicken Satay (Sate Ayam)",
+    "ingredients": [
+      "600 g chicken thigh, cubed",
+      "2 tbsp kecap manis",
+      "1 tbsp vegetable oil",
+      "2 cloves garlic, minced",
+      "1 tsp ground coriander",
+      "20 bamboo skewers, soaked",
+      "150 g peanut butter",
+      "2 tbsp kecap manis (for sauce)",
+      "1 tbsp lime juice",
+      "1 chilli, chopped",
+      "100 ml warm water",
+      "Rice cakes (lontong), sliced shallots and cucumber (to serve)"
+    ],
+    "steps": [
+      "Marinate the chicken in kecap manis, oil, garlic and coriander for at least 30 minutes.",
+      "Thread the chicken onto the skewers.",
+      "Mix the peanut butter, kecap manis, lime juice, chilli and warm water into a sauce.",
+      "Grill the skewers for 8 to 10 minutes, turning, until charred and cooked through.",
+      "Serve with the peanut sauce, lontong, shallots and cucumber."
+    ]
+  },
+  {
+    "id": "id-ayam-goreng",
+    "name": "Ayam Goreng",
+    "ingredients": [
+      "1 kg chicken pieces",
+      "4 shallots",
+      "4 cloves garlic",
+      "2 cm turmeric, or 1 tsp ground",
+      "2 candlenuts or macadamias",
+      "1 tsp ground coriander",
+      "2 lemongrass stalks, bruised",
+      "3 bay leaves",
+      "500 ml water",
+      "Oil for frying",
+      "Sambal and cucumber (to serve)"
+    ],
+    "steps": [
+      "Blend the shallots, garlic, turmeric, candlenuts and coriander into a paste.",
+      "Simmer the chicken with the paste, lemongrass, bay leaves, water and salt for 30 minutes.",
+      "Drain the chicken and pat it dry.",
+      "Deep fry until deep golden and crisp.",
+      "Serve with rice, sambal and cucumber."
+    ]
+  },
+  {
+    "id": "id-pisang-goreng",
+    "name": "Pisang Goreng",
+    "ingredients": [
+      "6 ripe bananas (pisang raja or plantains)",
+      "100 g plain flour",
+      "50 g rice flour",
+      "2 tbsp sugar",
+      "1/4 tsp salt",
+      "1/2 tsp baking powder",
+      "150 ml cold water",
+      "Oil for frying",
+      "Grated cheese, chocolate sauce or palm sugar (to serve)"
+    ],
+    "steps": [
+      "Mix the flours, sugar, salt and baking powder.",
+      "Whisk in the cold water to make a thin batter.",
+      "Slice the bananas lengthways and dip them in the batter.",
+      "Fry in hot oil for 2 to 3 minutes per side until golden and crisp.",
+      "Drain, and serve warm with cheese, chocolate sauce or palm sugar."
+    ]
+  }
+];
+const BUILTIN_VER = 2;
+const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 }))];
+
 const ADMIN_KEY = "pantree-admin-code";
 let admin = false;
 let adminCode = "";
 try { adminCode = sessionStorage.getItem(ADMIN_KEY) || localStorage.getItem(ADMIN_KEY) || ""; } catch {}
 
 const CACHE_KEY = "pantree-last-list";
-recipes = SAMPLES.slice();   // built-in recipes until the shared list loads
+recipes = BUILTINS.map(({ v, ...r }) => r);   // built-in recipes until the shared list loads
 try { const c = JSON.parse(localStorage.getItem(CACHE_KEY)); if (Array.isArray(c)) recipes = c; } catch {}  // last list seen, so it works offline
 
 async function load() {
@@ -187,10 +390,12 @@ async function load() {
     const r = await fetch("/api/recipes", { cache: "no-store" });
     const j = await r.json();
     serverInfo = j.configured || null;
-    if (Array.isArray(j.recipes)) {
-      recipes = j.recipes;
-      try { localStorage.setItem(CACHE_KEY, JSON.stringify(recipes)); } catch {}
-    }
+    const have = Array.isArray(j.recipes) ? new Set(j.recipes.map((x) => x.id)) : null;
+    const ver = Number(j.ver) || 0;
+    // Built-in recipes newer than what the owner last saved still show up for everyone.
+    const extra = BUILTINS.filter((b) => !(have && have.has(b.id)) && (!have || b.v > ver)).map(({ v, ...r }) => r);
+    recipes = [...(j.recipes || []), ...extra];
+    try { localStorage.setItem(CACHE_KEY, JSON.stringify(recipes)); } catch {}
   } catch {}
   if (adminCode) await checkAdmin(adminCode, true);
   render();
@@ -232,7 +437,7 @@ async function checkAdmin(code, quiet) {
 
 async function save() {
   let ok = false;
-  try { ok = await api({ recipes }); } catch {}
+  try { ok = await api({ recipes, ver: BUILTIN_VER }); } catch {}
   if (ok) { try { localStorage.setItem(CACHE_KEY, JSON.stringify(recipes)); } catch {} }
   if (!ok) alert("Could not save. Check your internet and that the owner code is still valid.");
 }

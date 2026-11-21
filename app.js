@@ -373,8 +373,69 @@ const INDONESIAN = [
     ]
   }
 ];
-const BUILTIN_VER = 2;
-const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 }))];
+const MORE_INDONESIAN = [
+  {
+    "id": "id-pempek",
+    "name": "Pempek Palembang",
+    "ingredients": [
+      "300 g white fish fillet, minced (ikan tenggiri or mackerel)",
+      "200 g tapioca starch",
+      "150 ml ice-cold water",
+      "2 cloves garlic, minced",
+      "1 tsp salt",
+      "1/2 tsp sugar",
+      "1 hard-boiled egg per pempek (for pempek kapal selam)",
+      "Oil for frying",
+      "3 tbsp palm sugar",
+      "2 cloves garlic",
+      "3 bird's eye chillies",
+      "3 tbsp tamarind water",
+      "300 ml water",
+      "1 tbsp rice vinegar",
+      "Cucumber and yellow noodles (to serve)"
+    ],
+    "steps": [
+      "Mix the minced fish, garlic, salt and sugar. Add the ice-cold water gradually.",
+      "Knead in the tapioca starch until you have a smooth dough that does not stick to your hands.",
+      "Shape into logs or ovals. For pempek kapal selam, wrap the dough around a peeled boiled egg.",
+      "Boil in water until they float, about 10 minutes, then drain.",
+      "Fry the boiled pempek in hot oil until golden.",
+      "For the cuko sauce, boil the palm sugar, garlic, chillies, tamarind water and water for 10 minutes, then add the vinegar and strain.",
+      "Serve the pempek sliced, with cuko, cucumber and noodles."
+    ]
+  },
+  {
+    "id": "id-bakso",
+    "name": "Bakso (Indonesian Meatball Soup)",
+    "ingredients": [
+      "500 g beef mince",
+      "100 g tapioca starch",
+      "4 cloves garlic, minced",
+      "2 shallots, minced",
+      "1 tsp salt",
+      "1 tsp white pepper",
+      "1 egg white",
+      "100 g crushed ice",
+      "1.5 L beef stock",
+      "2 cloves garlic, fried",
+      "Rice noodles or egg noodles",
+      "Bok choy or choy sum",
+      "Fried shallots, celery leaf and sliced spring onion (to serve)",
+      "Sambal, kecap manis and lime (to serve)"
+    ],
+    "steps": [
+      "Blend the beef, garlic, shallots, salt, pepper, egg white and ice into a smooth paste.",
+      "Mix in the tapioca starch until sticky.",
+      "Bring a pot of salted water to a gentle simmer. Form the paste into balls by squeezing it through your fist, and drop them in.",
+      "Cook until the balls float, about 8 minutes, then lift them out.",
+      "Heat the stock with the fried garlic and season to taste.",
+      "Place cooked noodles and greens in bowls, add the meatballs, and ladle over the hot stock.",
+      "Top with fried shallots, celery leaf and spring onion, and serve with sambal, kecap manis and lime."
+    ]
+  }
+];
+const BUILTIN_VER = 3;
+const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 }))];
 
 const ADMIN_KEY = "pantree-admin-code";
 let admin = false;

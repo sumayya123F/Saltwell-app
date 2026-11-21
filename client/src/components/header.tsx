@@ -24,7 +24,7 @@ export function Header({ online }: { online: boolean }) {
     <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur">
       <div className="container flex flex-wrap items-center gap-3 py-3">
         <Link to="/" className="text-xl font-bold text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-          🍲 Recipes
+          🍲 Saltwell
         </Link>
 
         <form role="search" onSubmit={submit} className="order-last flex w-full gap-2 sm:order-none sm:w-auto sm:flex-1 sm:max-w-md">

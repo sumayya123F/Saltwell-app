@@ -1,7 +1,7 @@
 {
-  "name": "Recipes",
-  "short_name": "Recipes",
-  "description": "Browse recipes and save favorites — works offline.",
+  "name": "Saltwell",
+  "short_name": "Saltwell",
+  "description": "Saltwell: browse recipes and save favorites — works offline.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

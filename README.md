@@ -1,4 +1,4 @@
-# 🍲 Recipes PWA
+# 🍲 Saltwell
 
 An installable, offline-capable recipe browser powered by [TheMealDB](https://www.themealdb.com/api.php).
 A small Express proxy hides the API key; the React client only ever calls `/api/*`.

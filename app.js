@@ -722,9 +722,10 @@ const tagsOf = (r) => [categoryOf(r), areaOf(r)].filter(Boolean);
 const hue = (s) => [...s].reduce((n, c) => (n * 31 + c.charCodeAt(0)) % 360, 7);
 const coverHtml = (r) => {
   const img = imageOf(r);
-  if (img) return `<img src="${esc(img)}" alt="${esc(r.name)}" loading="lazy">`;
+  if (img) return `<img src="${esc(img)}" alt="${esc(r.name)}" loading="lazy" onload="this.parentElement.classList.add('loaded')" onerror="this.parentElement.classList.add('loaded','broken')">`;
   return `<span aria-hidden="true">${ICONS[categoryOf(r)] || "🍽️"}</span>`;
 };
+const coverClass = (r) => "thumb" + (imageOf(r) ? " skel" : "");
 const coverStyle = (r) => imageOf(r) ? "" : `background:linear-gradient(135deg,hsl(${hue(r.id)} 45% 40%),hsl(${(hue(r.id) + 40) % 360} 50% 28%))`;
 function addLine(container, value) {
   const div = document.createElement("div");
@@ -761,9 +762,9 @@ function render() {
   $("empty").hidden = shown.length > 0;
   $("list").innerHTML = shown.map((r) =>
     `<li><div class="card"><button class="open" data-id="${esc(r.id)}">
-      <div class="thumb" style="${coverStyle(r)}">${coverHtml(r)}</div>
+      <div class="${coverClass(r)}" style="${coverStyle(r)}">${coverHtml(r)}</div>
       <div class="meta"><h3>${esc(r.name)}</h3><p>${r.ingredients.length} ingredients · ${r.steps.length} steps</p></div></button>
-      <div class="tags">${tagsOf(r).map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+      <div class="tags">${tagsOf(r).map((t) => `<button class="tag" data-q="${esc(t)}">${esc(t)}</button>`).join("")}</div>
       <button class="fav" data-fav="${esc(r.id)}" aria-pressed="${favs.has(r.id)}" aria-label="${favs.has(r.id) ? "Remove from" : "Add to"} favorites: ${esc(r.name)}">${HEART}</button></div></li>`).join("");
 }
 function openForm(recipe) {
@@ -782,10 +783,11 @@ function openView(id) {
   const r = recipes.find((x) => x.id === id);
   if (!r) return;
   viewingId = id;
+  $("view-cover").className = coverClass(r);
   $("view-cover").setAttribute("style", coverStyle(r));
   $("view-cover").innerHTML = coverHtml(r);
   $("view").innerHTML =
-    `<h2>${esc(r.name)}</h2><div class="tags">${tagsOf(r).map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div><a class="yt" href="${esc(videoUrl(r))}" target="_blank" rel="noopener noreferrer">▶ Watch on YouTube</a><h3>Ingredients</h3><ul>${r.ingredients.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>` +
+    `<h2>${esc(r.name)}</h2><div class="tags">${tagsOf(r).map((t) => `<button class="tag" data-q="${esc(t)}">${esc(t)}</button>`).join("")}</div><a class="yt" href="${esc(videoUrl(r))}" target="_blank" rel="noopener noreferrer">▶ Watch on YouTube</a><h3>Ingredients</h3><ul>${r.ingredients.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>` +
     `<h3>Steps</h3><ol>${r.steps.map((s) => `<li>${esc(s)}</li>`).join("")}</ol>`;
   $("edit").hidden = !admin;
   $("delete").hidden = !admin;
@@ -831,7 +833,24 @@ $("fav-detail").onclick = () => toggleFav(viewingId);
 $("tHome").onclick = () => { favView = false; syncSearchToUrl(); render(); scrollTo({ top: 0 }); };
 $("tFav").onclick = () => { favView = true; syncSearchToUrl(); render(); scrollTo({ top: 0 }); };
 $("search").oninput = () => { syncSearchToUrl(); render(); };
+// Tapping a tag searches for it, just as if you had typed it.
+function searchFor(text) {
+  $("search").value = text;
+  favView = false;
+  syncSearchToUrl();
+  render();
+  scrollTo({ top: 0 });
+}
+$("view").onclick = async (e) => {
+  const tag = e.target.closest(".tag");
+  if (!tag) return;
+  const text = tag.dataset.q;
+  await closeView();
+  searchFor(text);
+};
 $("list").onclick = (e) => {
+  const tag = e.target.closest(".tag");
+  if (tag) { searchFor(tag.dataset.q); return; }
   const fav = e.target.closest(".fav");
   if (fav) { toggleFav(fav.dataset.fav); return; }
   const open = e.target.closest(".open");

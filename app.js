@@ -178,13 +178,18 @@ let admin = false;
 let adminCode = "";
 try { adminCode = sessionStorage.getItem(ADMIN_KEY) || localStorage.getItem(ADMIN_KEY) || ""; } catch {}
 
+const CACHE_KEY = "pantree-last-list";
 recipes = SAMPLES.slice();   // built-in recipes until the shared list loads
+try { const c = JSON.parse(localStorage.getItem(CACHE_KEY)); if (Array.isArray(c)) recipes = c; } catch {}  // last list seen, so it works offline
 
 async function load() {
   try {
     const r = await fetch("/api/recipes", { cache: "no-store" });
     const j = await r.json();
-    if (Array.isArray(j.recipes)) recipes = j.recipes;
+    if (Array.isArray(j.recipes)) {
+      recipes = j.recipes;
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify(recipes)); } catch {}
+    }
   } catch {}
   if (adminCode) await checkAdmin(adminCode, true);
   render();
@@ -213,6 +218,7 @@ async function checkAdmin(code, quiet) {
 async function save() {
   let ok = false;
   try { ok = await api({ recipes }); } catch {}
+  if (ok) { try { localStorage.setItem(CACHE_KEY, JSON.stringify(recipes)); } catch {} }
   if (!ok) alert("Could not save. Check your internet and that the owner code is still valid.");
 }
 function addLine(container, value) {

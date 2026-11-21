@@ -1386,8 +1386,62 @@ const ITALIAN_POLISH = [
     ]
   }
 ];
-const BUILTIN_VER = 10;
-const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 }))];
+const FLAN_AND_KATSU = [
+  {
+    "id": "es-flan",
+    "name": "Flan (Crème Caramel)",
+    "ingredients": [
+      "3/4 cup sugar, for the caramel",
+      "2 tbsp water",
+      "4 eggs",
+      "1 can (395 g) sweetened condensed milk",
+      "1 can (360 ml) evaporated milk, or whole milk",
+      "1 tsp vanilla",
+      "Pinch of salt"
+    ],
+    "steps": [
+      "Heat the oven to 160°C and boil a kettle of water.",
+      "Melt the sugar with the 2 tbsp water in a pan over medium heat, without stirring, until it turns a deep amber caramel.",
+      "Pour the caramel quickly into a 20 cm cake tin or ramekins, tilting to coat the base.",
+      "Blend the eggs, condensed milk, evaporated milk, vanilla and salt until smooth, and strain it over the caramel.",
+      "Place the tin in a deep roasting dish and pour hot water halfway up the sides.",
+      "Bake for 50 to 60 minutes until set with a slight wobble in the centre.",
+      "Cool, then chill for at least 4 hours.",
+      "Run a knife around the edge and flip onto a plate so the caramel sauce pours over."
+    ]
+  },
+  {
+    "id": "jp-katsu-chicken-curry",
+    "name": "Katsu Chicken Curry",
+    "ingredients": [
+      "2 chicken breasts, halved and flattened",
+      "1/2 cup plain flour",
+      "2 eggs, beaten",
+      "1 1/2 cups panko breadcrumbs",
+      "Oil for frying",
+      "1 onion, sliced",
+      "2 carrots, cut into chunks",
+      "2 potatoes, cut into chunks",
+      "1 tbsp oil",
+      "600 ml chicken stock",
+      "4 blocks Japanese curry roux, or 2 tbsp curry powder and 2 tbsp flour",
+      "1 tbsp soy sauce",
+      "1 small apple, grated",
+      "Cooked rice, to serve"
+    ],
+    "steps": [
+      "Fry the onion in the oil until soft, then add the carrots and potatoes.",
+      "Pour in the stock and simmer for 15 minutes until the vegetables are tender.",
+      "Turn the heat low and stir in the curry roux (or curry powder and flour), soy sauce and apple until thick and smooth.",
+      "Coat the chicken in flour, then egg, then panko.",
+      "Fry in hot oil for 3 to 4 minutes per side until golden and cooked through, then drain.",
+      "Slice the chicken katsu.",
+      "Serve over rice with the curry sauce poured alongside."
+    ]
+  }
+];
+const BUILTIN_VER = 11;
+const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 }))];
 
 // Favorites are personal and saved on this device only.
 const FAV_KEY = "pantree-favs";
@@ -1500,7 +1554,7 @@ const META = {
   "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian"], "id-pempek": ["Seafood", "Indonesian"],
   "id-bakso": ["Soup", "Indonesian"], "id-es-campur": ["Dessert", "Indonesian"], "id-es-cendol": ["Dessert", "Indonesian"],
   "id-dodol": ["Dessert", "Indonesian"], "id-cheese-tteokbokki": ["Snacks", "Korean"], "id-bubble-tea": ["Drinks", "Taiwanese"],
-  "id-hummus": ["Sides", "Arab"],
+  "id-hummus": ["Sides", "Arab"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese"],
   "it-margherita-pizza": ["Pizza", "Italian"], "it-spaghetti-bolognese": ["Pasta", "Italian"], "it-chicken-parmigiana": ["Chicken", "Italian"],
   "it-minestrone": ["Soup", "Italian"], "it-bruschetta": ["Sides", "Italian"], "it-tiramisu": ["Dessert", "Italian"], "it-panna-cotta": ["Dessert", "Italian"],
   "pl-pierogi-ruskie": ["Vegetarian", "Polish"], "pl-bigos": ["Pork", "Polish"], "pl-zurek": ["Soup", "Polish"], "pl-barszcz": ["Soup", "Polish"],
@@ -1535,6 +1589,8 @@ const GROUPS = [
   { words: ["arabic", "arabian", "middle eastern", "middle-eastern"], test: (r) => areaOf(r) === "Arab" },
   { words: ["drink", "drinks", "beverage", "beverages"], test: (r) => SIP.includes(categoryOf(r)) },
 ];
+// Alternate spellings people type.
+const ALIASES = { satee: "satay", sate: "satay", lasagna: "lasagne", lasagnia: "lasagne", katsu: "katsu", flan: "flan" };
 const groupFor = (q) => GROUPS.find((g) => g.words.includes(q));
 const coverClass = (r) => "thumb" + (imageOf(r) ? " skel" : "");
 const coverStyle = (r) => imageOf(r) ? "" : `background:linear-gradient(135deg,hsl(${hue(r.id)} 45% 40%),hsl(${(hue(r.id) + 40) % 360} 50% 28%))`;
@@ -1555,7 +1611,8 @@ const lines = (container) => [...container.querySelectorAll("input")].map((i) =>
 const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
 
 function render() {
-  const q = $("search").value.trim().toLowerCase();
+  const q0 = $("search").value.trim().toLowerCase();
+  const q = ALIASES[q0] || q0;
   const group = groupFor(q);
   const shown = recipes.filter((r) =>
     (!favView || favs.has(r.id)) &&

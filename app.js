@@ -434,8 +434,106 @@ const MORE_INDONESIAN = [
     ]
   }
 ];
-const BUILTIN_VER = 3;
-const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 }))];
+const EVEN_MORE = [
+  {
+    "id": "id-es-campur",
+    "name": "Es Campur",
+    "ingredients": [
+      "200 g jackfruit, sliced",
+      "1 avocado, cubed",
+      "1 young coconut, flesh scraped",
+      "100 g grass jelly (cincau), cubed",
+      "50 g tapioca pearls, cooked",
+      "4 tbsp sweet corn kernels",
+      "200 ml sweet condensed milk",
+      "400 ml coconut milk or evaporated milk",
+      "4 tbsp rose syrup or cocoa syrup",
+      "Shaved or crushed ice"
+    ],
+    "steps": [
+      "Prepare all the fruit and toppings and keep them chilled.",
+      "Divide the jackfruit, avocado, young coconut, grass jelly, tapioca and corn between four tall glasses.",
+      "Fill the glasses with plenty of shaved or crushed ice.",
+      "Pour over the milk, then drizzle with condensed milk and rose syrup.",
+      "Serve right away with a long spoon."
+    ]
+  },
+  {
+    "id": "id-es-cendol",
+    "name": "Es Cendol",
+    "ingredients": [
+      "100 g rice flour",
+      "2 tbsp tapioca starch",
+      "1 tsp pandan paste, or 10 pandan leaves blended with water",
+      "500 ml water",
+      "1/4 tsp salt",
+      "200 g palm sugar (gula merah)",
+      "150 ml water (for syrup)",
+      "1 pandan leaf, knotted",
+      "400 ml coconut milk",
+      "Pinch of salt (for coconut milk)",
+      "Shaved ice",
+      "Jackfruit or red beans (optional)"
+    ],
+    "steps": [
+      "Whisk the rice flour, tapioca, pandan, water and salt in a pot, and cook over medium heat, stirring, until thick and glossy.",
+      "Press the hot dough through a colander or cendol mould into a bowl of ice water to form short green noodles.",
+      "Boil the palm sugar, water and knotted pandan leaf until the sugar dissolves, then strain.",
+      "Warm the coconut milk gently with a pinch of salt. Do not boil.",
+      "Put cendol into glasses and add shaved ice.",
+      "Pour over the coconut milk and palm sugar syrup, and top with jackfruit or red beans."
+    ]
+  },
+  {
+    "id": "id-dodol",
+    "name": "Dodol",
+    "ingredients": [
+      "250 g glutinous rice flour",
+      "1 L thick coconut milk",
+      "500 g palm sugar, chopped",
+      "100 g white sugar",
+      "2 pandan leaves, knotted",
+      "1/2 tsp salt",
+      "Banana leaf or lined tray"
+    ],
+    "steps": [
+      "Dissolve the palm sugar and white sugar in the coconut milk over low heat, then strain out any bits.",
+      "Whisk in the glutinous rice flour and salt until completely smooth.",
+      "Add the pandan leaves and cook over low heat, stirring constantly, for about 2 to 3 hours.",
+      "The dodol is ready when it is very thick, dark and glossy and pulls away from the pot.",
+      "Spread it into a lightly oiled tray or banana leaf and let it cool completely.",
+      "Cut into pieces and wrap each one."
+    ]
+  },
+  {
+    "id": "id-martabak-manis",
+    "name": "Martabak Manis (Sweet Pancake)",
+    "ingredients": [
+      "300 g plain flour",
+      "1 tsp instant yeast",
+      "1 tbsp sugar",
+      "1 egg",
+      "300 ml warm water",
+      "1/2 tsp salt",
+      "1/2 tsp baking soda",
+      "Butter or margarine for the pan",
+      "Chocolate sprinkles",
+      "Crushed roasted peanuts",
+      "Grated cheese",
+      "Sweetened condensed milk"
+    ],
+    "steps": [
+      "Mix the flour, yeast, sugar, egg, warm water and salt into a smooth batter, and rest for 1 hour until bubbly.",
+      "Stir in the baking soda just before cooking.",
+      "Heat a thick pan on medium-low and grease it generously with butter.",
+      "Pour in the batter. Cook until bubbles form on the surface and the underside is golden.",
+      "Add chocolate sprinkles, peanuts and cheese, then drizzle with condensed milk.",
+      "Fold in half, brush with butter, and cut into squares."
+    ]
+  }
+];
+const BUILTIN_VER = 4;
+const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 }))];
 
 const ADMIN_KEY = "pantree-admin-code";
 let admin = false;

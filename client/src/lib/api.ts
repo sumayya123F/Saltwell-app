@@ -3,6 +3,8 @@
  * or via VITE_API_BASE in production if the API lives on another origin). TheMealDB and its
  * API key are never referenced here.
  */
+import { LOCAL_RECIPES, getLocalRecipe, searchLocalRecipes } from "@/features/saltwell/recipes";
+
 const BASE = (import.meta.env.VITE_API_BASE as string | undefined)?.replace(/\/$/, "") ?? "";
 
 /** Summary shape shared by search results, category filters and favorites. */
@@ -80,10 +82,18 @@ const toMeal = (r: Raw): Meal => {
 
 export const api = {
   async search(q: string): Promise<Meal[]> {
-    const d = await get<{ meals: Raw[] | null }>("/search", { q });
-    return (d.meals ?? []).map(toMeal);
+    const local = searchLocalRecipes(q);
+    try {
+      const d = await get<{ meals: Raw[] | null }>("/search", { q });
+      return [...local, ...(d.meals ?? []).map(toMeal)];
+    } catch (e) {
+      if (local.length) return local; // Saltwell recipes still work if the API/network is down
+      throw e;
+    }
   },
   async meal(id: string): Promise<Meal | null> {
+    const local = getLocalRecipe(id);
+    if (local) return local;
     const d = await get<{ meals: Raw[] | null }>(`/meal/${encodeURIComponent(id)}`);
     return d.meals?.[0] ? toMeal(d.meals[0]) : null;
   },
@@ -97,8 +107,9 @@ export const api = {
     }));
   },
   async byCategory(c: string): Promise<MealSummary[]> {
+    const local = LOCAL_RECIPES.filter((r) => r.category === c);
     const d = await get<{ meals: Raw[] | null }>("/filter", { c });
-    return (d.meals ?? []).map((m) => ({ ...toSummary(m), category: c }));
+    return [...local, ...(d.meals ?? []).map((m) => ({ ...toSummary(m), category: c }))];
   },
   async random(): Promise<Meal | null> {
     const d = await get<{ meals: Raw[] | null }>("/random");

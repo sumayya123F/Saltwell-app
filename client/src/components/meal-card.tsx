@@ -11,14 +11,17 @@ interface Props {
   /** Extra control rendered next to the heart (e.g. nothing by default). */
 }
 
+/** Saltwell's own photos are local files; TheMealDB thumbs support /medium and /large size suffixes. */
+const isLocal = (thumb: string) => thumb.startsWith("/");
+
 export function MealCard({ meal, favorite, onToggle }: Props) {
   return (
     <Card className="group relative overflow-hidden focus-within:ring-2 focus-within:ring-ring">
       <Link to={`/meal/${meal.id}`} className="block focus-visible:outline-none">
         {/* Thumbnail; alt text names the dish. Width/height avoid layout shift. */}
         <img
-          src={meal.thumb ? `${meal.thumb}/large` : ""}
-          srcSet={meal.thumb ? `${meal.thumb}/medium 300w, ${meal.thumb}/large 500w, ${meal.thumb} 700w` : undefined}
+          src={meal.thumb ? (isLocal(meal.thumb) ? meal.thumb : `${meal.thumb}/large`) : ""}
+          srcSet={meal.thumb && !isLocal(meal.thumb) ? `${meal.thumb}/medium 300w, ${meal.thumb}/large 500w, ${meal.thumb} 700w` : undefined}
           sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 100vw"
           alt={`Photo of ${meal.name}`}
           width={400}

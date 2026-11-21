@@ -629,7 +629,6 @@ const coverHtml = (r) => {
   return `<span aria-hidden="true">${ICONS[categoryOf(r)] || "🍽️"}</span>`;
 };
 const coverStyle = (r) => imageOf(r) ? "" : `background:linear-gradient(135deg,hsl(${hue(r.id)} 45% 40%),hsl(${(hue(r.id) + 40) % 360} 50% 28%))`;
-let activeTag = "";
 function addLine(container, value) {
   const div = document.createElement("div");
   div.className = "line";
@@ -649,25 +648,20 @@ const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&
 function render() {
   const q = $("search").value.trim().toLowerCase();
   const shown = recipes.filter((r) =>
-    (!activeTag || tagsOf(r).includes(activeTag)) &&
     (!q || r.name.toLowerCase().includes(q) || r.ingredients.some((i) => i.toLowerCase().includes(q)) || tagsOf(r).some((t) => t.toLowerCase().includes(q))));
   $("add").hidden = !admin;
   $("owner").textContent = admin ? "Owner: sign out" : "Owner sign in";
-  // Chips: categories, then cuisines.
   const cats = [...new Set(recipes.map(categoryOf).filter(Boolean))].sort();
   const areas = [...new Set(recipes.map(areaOf).filter(Boolean))].sort();
-  const chip = (t) => `<li><button class="chip" data-tag="${esc(t)}" aria-pressed="${activeTag === t}">${esc(t)}</button></li>`;
-  $("chips").innerHTML = `<li><button class="chip" data-tag="" aria-pressed="${!activeTag}">All</button></li>` +
-    cats.map(chip).join("") + (areas.length ? '<li class="sep"></li>' : "") + areas.map(chip).join("");
   $("dl-categories").innerHTML = cats.map((c) => `<option value="${esc(c)}">`).join("");
   $("dl-areas").innerHTML = areas.map((c) => `<option value="${esc(c)}">`).join("");
-  $("heading").textContent = activeTag ? activeTag + " recipes" : q ? `Results for “${$("search").value.trim()}”` : "Browse recipes";
+  $("heading").textContent = q ? `Results for “${$("search").value.trim()}”` : "Browse recipes";
   $("empty").hidden = shown.length > 0;
   $("list").innerHTML = shown.map((r) =>
     `<li><div class="card"><button class="open" data-id="${esc(r.id)}">
       <div class="thumb" style="${coverStyle(r)}">${coverHtml(r)}</div>
       <div class="meta"><h3>${esc(r.name)}</h3><p>${r.ingredients.length} ingredients · ${r.steps.length} steps</p></div></button>
-      <div class="tags">${tagsOf(r).map((t) => `<button class="tag" data-tag="${esc(t)}">${esc(t)}</button>`).join("")}</div></div></li>`).join("");
+      <div class="tags">${tagsOf(r).map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div></div></li>`).join("");
 }
 function openForm(recipe) {
   editingId = recipe ? recipe.id : null;
@@ -718,7 +712,6 @@ function syncSearchToUrl() {
   const p = new URLSearchParams();
   const q = $("search").value.trim();
   if (q) p.set("q", q);
-  if (activeTag) p.set("tag", activeTag);
   const s = p.toString();
   history.replaceState(history.state, "", location.pathname + (s ? "?" + s : "") + location.hash);
 }
@@ -730,13 +723,9 @@ $("cancel").onclick = () => $("form-dialog").close();
 $("back").onclick = () => closeView();
 $("search").oninput = () => { syncSearchToUrl(); render(); };
 $("list").onclick = (e) => {
-  const tag = e.target.closest(".tag");
-  if (tag) { setTag(tag.dataset.tag); return; }
   const open = e.target.closest(".open");
   if (open) showRecipe(open.dataset.id);
 };
-$("chips").onclick = (e) => { const c = e.target.closest(".chip"); if (c) setTag(c.dataset.tag); };
-function setTag(t) { activeTag = t === activeTag ? "" : t; syncSearchToUrl(); render(); scrollTo({ top: 0 }); }
 $("theme").onclick = () => {
   const dark = document.documentElement.dataset.theme === "dark" || (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
   document.documentElement.dataset.theme = dark ? "light" : "dark";
@@ -765,7 +754,7 @@ $("form").onsubmit = () => {
 };
 
 // Restore the search (and an open recipe) from the address.
-try { const sp = new URLSearchParams(location.search); $("search").value = sp.get("q") || ""; activeTag = sp.get("tag") || ""; } catch {}
+try { const sp = new URLSearchParams(location.search); $("search").value = sp.get("q") || ""; } catch {}
 render();
 load();
 {

@@ -607,8 +607,198 @@ const DRINKS_AND_MOCHI = [
     ]
   }
 ];
-const BUILTIN_VER = 6;
-const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 }))];
+const MORE_RECIPES = [
+  {
+    "id": "id-falafel",
+    "name": "Falafel",
+    "ingredients": [
+      "250 g dried chickpeas, soaked overnight (not canned)",
+      "1 small onion, roughly chopped",
+      "4 cloves garlic",
+      "1 cup fresh parsley",
+      "1/2 cup fresh coriander",
+      "2 tsp ground cumin",
+      "1 tsp ground coriander",
+      "1 tsp salt",
+      "1/2 tsp baking powder",
+      "2 tbsp flour",
+      "Oil for frying",
+      "Pita, tahini sauce and salad (to serve)"
+    ],
+    "steps": [
+      "Drain the soaked chickpeas and pat dry.",
+      "Blitz the chickpeas, onion, garlic and herbs in a food processor into a coarse, crumbly mixture, not a paste.",
+      "Mix in the spices, salt, baking powder and flour, and chill for 30 minutes.",
+      "Shape into small balls or patties.",
+      "Fry in hot oil for 3 to 4 minutes, turning, until deep golden and crisp.",
+      "Drain on paper and serve in pita with tahini sauce and salad."
+    ]
+  },
+  {
+    "id": "id-cheese-sticks",
+    "name": "Cheese Sticks",
+    "ingredients": [
+      "8 mozzarella string cheese sticks",
+      "1/2 cup plain flour",
+      "2 eggs, beaten",
+      "1 cup breadcrumbs",
+      "1/2 tsp garlic powder",
+      "1/2 tsp dried oregano",
+      "Oil for frying",
+      "Marinara sauce (to serve)"
+    ],
+    "steps": [
+      "Cut each cheese stick in half and freeze for 1 hour so they hold their shape.",
+      "Set up three bowls: flour, beaten eggs, and breadcrumbs mixed with the garlic powder and oregano.",
+      "Coat each stick in flour, then egg, then breadcrumbs. Dip again in egg and breadcrumbs for a thick coating.",
+      "Freeze for another 30 minutes.",
+      "Fry in hot oil for 1 to 2 minutes until golden, turning once.",
+      "Drain and serve straight away with warm marinara sauce."
+    ]
+  },
+  {
+    "id": "id-cinnamon-roll-biscuits",
+    "name": "Cinnamon Roll Biscuits",
+    "ingredients": [
+      "2 cups plain flour",
+      "1 tbsp baking powder",
+      "1/2 tsp salt",
+      "1 tbsp sugar",
+      "1/3 cup cold butter, cubed",
+      "3/4 cup milk",
+      "3 tbsp melted butter",
+      "1/3 cup brown sugar",
+      "1 tbsp ground cinnamon",
+      "1/2 cup icing sugar",
+      "1 to 2 tbsp milk, for the glaze"
+    ],
+    "steps": [
+      "Heat the oven to 220°C and grease a baking tin.",
+      "Mix the flour, baking powder, salt and sugar, and rub in the cold butter until crumbly.",
+      "Stir in the milk to form a soft dough.",
+      "Roll the dough into a rectangle about 1 cm thick and brush with melted butter.",
+      "Mix the brown sugar and cinnamon, sprinkle over the dough, and roll up from the long side.",
+      "Cut into 8 slices, place cut side up in the tin, and bake for 15 to 18 minutes until golden.",
+      "Whisk the icing sugar with the milk and drizzle over the warm rolls."
+    ]
+  },
+  {
+    "id": "id-cabbage-rolls",
+    "name": "Cabbage Rolls (Golabki)",
+    "ingredients": [
+      "1 large head of cabbage",
+      "500 g minced beef or pork",
+      "1/2 cup cooked rice",
+      "1 onion, finely chopped",
+      "1 egg",
+      "1 tsp salt",
+      "1/2 tsp pepper",
+      "700 ml tomato sauce or passata",
+      "1 cup beef stock"
+    ],
+    "steps": [
+      "Cook the whole cabbage in boiling water for about 8 minutes, then peel off the softened leaves.",
+      "Mix the mince, rice, onion, egg, salt and pepper.",
+      "Place a spoonful of filling on each leaf, fold in the sides, and roll up tightly.",
+      "Pack the rolls seam side down in a deep pan or baking dish.",
+      "Pour over the tomato sauce and stock.",
+      "Cover and simmer, or bake at 180°C, for 1 hour 15 minutes until tender."
+    ]
+  },
+  {
+    "id": "id-nalesniki",
+    "name": "Nalesniki (Polish Crepes)",
+    "ingredients": [
+      "1 cup plain flour",
+      "1 cup milk",
+      "1/2 cup water",
+      "2 eggs",
+      "1 tbsp oil",
+      "Pinch of salt",
+      "250 g sweet curd cheese or ricotta",
+      "2 tbsp sugar",
+      "1 tsp vanilla",
+      "Butter for frying",
+      "Icing sugar or jam (to serve)"
+    ],
+    "steps": [
+      "Whisk the flour, milk, water, eggs, oil and salt into a smooth thin batter, and rest for 15 minutes.",
+      "Mix the cheese with the sugar and vanilla.",
+      "Fry thin crepes in a buttered pan, about 1 minute per side.",
+      "Spread each crepe with the cheese filling and fold into an envelope or roll.",
+      "Fry the filled crepes in butter for 1 minute per side until golden.",
+      "Serve dusted with icing sugar or with jam."
+    ]
+  },
+  {
+    "id": "id-arepa",
+    "name": "Arepas",
+    "ingredients": [
+      "2 cups pre-cooked white cornmeal (masarepa)",
+      "2 1/2 cups warm water",
+      "1 tsp salt",
+      "1 tbsp oil",
+      "Shredded cheese, avocado or shredded chicken (to fill)",
+      "Butter"
+    ],
+    "steps": [
+      "Mix the warm water and salt, then stir in the cornmeal and oil until a soft dough forms.",
+      "Rest the dough for 5 minutes.",
+      "Shape into 6 to 8 thick discs, about 1.5 cm high.",
+      "Cook on a lightly oiled pan over medium heat for 5 minutes per side until golden with a crisp crust.",
+      "Bake at 180°C for 10 minutes so the centre cooks through.",
+      "Split open, spread with butter, and fill with cheese, avocado or chicken."
+    ]
+  },
+  {
+    "id": "id-flatbread",
+    "name": "Flatbread",
+    "ingredients": [
+      "2 cups plain flour",
+      "1 tsp baking powder",
+      "1/2 tsp salt",
+      "1 tbsp olive oil",
+      "3/4 cup plain yoghurt",
+      "A little water, if needed",
+      "Garlic butter (optional)"
+    ],
+    "steps": [
+      "Mix the flour, baking powder and salt.",
+      "Stir in the oil and yoghurt to form a soft dough, adding a splash of water if it is dry.",
+      "Knead for 2 minutes, cover, and rest for 20 minutes.",
+      "Divide into 6 pieces and roll each into a thin round.",
+      "Cook in a hot dry pan for 1 to 2 minutes per side until puffed and spotted brown.",
+      "Brush with garlic butter and keep warm in a cloth."
+    ]
+  },
+  {
+    "id": "id-shawarma",
+    "name": "Chicken Shawarma",
+    "ingredients": [
+      "700 g chicken thigh, sliced",
+      "3 tbsp olive oil",
+      "3 tbsp lemon juice",
+      "4 cloves garlic, minced",
+      "2 tsp ground cumin",
+      "2 tsp paprika",
+      "1 tsp ground turmeric",
+      "1 tsp cinnamon",
+      "1/2 tsp ground cardamom",
+      "Salt and pepper",
+      "Flatbread or pita",
+      "Garlic sauce, pickles, tomato and cucumber (to serve)"
+    ],
+    "steps": [
+      "Mix the oil, lemon juice, garlic and all the spices with salt and pepper.",
+      "Coat the chicken in the marinade and chill for at least 2 hours, or overnight.",
+      "Cook the chicken in a very hot pan or under a grill for 4 to 5 minutes per side until charred and cooked through.",
+      "Rest for 5 minutes, then slice thinly.",
+      "Warm the flatbread and fill with chicken, garlic sauce, pickles, tomato and cucumber."
+    ]
+  }
+];
+const BUILTIN_VER = 7;
+const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 }))];
 
 // Favorites are personal and saved on this device only.
 const FAV_KEY = "pantree-favs";
@@ -616,6 +806,18 @@ let favs = new Set();
 try { favs = new Set(JSON.parse(localStorage.getItem(FAV_KEY)) || []); } catch {}
 const saveFavs = () => { try { localStorage.setItem(FAV_KEY, JSON.stringify([...favs])); } catch {} };
 let favView = false;
+// A link like ?addfav=id1,id2 saves those recipes as favorites on this device, then tidies the address.
+try {
+  const sp = new URLSearchParams(location.search);
+  const add = (sp.get("addfav") || "").split(",").map((s) => s.trim()).filter((s) => /^[\w-]{1,80}$/.test(s));
+  if (add.length) {
+    add.forEach((id) => favs.add(id));
+    saveFavs();
+    sp.delete("addfav");
+    sp.set("fav", "1");
+    history.replaceState(null, "", location.pathname + "?" + sp.toString());
+  }
+} catch {}
 const HEART = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.6-9.3-9.1C1 8.6 2.9 5 6.4 5c2 0 3.600 1.100 4.600 2.700h2C14 6.100 15.600 5 17.600 5c3.500 0 5.400 3.600 3.700 6.900C19 16.400 12 21 12 21z"/></svg>';
 function toggleFav(id) {
   if (favs.has(id)) favs.delete(id); else favs.add(id);
@@ -708,7 +910,10 @@ const META = {
   "id-beef-rendang": ["Beef", "Indonesian"], "id-gado-gado": ["Vegetarian", "Indonesian"], "id-sate-ayam": ["Chicken", "Indonesian"],
   "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian"], "id-pempek": ["Seafood", "Indonesian"],
   "id-bakso": ["Soup", "Indonesian"], "id-es-campur": ["Dessert", "Indonesian"], "id-es-cendol": ["Dessert", "Indonesian"],
-  "id-dodol": ["Dessert", "Indonesian"], "id-cheese-tteokbokki": ["Snacks", "Korean"], "id-bubble-tea": ["Drinks", "Taiwanese"], "id-ice-cream-mochi": ["Dessert", "Japanese"], "id-martabak-manis": ["Dessert", "Indonesian"]
+  "id-dodol": ["Dessert", "Indonesian"], "id-cheese-tteokbokki": ["Snacks", "Korean"], "id-bubble-tea": ["Drinks", "Taiwanese"],
+  "id-falafel": ["Vegetarian", "Middle Eastern"], "id-cheese-sticks": ["Snacks", "American"], "id-cinnamon-roll-biscuits": ["Dessert", "American"],
+  "id-cabbage-rolls": ["Beef", "Polish"], "id-nalesniki": ["Dessert", "Polish"], "id-arepa": ["Breakfast", "Venezuelan"],
+  "id-flatbread": ["Sides", "Middle Eastern"], "id-shawarma": ["Chicken", "Middle Eastern"], "id-ice-cream-mochi": ["Dessert", "Japanese"], "id-martabak-manis": ["Dessert", "Indonesian"]
 };
 const ICONS = { Dessert:"🍨", Soup:"🍲", Pasta:"🍝", Seafood:"🐟", Chicken:"🍗", Beef:"🥩", Vegetarian:"🥗", Snacks:"🥟", Breakfast:"🥞", "Rice & Noodles":"🍜", Drinks:"🥤", Sides:"🥑" };
 const YT_OK = /^https:\/\/((www|m)\.)?(youtube\.com|youtu\.be)\//i;

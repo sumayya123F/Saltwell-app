@@ -821,25 +821,6 @@ const ARAB_FOOD = [
     ]
   },
   {
-    "id": "id-baba-ganoush",
-    "name": "Baba Ganoush",
-    "ingredients": [
-      "2 large eggplants",
-      "3 tbsp tahini",
-      "2 tbsp lemon juice",
-      "1 clove garlic, crushed",
-      "1/2 tsp salt",
-      "2 tbsp olive oil",
-      "Parsley and pomegranate seeds (to serve)"
-    ],
-    "steps": [
-      "Prick the eggplants and char them over a flame or under a hot grill, turning, for 20 to 25 minutes until the skin is blackened and the flesh is soft.",
-      "Let them cool, then scoop out the flesh and drain it in a sieve for 10 minutes.",
-      "Mash the flesh with the tahini, lemon juice, garlic and salt.",
-      "Spread in a bowl, drizzle with olive oil, and top with parsley and pomegranate seeds."
-    ]
-  },
-  {
     "id": "id-tabbouleh",
     "name": "Tabbouleh",
     "ingredients": [
@@ -1034,8 +1015,39 @@ const ARAB_FOOD = [
     ]
   }
 ];
-const BUILTIN_VER = 8;
-const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 }))];
+const SHAKSHUKA = [
+  {
+    "id": "id-shakshuka",
+    "name": "Shakshuka",
+    "ingredients": [
+      "2 tbsp olive oil",
+      "1 onion, chopped",
+      "1 red pepper, diced",
+      "3 cloves garlic, minced",
+      "1 tsp ground cumin",
+      "1 tsp paprika",
+      "1/2 tsp chilli flakes",
+      "800 g canned chopped tomatoes",
+      "1 tbsp tomato paste",
+      "1 tsp sugar",
+      "Salt and pepper",
+      "5 eggs",
+      "Crumbled feta (optional)",
+      "Parsley or coriander",
+      "Khubz or crusty bread (to serve)"
+    ],
+    "steps": [
+      "Soften the onion and red pepper in the olive oil for 6 to 8 minutes.",
+      "Add the garlic, cumin, paprika and chilli flakes and cook for 1 minute.",
+      "Stir in the tomatoes, tomato paste, sugar, salt and pepper, and simmer for 15 minutes until thick.",
+      "Make small wells in the sauce and crack an egg into each.",
+      "Cover and cook on low heat for 5 to 8 minutes, until the whites are set and the yolks are still soft.",
+      "Top with feta and herbs, and serve from the pan with bread."
+    ]
+  }
+];
+const BUILTIN_VER = 9;
+const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 }))];
 
 // Favorites are personal and saved on this device only.
 const FAV_KEY = "pantree-favs";
@@ -1148,7 +1160,7 @@ const META = {
   "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian"], "id-pempek": ["Seafood", "Indonesian"],
   "id-bakso": ["Soup", "Indonesian"], "id-es-campur": ["Dessert", "Indonesian"], "id-es-cendol": ["Dessert", "Indonesian"],
   "id-dodol": ["Dessert", "Indonesian"], "id-cheese-tteokbokki": ["Snacks", "Korean"], "id-bubble-tea": ["Drinks", "Taiwanese"],
-  "id-hummus": ["Sides", "Arab"], "id-baba-ganoush": ["Sides", "Arab"], "id-tabbouleh": ["Sides", "Arab"], "id-fattoush": ["Sides", "Arab"],
+  "id-hummus": ["Sides", "Arab"], "id-shakshuka": ["Breakfast", "Arab"], "id-tabbouleh": ["Sides", "Arab"], "id-fattoush": ["Sides", "Arab"],
   "id-chicken-kabsa": ["Chicken", "Arab"], "id-maqluba": ["Chicken", "Arab"], "id-shish-taouk": ["Chicken", "Arab"],
   "id-shorbat-adas": ["Soup", "Arab"], "id-kunafa": ["Dessert", "Arab"], "id-umm-ali": ["Dessert", "Arab"],
   "id-falafel": ["Vegetarian", "Arab"], "id-cheese-sticks": ["Snacks", "American"], "id-cinnamon-roll-biscuits": ["Dessert", "American"],

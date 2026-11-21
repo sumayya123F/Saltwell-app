@@ -19,10 +19,14 @@ const SAMPLES = [
     steps: ["Soften the onion and garlic in a little oil.", "Add the tomatoes and stock, and simmer for 20 minutes.", "Blend until smooth.", "Stir in the cream and basil, and season to taste."] }
 ];
 
-let stored = null;
-try { stored = localStorage.getItem(KEY); } catch {}
-if (stored === null) { recipes = SAMPLES; }
-else { try { recipes = JSON.parse(stored) || []; } catch { recipes = []; } }
+let stored = null, seeded = null;
+try { stored = localStorage.getItem(KEY); seeded = localStorage.getItem(KEY + "-seeded"); } catch {}
+try { recipes = JSON.parse(stored) || []; } catch { recipes = []; }
+if (!seeded) {
+  const have = new Set(recipes.map((r) => r.id));
+  recipes = [...recipes, ...SAMPLES.filter((s) => !have.has(s.id))];
+  try { localStorage.setItem(KEY, JSON.stringify(recipes)); localStorage.setItem(KEY + "-seeded", "1"); } catch {}
+}
 const save = () => { try { localStorage.setItem(KEY, JSON.stringify(recipes)); } catch {} };
 function addLine(container, value) {
   const div = document.createElement("div");

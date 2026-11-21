@@ -645,21 +645,48 @@ function openView(id) {
     `<h3>Steps</h3><ol>${r.steps.map((s) => `<li>${esc(s)}</li>`).join("")}</ol>`;
   $("edit").hidden = !admin;
   $("delete").hidden = !admin;
-  $("view-dialog").showModal();
+  if (!$("view-dialog").open) $("view-dialog").showModal();
+  $("view-dialog").scrollTop = 0;
+}
+
+// Opening a recipe adds a history step, so the Back button returns to the same search.
+const urlFor = (hash) => location.pathname + (location.search || "") + (hash || "");
+function showRecipe(id) {
+  history.pushState({ recipe: id }, "", urlFor("#recipe=" + encodeURIComponent(id)));
+  openView(id);
+}
+function closeView() {
+  return new Promise((done) => {
+    if (history.state && history.state.recipe) { addEventListener("popstate", () => done(), { once: true }); history.back(); }
+    else { $("view-dialog").close(); done(); }
+  });
+}
+window.addEventListener("popstate", () => {
+  const id = history.state && history.state.recipe;
+  if (id) openView(id); else if ($("view-dialog").open) $("view-dialog").close();
+});
+$("view-dialog").addEventListener("cancel", (e) => { e.preventDefault(); closeView(); });
+
+// Keep the search in the address so it survives Back and reloads.
+function syncSearchToUrl() {
+  const q = $("search").value.trim();
+  history.replaceState(history.state, "", location.pathname + (q ? "?q=" + encodeURIComponent(q) : "") + location.hash);
 }
 
 $("add").onclick = () => openForm(null);
 $("add-ingredient").onclick = () => addLine($("f-ingredients")).focus();
 $("add-step").onclick = () => addLine($("f-steps")).focus();
 $("cancel").onclick = () => $("form-dialog").close();
-$("close").onclick = () => $("view-dialog").close();
-$("search").oninput = render;
-$("list").onclick = (e) => { const li = e.target.closest("li"); if (li) openView(li.dataset.id); };
-$("edit").onclick = () => { const r = recipes.find((x) => x.id === viewingId); $("view-dialog").close(); openForm(r); };
-$("delete").onclick = () => {
+$("back").onclick = () => closeView();
+$("search").oninput = () => { syncSearchToUrl(); render(); };
+$("list").onclick = (e) => { const li = e.target.closest("li"); if (li) showRecipe(li.dataset.id); };
+$("edit").onclick = async () => { const r = recipes.find((x) => x.id === viewingId); await closeView(); openForm(r); };
+$("delete").onclick = async () => {
   if (!confirm("Delete this recipe?")) return;
-  recipes = recipes.filter((x) => x.id !== viewingId);
-  save(); render(); $("view-dialog").close();
+  const id = viewingId;
+  await closeView();
+  recipes = recipes.filter((x) => x.id !== id);
+  save(); render();
 };
 $("owner").onclick = async () => {
   if (admin) { admin = false; adminCode = ""; try { localStorage.removeItem(ADMIN_KEY); } catch {} render(); return; }
@@ -674,8 +701,14 @@ $("form").onsubmit = () => {
   save(); render();
 };
 
+// Restore the search (and an open recipe) from the address.
+try { $("search").value = new URLSearchParams(location.search).get("q") || ""; } catch {}
 render();
 load();
+{
+  const m = location.hash.match(/^#recipe=(.+)$/);
+  if (m) { const id = decodeURIComponent(m[1]); history.replaceState({ recipe: id }, "", location.href); openView(id); }
+}
 // Keep the saved list fresh: refresh when the device reconnects or the app comes back to the front.
 window.addEventListener("online", load);
 document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && navigator.onLine) load(); });

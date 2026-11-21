@@ -45,12 +45,14 @@
     </form>
   </dialog>
 
-  <dialog id="view-dialog">
+  <dialog id="view-dialog" class="full">
+    <div class="topbar">
+      <button id="back" aria-label="Back to recipes">← Back</button>
+    </div>
     <article id="view"></article>
-    <div class="row">
+    <div class="row actions">
       <button id="delete" class="danger">Delete</button>
       <button id="edit">Edit</button>
-      <button id="close" class="primary">Close</button>
     </div>
   </dialog>
 

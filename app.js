@@ -696,7 +696,7 @@ async function save() {
 
 // Category and cuisine tags (and photos) for the built-in recipes. Owner-added recipes carry their own tags.
 const META = {
-  s1: ["Breakfast", "American"], s2: ["Pasta", "Italian"], s3: ["Snacks", "Mexican"], s4: ["Soup", "International"],
+  s1: ["Dessert", "American"], s2: ["Pasta", "Italian"], s3: ["Sides", "Mexican"], s4: ["Soup", "International"],
   "sw-chicken-tikka-masala": ["Chicken", "Indian", "img/sw-chicken-tikka-masala.jpg"],
   "sw-classic-beef-lasagne": ["Pasta", "Italian"],
   "sw-lasagne": ["Pasta", "Italian", "img/sw-lasagne.jpg"],
@@ -710,7 +710,7 @@ const META = {
   "id-bakso": ["Soup", "Indonesian"], "id-es-campur": ["Dessert", "Indonesian"], "id-es-cendol": ["Dessert", "Indonesian"],
   "id-dodol": ["Dessert", "Indonesian"], "id-cheese-tteokbokki": ["Snacks", "Korean"], "id-bubble-tea": ["Drinks", "Taiwanese"], "id-ice-cream-mochi": ["Dessert", "Japanese"], "id-martabak-manis": ["Dessert", "Indonesian"]
 };
-const ICONS = { Dessert:"🍨", Soup:"🍲", Pasta:"🍝", Seafood:"🐟", Chicken:"🍗", Beef:"🥩", Vegetarian:"🥗", Snacks:"🥟", Breakfast:"🥞", "Rice & Noodles":"🍜", Drinks:"🥤" };
+const ICONS = { Dessert:"🍨", Soup:"🍲", Pasta:"🍝", Seafood:"🐟", Chicken:"🍗", Beef:"🥩", Vegetarian:"🥗", Snacks:"🥟", Breakfast:"🥞", "Rice & Noodles":"🍜", Drinks:"🥤", Sides:"🥑" };
 const YT_OK = /^https:\/\/((www|m)\.)?(youtube\.com|youtu\.be)\//i;
 const validVideo = (u) => (typeof u === "string" && YT_OK.test(u.trim()) ? u.trim() : "");
 // The owner's link if there is one, otherwise a YouTube search for the recipe.
@@ -726,10 +726,11 @@ const coverHtml = (r) => {
   return `<span aria-hidden="true">${ICONS[categoryOf(r)] || "🍽️"}</span>`;
 };
 // Broad words people type, matched to groups of recipes (for example "meal" = everything except desserts and drinks).
-const SWEET = ["Dessert"], SIP = ["Drinks"];
+const SWEET = ["Dessert"], SIP = ["Drinks"], SIDE = ["Sides"];
 const GROUPS = [
-  { words: ["meal", "meals", "dinner", "lunch", "main", "mains", "food"], test: (r) => ![...SWEET, ...SIP].includes(categoryOf(r)) },
+  { words: ["meal", "meals", "dinner", "lunch", "main", "mains", "food"], test: (r) => ![...SWEET, ...SIP, ...SIDE].includes(categoryOf(r)) },
   { words: ["sweet", "sweets", "treat", "treats", "dessert", "desserts"], test: (r) => SWEET.includes(categoryOf(r)) },
+  { words: ["side", "sides", "snack", "snacks"], test: (r) => [...SIDE, "Snacks"].includes(categoryOf(r)) },
   { words: ["drink", "drinks", "beverage", "beverages"], test: (r) => SIP.includes(categoryOf(r)) },
 ];
 const groupFor = (q) => GROUPS.find((g) => g.words.includes(q));

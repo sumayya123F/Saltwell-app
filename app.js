@@ -173,15 +173,48 @@ const SALTWELL = [
 ];
 SAMPLES.push(...SALTWELL);
 
-let stored = null, seeded = null;
-try { stored = localStorage.getItem(KEY); seeded = localStorage.getItem(KEY + "-seeded"); } catch {}  // seeded "2" = Saltwell recipes added
-try { recipes = JSON.parse(stored) || []; } catch { recipes = []; }
-if (seeded !== "2") {
-  const have = new Set(recipes.map((r) => r.id));
-  recipes = [...recipes, ...SAMPLES.filter((s) => !have.has(s.id))];
-  try { localStorage.setItem(KEY, JSON.stringify(recipes)); localStorage.setItem(KEY + "-seeded", "2"); } catch {}
+const ADMIN_KEY = "pantree-admin-code";
+let admin = false;
+let adminCode = "";
+try { adminCode = sessionStorage.getItem(ADMIN_KEY) || localStorage.getItem(ADMIN_KEY) || ""; } catch {}
+
+recipes = SAMPLES.slice();   // built-in recipes until the shared list loads
+
+async function load() {
+  try {
+    const r = await fetch("/api/recipes", { cache: "no-store" });
+    const j = await r.json();
+    if (Array.isArray(j.recipes)) recipes = j.recipes;
+  } catch {}
+  if (adminCode) await checkAdmin(adminCode, true);
+  render();
 }
-const save = () => { try { localStorage.setItem(KEY, JSON.stringify(recipes)); } catch {} };
+
+async function api(body) {
+  const r = await fetch("/api/recipes", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "x-admin-code": adminCode },
+    body: JSON.stringify(body),
+  });
+  return r.ok;
+}
+
+async function checkAdmin(code, quiet) {
+  const prev = adminCode;
+  adminCode = code;
+  let ok = false;
+  try { ok = await api({ action: "check" }); } catch {}
+  admin = ok;
+  if (ok) { try { localStorage.setItem(ADMIN_KEY, code); } catch {} }
+  else { adminCode = quiet ? "" : prev; try { localStorage.removeItem(ADMIN_KEY); } catch {} if (!quiet) alert("Wrong code."); }
+  return ok;
+}
+
+async function save() {
+  let ok = false;
+  try { ok = await api({ recipes }); } catch {}
+  if (!ok) alert("Could not save. Check your internet and that the owner code is still valid.");
+}
 function addLine(container, value) {
   const div = document.createElement("div");
   div.className = "line";
@@ -203,6 +236,8 @@ function render() {
   const shown = recipes.filter((r) =>
     !q || r.name.toLowerCase().includes(q) || r.ingredients.some((i) => i.toLowerCase().includes(q)));
   $("empty").hidden = recipes.length > 0;
+  $("add").hidden = !admin;
+  $("owner").textContent = admin ? "Owner: sign out" : "Owner sign in";
   $("list").innerHTML = shown.map((r) =>
     `<li data-id="${r.id}"><h3>${esc(r.name)}</h3><p>${r.ingredients.length} ingredients · ${r.steps.length} steps</p></li>`).join("");
 }
@@ -223,6 +258,8 @@ function openView(id) {
   $("view").innerHTML =
     `<h2>${esc(r.name)}</h2><h3>Ingredients</h3><ul>${r.ingredients.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>` +
     `<h3>Steps</h3><ol>${r.steps.map((s) => `<li>${esc(s)}</li>`).join("")}</ol>`;
+  $("edit").hidden = !admin;
+  $("delete").hidden = !admin;
   $("view-dialog").showModal();
 }
 
@@ -239,6 +276,11 @@ $("delete").onclick = () => {
   recipes = recipes.filter((x) => x.id !== viewingId);
   save(); render(); $("view-dialog").close();
 };
+$("owner").onclick = async () => {
+  if (admin) { admin = false; adminCode = ""; try { localStorage.removeItem(ADMIN_KEY); } catch {} render(); return; }
+  const code = prompt("Owner code:");
+  if (code && (await checkAdmin(code.trim()))) render();
+};
 $("form").onsubmit = () => {
   const data = { name: $("f-name").value.trim(), ingredients: lines($("f-ingredients")), steps: lines($("f-steps")) };
   if (!data.ingredients.length || !data.steps.length) { alert("Add at least one ingredient and one step."); return false; }
@@ -248,4 +290,5 @@ $("form").onsubmit = () => {
 };
 
 render();
+load();
 if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});

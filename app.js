@@ -725,6 +725,14 @@ const coverHtml = (r) => {
   if (img) return `<img src="${esc(img)}" alt="${esc(r.name)}" loading="lazy" onload="this.parentElement.classList.add('loaded')" onerror="this.parentElement.classList.add('loaded','broken')">`;
   return `<span aria-hidden="true">${ICONS[categoryOf(r)] || "🍽️"}</span>`;
 };
+// Broad words people type, matched to groups of recipes (for example "meal" = everything except desserts and drinks).
+const SWEET = ["Dessert"], SIP = ["Drinks"];
+const GROUPS = [
+  { words: ["meal", "meals", "dinner", "lunch", "main", "mains", "food"], test: (r) => ![...SWEET, ...SIP].includes(categoryOf(r)) },
+  { words: ["sweet", "sweets", "treat", "treats", "dessert", "desserts"], test: (r) => SWEET.includes(categoryOf(r)) },
+  { words: ["drink", "drinks", "beverage", "beverages"], test: (r) => SIP.includes(categoryOf(r)) },
+];
+const groupFor = (q) => GROUPS.find((g) => g.words.includes(q));
 const coverClass = (r) => "thumb" + (imageOf(r) ? " skel" : "");
 const coverStyle = (r) => imageOf(r) ? "" : `background:linear-gradient(135deg,hsl(${hue(r.id)} 45% 40%),hsl(${(hue(r.id) + 40) % 360} 50% 28%))`;
 function addLine(container, value) {
@@ -745,9 +753,10 @@ const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&
 
 function render() {
   const q = $("search").value.trim().toLowerCase();
+  const group = groupFor(q);
   const shown = recipes.filter((r) =>
     (!favView || favs.has(r.id)) &&
-    (!q || r.name.toLowerCase().includes(q) || r.ingredients.some((i) => i.toLowerCase().includes(q)) || tagsOf(r).some((t) => t.toLowerCase().includes(q))));
+    (!q || (group && group.test(r)) || r.name.toLowerCase().includes(q) || r.ingredients.some((i) => i.toLowerCase().includes(q)) || tagsOf(r).some((t) => t.toLowerCase().includes(q))));
   $("add").hidden = !admin;
   $("owner").textContent = admin ? "Owner: sign out" : "Owner sign in";
   const cats = [...new Set(recipes.map(categoryOf).filter(Boolean))].sort();

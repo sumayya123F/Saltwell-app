@@ -561,8 +561,54 @@ const KOREAN = [
     ]
   }
 ];
-const BUILTIN_VER = 5;
-const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 }))];
+const DRINKS_AND_MOCHI = [
+  {
+    "id": "id-bubble-tea",
+    "name": "Brown Sugar Bubble Tea",
+    "ingredients": [
+      "1/2 cup (80 g) tapioca pearls (boba)",
+      "4 cups water, for boiling the pearls",
+      "1/4 cup brown sugar",
+      "1/4 cup water, for the syrup",
+      "2 black tea bags",
+      "1 cup hot water",
+      "1 cup cold milk",
+      "Ice cubes",
+      "A wide boba straw"
+    ],
+    "steps": [
+      "Boil the 4 cups of water, add the tapioca pearls and stir until they float. Cook following the packet time (usually 5 to 7 minutes), then cover and rest for 5 minutes.",
+      "Drain the pearls and rinse briefly under warm water.",
+      "Simmer the brown sugar and 1/4 cup water for 3 minutes into a syrup, add the pearls and cook 3 more minutes. Take off the heat and let them soak.",
+      "Steep the tea bags in the hot water for 5 minutes, then remove the bags and let the tea cool.",
+      "Spoon the pearls and syrup into two tall glasses, tilting the glass so the syrup streaks the sides.",
+      "Add ice, pour in the tea, then the milk. Stir and drink with a wide straw."
+    ]
+  },
+  {
+    "id": "id-ice-cream-mochi",
+    "name": "Ice Cream Mochi",
+    "ingredients": [
+      "6 small scoops ice cream, frozen hard (vanilla, matcha or strawberry)",
+      "100 g glutinous rice flour (mochiko or shiratamako)",
+      "40 g sugar",
+      "150 ml water",
+      "Cornstarch or potato starch, for dusting",
+      "Plastic wrap"
+    ],
+    "steps": [
+      "Scoop the ice cream into 6 balls onto a lined tray and freeze for at least 1 hour, until very hard.",
+      "Whisk the rice flour, sugar and water in a microwave-safe bowl until smooth.",
+      "Cover and microwave for 1 minute, stir, then microwave for another 1 minute until the dough is thick, glossy and translucent.",
+      "Dust a tray generously with cornstarch and tip the hot dough onto it. Dust the top, and let it cool for 5 minutes.",
+      "Roll the dough about 3 mm thick and cut it into 6 circles.",
+      "Place a frozen ice cream ball in the middle of each circle, stretch the mochi up and around, and pinch the seam closed.",
+      "Wrap each mochi in plastic wrap and freeze for at least 1 hour. Rest for 2 minutes at room temperature before eating."
+    ]
+  }
+];
+const BUILTIN_VER = 6;
+const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 }))];
 
 // Favorites are personal and saved on this device only.
 const FAV_KEY = "pantree-favs";
@@ -662,7 +708,7 @@ const META = {
   "id-beef-rendang": ["Beef", "Indonesian"], "id-gado-gado": ["Vegetarian", "Indonesian"], "id-sate-ayam": ["Chicken", "Indonesian"],
   "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian"], "id-pempek": ["Snacks", "Indonesian"],
   "id-bakso": ["Soup", "Indonesian"], "id-es-campur": ["Dessert", "Indonesian"], "id-es-cendol": ["Dessert", "Indonesian"],
-  "id-dodol": ["Dessert", "Indonesian"], "id-cheese-tteokbokki": ["Snacks", "Korean"], "id-martabak-manis": ["Dessert", "Indonesian"]
+  "id-dodol": ["Dessert", "Indonesian"], "id-cheese-tteokbokki": ["Snacks", "Korean"], "id-bubble-tea": ["Drinks", "Taiwanese"], "id-ice-cream-mochi": ["Dessert", "Japanese"], "id-martabak-manis": ["Dessert", "Indonesian"]
 };
 const ICONS = { Dessert:"🍨", Soup:"🍲", Pasta:"🍝", Seafood:"🐟", Chicken:"🍗", Beef:"🥩", Vegetarian:"🥗", Snacks:"🥟", Breakfast:"🥞", "Rice & Noodles":"🍜", Drinks:"🥤" };
 const YT_OK = /^https:\/\/((www|m)\.)?(youtube\.com|youtu\.be)\//i;

@@ -1231,31 +1231,6 @@ const ITALIAN_POLISH = [
     ]
   },
   {
-    "id": "pl-bigos",
-    "name": "Bigos (Hunter's Stew)",
-    "ingredients": [
-      "500 g sauerkraut, drained",
-      "500 g fresh white cabbage, shredded",
-      "300 g pork shoulder, cubed",
-      "200 g smoked sausage, sliced",
-      "100 g bacon, diced",
-      "1 onion, chopped",
-      "6 dried mushrooms, soaked",
-      "2 bay leaves",
-      "4 allspice berries",
-      "1 tbsp tomato paste",
-      "1 cup stock or red wine",
-      "Salt and pepper"
-    ],
-    "steps": [
-      "Brown the bacon, pork and onion in a large pot.",
-      "Add the sauerkraut, fresh cabbage, mushrooms with their soaking water, bay leaves, allspice and stock.",
-      "Cover and simmer gently for 1 hour.",
-      "Add the sausage and tomato paste, and cook for another hour, stirring now and then.",
-      "Bigos tastes best reheated the next day. Serve with rye bread or potatoes."
-    ]
-  },
-  {
     "id": "pl-zurek",
     "name": "Zurek (Sour Rye Soup)",
     "ingredients": [
@@ -1298,25 +1273,6 @@ const ITALIAN_POLISH = [
       "Add the beetroot and cook gently for 20 minutes, without boiling hard so the colour stays bright.",
       "Strain the soup and season with garlic, lemon juice, sugar, salt and pepper.",
       "Serve hot with sour cream and dill, or with small dumplings (uszka)."
-    ]
-  },
-  {
-    "id": "pl-kotlet-schabowy",
-    "name": "Kotlet Schabowy (Polish Pork Cutlet)",
-    "ingredients": [
-      "4 boneless pork loin chops",
-      "1/2 cup plain flour",
-      "2 eggs, beaten",
-      "1 cup breadcrumbs",
-      "Salt and pepper",
-      "Oil or lard for frying",
-      "Boiled potatoes, dill and pickled cucumber (to serve)"
-    ],
-    "steps": [
-      "Pound the pork chops thin between sheets of baking paper and season with salt and pepper.",
-      "Coat in flour, then egg, then breadcrumbs, pressing so they stick.",
-      "Fry in hot oil for 3 to 4 minutes per side until golden and cooked through.",
-      "Drain on paper and serve with potatoes, dill and pickles."
     ]
   },
   {
@@ -1685,31 +1641,6 @@ const ASIAN_FOOD = [
     ]
   },
   {
-    "id": "jp-gyoza",
-    "name": "Pork Gyoza (Pan-Fried Dumplings)",
-    "ingredients": [
-      "250 g minced pork",
-      "150 g cabbage, finely chopped",
-      "2 spring onions, finely chopped",
-      "1 garlic clove, grated",
-      "1 tsp grated ginger",
-      "1 tbsp soy sauce",
-      "1 tsp sesame oil",
-      "20 gyoza wrappers",
-      "1 tbsp vegetable oil",
-      "100 ml water",
-      "Soy sauce and rice vinegar, for dipping"
-    ],
-    "steps": [
-      "Mix the pork, cabbage, spring onions, garlic, ginger, soy sauce and sesame oil until well combined.",
-      "Put a teaspoon of filling in the middle of each wrapper, wet the edge, fold in half and pleat to seal.",
-      "Heat the oil in a non-stick frying pan and place the gyoza flat-side down in a single layer.",
-      "Fry for 2 to 3 minutes until the bottoms are golden.",
-      "Pour in the water, cover at once and steam for 5 to 6 minutes until the water is gone.",
-      "Uncover, crisp the bottoms for 1 more minute and serve with a dip of soy sauce and rice vinegar."
-    ]
-  },
-  {
     "id": "kr-bibimbap",
     "name": "Bibimbap",
     "ingredients": [
@@ -1961,6 +1892,7 @@ const KIMBAP = [
   }
 ];
 const BUILTIN_VER = 15;
+const REMOVED_IDS = ["pl-bigos", "pl-kotlet-schabowy", "jp-gyoza"];   // deleted recipes (pork), also dropped from saved lists
 const FIX_IDS = ["sw-spaghetti-carbonara", "id-cabbage-rolls"];   // corrected in version 15 (no pork)
 const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 })), ...LUPIS_AND_SPREAD.map((r) => ({ ...r, v: 12 })), ...CHEESECAKES.map((r) => ({ ...r, v: 13 })), ...ASIAN_FOOD.map((r) => ({ ...r, v: 14 })), ...KIMBAP.map((r) => ({ ...r, v: 15 }))];
 
@@ -2001,7 +1933,7 @@ try { adminCode = sessionStorage.getItem(ADMIN_KEY) || localStorage.getItem(ADMI
 
 const CACHE_KEY = "pantree-last-list";
 recipes = BUILTINS.map(({ v, ...r }) => r);   // built-in recipes until the shared list loads
-try { const c = JSON.parse(localStorage.getItem(CACHE_KEY)); if (Array.isArray(c)) recipes = c; } catch {}  // last list seen, so it works offline
+try { const c = JSON.parse(localStorage.getItem(CACHE_KEY)); if (Array.isArray(c)) recipes = c.filter((r) => !REMOVED_IDS.includes(r.id)); } catch {}  // last list seen, so it works offline
 
 async function load() {
   try {
@@ -2013,6 +1945,7 @@ async function load() {
     // Built-in recipes newer than what the owner last saved still show up for everyone.
     const extra = BUILTINS.filter((b) => !(have && have.has(b.id)) && (!have || b.v > ver)).map(({ v, ...r }) => r);
     recipes = [...(j.recipes || []), ...extra];
+    recipes = recipes.filter((r) => !REMOVED_IDS.includes(r.id));
     // Corrected built-in recipes replace older saved copies, until the owner saves again.
     if (ver < 15) for (const fx of BUILTINS.filter((b) => FIX_IDS.includes(b.id))) {
       const i = recipes.findIndex((x) => x.id === fx.id);
@@ -2080,11 +2013,11 @@ const META = {
   "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian"], "id-pempek": ["Seafood", "Indonesian"],
   "id-bakso": ["Soup", "Indonesian"], "id-es-campur": ["Dessert", "Indonesian"], "id-es-cendol": ["Dessert", "Indonesian"],
   "id-dodol": ["Dessert", "Indonesian"], "id-cheese-tteokbokki": ["Snacks", "Korean"], "id-bubble-tea": ["Drinks", "Taiwanese"],
-  "id-hummus": ["Sides", "Arab"], "id-lupis": ["Dessert", "Indonesian", "img/lupis.jpg"], "us-peanut-butter-cheesecake": ["Dessert", "American"], "dessert-banana-sour-cream-cheese-cake": ["Dessert", "International", "img/banana-sour-cream-cheese-cake.jpg"], "es-san-sebastian-cheesecake": ["Dessert", "Spanish"], "kr-kimbap": ["Snacks", "Korean"], "th-pad-thai": ["Rice & Noodles", "Thai"], "th-green-curry": ["Chicken", "Thai"], "th-tom-yum": ["Soup", "Thai"], "jp-chicken-teriyaki": ["Chicken", "Japanese"], "jp-miso-soup": ["Soup", "Japanese"], "jp-gyoza": ["Snacks", "Japanese"], "kr-bibimbap": ["Rice & Noodles", "Korean"], "kr-kimchi-fried-rice": ["Rice & Noodles", "Korean"], "cn-mapo-tofu": ["Pork", "Chinese"], "cn-kung-pao-chicken": ["Chicken", "Chinese"], "vn-pho-bo": ["Soup", "Vietnamese"], "ph-chicken-adobo": ["Chicken", "Filipino"], "in-chicken-biryani": ["Chicken", "Indian"], "in-dal-tadka": ["Vegetarian", "Indian"], "sg-hainanese-chicken-rice": ["Chicken", "Singaporean"], "it-hazelnut-chocolate-spread": ["Dessert", "Italian"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese", "img/katsu-chicken-curry.jpg"],
+  "id-hummus": ["Sides", "Arab"], "id-lupis": ["Dessert", "Indonesian", "img/lupis.jpg"], "us-peanut-butter-cheesecake": ["Dessert", "American"], "dessert-banana-sour-cream-cheese-cake": ["Dessert", "International", "img/banana-sour-cream-cheese-cake.jpg"], "es-san-sebastian-cheesecake": ["Dessert", "Spanish"], "kr-kimbap": ["Snacks", "Korean"], "th-pad-thai": ["Rice & Noodles", "Thai"], "th-green-curry": ["Chicken", "Thai"], "th-tom-yum": ["Soup", "Thai"], "jp-chicken-teriyaki": ["Chicken", "Japanese"], "jp-miso-soup": ["Soup", "Japanese"], "kr-bibimbap": ["Rice & Noodles", "Korean"], "kr-kimchi-fried-rice": ["Rice & Noodles", "Korean"], "cn-mapo-tofu": ["Pork", "Chinese"], "cn-kung-pao-chicken": ["Chicken", "Chinese"], "vn-pho-bo": ["Soup", "Vietnamese"], "ph-chicken-adobo": ["Chicken", "Filipino"], "in-chicken-biryani": ["Chicken", "Indian"], "in-dal-tadka": ["Vegetarian", "Indian"], "sg-hainanese-chicken-rice": ["Chicken", "Singaporean"], "it-hazelnut-chocolate-spread": ["Dessert", "Italian"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese", "img/katsu-chicken-curry.jpg"],
   "it-margherita-pizza": ["Pizza", "Italian"], "it-spaghetti-bolognese": ["Pasta", "Italian"], "it-chicken-parmigiana": ["Chicken", "Italian"],
   "it-minestrone": ["Soup", "Italian"], "it-bruschetta": ["Sides", "Italian"], "it-tiramisu": ["Dessert", "Italian", "img/tiramisu.jpg"], "it-panna-cotta": ["Dessert", "Italian"],
-  "pl-pierogi-ruskie": ["Vegetarian", "Polish"], "pl-bigos": ["Pork", "Polish"], "pl-zurek": ["Soup", "Polish"], "pl-barszcz": ["Soup", "Polish"],
-  "pl-kotlet-schabowy": ["Pork", "Polish"], "pl-placki-ziemniaczane": ["Sides", "Polish"], "pl-sernik": ["Dessert", "Polish"], "pl-paczki": ["Dessert", "Polish", "img/paczki.jpg"], "id-shakshuka": ["Breakfast", "Arab"], "id-tabbouleh": ["Sides", "Arab"], "id-fattoush": ["Sides", "Arab"],
+  "pl-pierogi-ruskie": ["Vegetarian", "Polish"], "pl-zurek": ["Soup", "Polish"], "pl-barszcz": ["Soup", "Polish"],
+  "pl-placki-ziemniaczane": ["Sides", "Polish"], "pl-sernik": ["Dessert", "Polish"], "pl-paczki": ["Dessert", "Polish", "img/paczki.jpg"], "id-shakshuka": ["Breakfast", "Arab"], "id-tabbouleh": ["Sides", "Arab"], "id-fattoush": ["Sides", "Arab"],
   "id-chicken-kabsa": ["Chicken", "Arab"], "id-maqluba": ["Chicken", "Arab"], "id-shish-taouk": ["Chicken", "Arab"],
   "id-shorbat-adas": ["Soup", "Arab"], "id-kunafa": ["Dessert", "Arab"], "id-umm-ali": ["Dessert", "Arab"],
   "id-falafel": ["Vegetarian", "Arab"], "id-cheese-sticks": ["Snacks", "American"], "id-cinnamon-roll-biscuits": ["Dessert", "American"],

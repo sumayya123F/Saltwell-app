@@ -1514,7 +1514,7 @@ const CHEESECAKES = [
   },
   {
     "id": "dessert-banana-sour-cream-cheese-cake",
-    "name": "Banana Sour Cream Cheese Cake",
+    "name": "Banana Sour Cream Cheesecake",
     "ingredients": [
       "3 very ripe bananas, mashed",
       "200 g plain flour",

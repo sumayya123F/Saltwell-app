@@ -1231,29 +1231,6 @@ const ITALIAN_POLISH = [
     ]
   },
   {
-    "id": "pl-zurek",
-    "name": "Zurek (Sour Rye Soup)",
-    "ingredients": [
-      "1 cup sour rye starter (zakwas)",
-      "1.5 L stock",
-      "300 g white sausage (biala kielbasa)",
-      "2 potatoes, diced",
-      "1 carrot, diced",
-      "3 cloves garlic",
-      "1 tsp marjoram",
-      "2 bay leaves",
-      "1/2 cup cream",
-      "4 boiled eggs, halved"
-    ],
-    "steps": [
-      "Simmer the stock with the carrot, potatoes, bay leaves and sausage for 20 minutes.",
-      "Stir in the sour rye starter and cook for 10 minutes, whisking so it does not clump.",
-      "Add the garlic and marjoram, and season with salt and pepper.",
-      "Stir in the cream and cook for 2 more minutes.",
-      "Serve hot with half an egg and a slice of sausage in each bowl."
-    ]
-  },
-  {
     "id": "pl-barszcz",
     "name": "Barszcz (Beetroot Soup)",
     "ingredients": [
@@ -1667,55 +1644,6 @@ const ASIAN_FOOD = [
     ]
   },
   {
-    "id": "kr-kimchi-fried-rice",
-    "name": "Kimchi Fried Rice",
-    "ingredients": [
-      "300 g cooked rice, cold",
-      "200 g kimchi, chopped",
-      "2 tbsp kimchi juice",
-      "150 g pork belly or bacon, chopped",
-      "1 tbsp gochujang",
-      "1 tbsp soy sauce",
-      "1 tsp sesame oil",
-      "2 spring onions, sliced",
-      "2 fried eggs",
-      "Sesame seeds and seaweed strips, to serve"
-    ],
-    "steps": [
-      "Fry the pork in a large pan until the fat renders and it is browned.",
-      "Add the kimchi and cook for 3 to 4 minutes until softened.",
-      "Stir in the gochujang, soy sauce and kimchi juice.",
-      "Add the cold rice and stir-fry over high heat for 4 to 5 minutes, breaking up any lumps.",
-      "Stir in the sesame oil and most of the spring onions.",
-      "Serve topped with a fried egg, sesame seeds, seaweed and the rest of the spring onions."
-    ]
-  },
-  {
-    "id": "cn-mapo-tofu",
-    "name": "Mapo Tofu",
-    "ingredients": [
-      "400 g soft or firm tofu, cubed",
-      "150 g minced pork",
-      "2 tbsp doubanjiang (chilli bean paste)",
-      "2 garlic cloves, minced",
-      "1 tbsp grated ginger",
-      "200 ml chicken stock",
-      "1 tbsp soy sauce",
-      "1 tsp ground Sichuan pepper",
-      "1 tbsp cornflour mixed with 2 tbsp water",
-      "2 spring onions, sliced",
-      "Steamed rice, to serve"
-    ],
-    "steps": [
-      "Simmer the tofu in salted water for 3 minutes, then drain gently.",
-      "Fry the pork in a little oil in a wok until browned.",
-      "Add the doubanjiang, garlic and ginger and fry for 1 minute until the oil turns red.",
-      "Pour in the stock and soy sauce and bring to a simmer.",
-      "Slide in the tofu and simmer gently for 5 minutes, without stirring too much so it stays whole.",
-      "Stir in the cornflour mixture to thicken, sprinkle with Sichuan pepper and spring onions, and serve with rice."
-    ]
-  },
-  {
     "id": "cn-kung-pao-chicken",
     "name": "Kung Pao Chicken",
     "ingredients": [
@@ -1892,7 +1820,7 @@ const KIMBAP = [
   }
 ];
 const BUILTIN_VER = 15;
-const REMOVED_IDS = ["pl-bigos", "pl-kotlet-schabowy", "jp-gyoza"];   // deleted recipes (pork), also dropped from saved lists
+const REMOVED_IDS = ["pl-bigos", "pl-kotlet-schabowy", "jp-gyoza", "cn-mapo-tofu", "kr-kimchi-fried-rice", "pl-zurek"];   // deleted recipes (pork), also dropped from saved lists
 const FIX_IDS = ["sw-spaghetti-carbonara", "id-cabbage-rolls"];   // corrected in version 15 (no pork)
 const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 })), ...LUPIS_AND_SPREAD.map((r) => ({ ...r, v: 12 })), ...CHEESECAKES.map((r) => ({ ...r, v: 13 })), ...ASIAN_FOOD.map((r) => ({ ...r, v: 14 })), ...KIMBAP.map((r) => ({ ...r, v: 15 }))];
 
@@ -2013,10 +1941,10 @@ const META = {
   "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian"], "id-pempek": ["Seafood", "Indonesian"],
   "id-bakso": ["Soup", "Indonesian"], "id-es-campur": ["Dessert", "Indonesian"], "id-es-cendol": ["Dessert", "Indonesian"],
   "id-dodol": ["Dessert", "Indonesian"], "id-cheese-tteokbokki": ["Snacks", "Korean"], "id-bubble-tea": ["Drinks", "Taiwanese"],
-  "id-hummus": ["Sides", "Arab"], "id-lupis": ["Dessert", "Indonesian", "img/lupis.jpg"], "us-peanut-butter-cheesecake": ["Dessert", "American"], "dessert-banana-sour-cream-cheese-cake": ["Dessert", "International", "img/banana-sour-cream-cheese-cake.jpg"], "es-san-sebastian-cheesecake": ["Dessert", "Spanish"], "kr-kimbap": ["Snacks", "Korean"], "th-pad-thai": ["Rice & Noodles", "Thai"], "th-green-curry": ["Chicken", "Thai"], "th-tom-yum": ["Soup", "Thai"], "jp-chicken-teriyaki": ["Chicken", "Japanese"], "jp-miso-soup": ["Soup", "Japanese"], "kr-bibimbap": ["Rice & Noodles", "Korean"], "kr-kimchi-fried-rice": ["Rice & Noodles", "Korean"], "cn-mapo-tofu": ["Pork", "Chinese"], "cn-kung-pao-chicken": ["Chicken", "Chinese"], "vn-pho-bo": ["Soup", "Vietnamese"], "ph-chicken-adobo": ["Chicken", "Filipino"], "in-chicken-biryani": ["Chicken", "Indian"], "in-dal-tadka": ["Vegetarian", "Indian"], "sg-hainanese-chicken-rice": ["Chicken", "Singaporean"], "it-hazelnut-chocolate-spread": ["Dessert", "Italian"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese", "img/katsu-chicken-curry.jpg"],
+  "id-hummus": ["Sides", "Arab"], "id-lupis": ["Dessert", "Indonesian", "img/lupis.jpg"], "us-peanut-butter-cheesecake": ["Dessert", "American"], "dessert-banana-sour-cream-cheese-cake": ["Dessert", "International", "img/banana-sour-cream-cheese-cake.jpg"], "es-san-sebastian-cheesecake": ["Dessert", "Spanish"], "kr-kimbap": ["Snacks", "Korean"], "th-pad-thai": ["Rice & Noodles", "Thai"], "th-green-curry": ["Chicken", "Thai"], "th-tom-yum": ["Soup", "Thai"], "jp-chicken-teriyaki": ["Chicken", "Japanese"], "jp-miso-soup": ["Soup", "Japanese"], "kr-bibimbap": ["Rice & Noodles", "Korean"], "cn-kung-pao-chicken": ["Chicken", "Chinese"], "vn-pho-bo": ["Soup", "Vietnamese"], "ph-chicken-adobo": ["Chicken", "Filipino"], "in-chicken-biryani": ["Chicken", "Indian"], "in-dal-tadka": ["Vegetarian", "Indian"], "sg-hainanese-chicken-rice": ["Chicken", "Singaporean"], "it-hazelnut-chocolate-spread": ["Dessert", "Italian"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese", "img/katsu-chicken-curry.jpg"],
   "it-margherita-pizza": ["Pizza", "Italian"], "it-spaghetti-bolognese": ["Pasta", "Italian"], "it-chicken-parmigiana": ["Chicken", "Italian"],
   "it-minestrone": ["Soup", "Italian"], "it-bruschetta": ["Sides", "Italian"], "it-tiramisu": ["Dessert", "Italian", "img/tiramisu.jpg"], "it-panna-cotta": ["Dessert", "Italian"],
-  "pl-pierogi-ruskie": ["Vegetarian", "Polish"], "pl-zurek": ["Soup", "Polish"], "pl-barszcz": ["Soup", "Polish"],
+  "pl-pierogi-ruskie": ["Vegetarian", "Polish"], "pl-barszcz": ["Soup", "Polish"],
   "pl-placki-ziemniaczane": ["Sides", "Polish"], "pl-sernik": ["Dessert", "Polish"], "pl-paczki": ["Dessert", "Polish", "img/paczki.jpg"], "id-shakshuka": ["Breakfast", "Arab"], "id-tabbouleh": ["Sides", "Arab"], "id-fattoush": ["Sides", "Arab"],
   "id-chicken-kabsa": ["Chicken", "Arab"], "id-maqluba": ["Chicken", "Arab"], "id-shish-taouk": ["Chicken", "Arab"],
   "id-shorbat-adas": ["Soup", "Arab"], "id-kunafa": ["Dessert", "Arab"], "id-umm-ali": ["Dessert", "Arab"],

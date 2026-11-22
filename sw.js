@@ -1,4 +1,4 @@
-const CACHE = "pantree-v43";
+const CACHE = "pantree-v44";
 const FILES = ["./", "index.html", "style.css", "app.js", "manifest.json", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png", "icons/apple-touch-icon-v2.png", "apple-touch-icon.png", "icons/favicon-32.png", "img/fluffy-pancakes.jpg", "img/lupis.jpg", "img/paczki.jpg", "img/tiramisu.jpg", "img/banana-sour-cream-cheese-cake.jpg", "img/katsu-chicken-curry.jpg", "img/sw-chicken-tikka-masala.jpg", "img/sw-fish-tacos.jpg", "img/sw-grilled-salmon.jpg", "img/sw-lasagne.jpg", "img/sw-spaghetti-carbonara.jpg"];
 
 // Cache each file on its own so one bad file can't stop the app from installing offline.

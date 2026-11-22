@@ -1,0 +1,149 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Recipes</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="theme-color" content="#b8470f">
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: sticky header with search, category chips, responsive card grid, dialog for details. */
+:root{
+  --bg:#fbfaf8; --surface:#ffffff; --fg:#1f2430; --muted:#5d6577; --line:#e4e1da;
+  --accent:#b8470f; --accent-fg:#ffffff; --chip:#f1eee8;
+  --font-body:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif; --font-display:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#14161c; --surface:#1c1f27; --fg:#eceef3; --muted:#a2a9b8; --line:#2c303b; --accent:#f08a4b; --accent-fg:#1a1208; --chip:#252934; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#14161c; --surface:#1c1f27; --fg:#eceef3; --muted:#a2a9b8; --line:#2c303b; --accent:#f08a4b; --accent-fg:#1a1208; --chip:#252934; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:15px/1.5 var(--font-body);margin:0}
+.wrap{max-width:1100px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding-block:12px}
+.brand{font:700 20px var(--font-display);color:var(--accent);margin-right:auto}
+form{display:flex;gap:8px;flex:1 1 280px;max-width:460px;order:3}
+@media(min-width:700px){form{order:0}}
+input[type=search]{flex:1;min-width:0;height:40px;padding:0 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);font:inherit}
+button{font:inherit;cursor:pointer}
+.btn{height:40px;padding:0 14px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg)}
+.btn.primary{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+.btn[aria-pressed=true]{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-block:16px 4px;list-style:none;margin:0}
+.chip{height:34px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--chip);color:var(--fg);white-space:nowrap}
+.chip[aria-pressed=true]{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+h1{font:700 26px var(--font-display);margin:20px 0 16px;text-wrap:balance}
+.tabs{display:flex;gap:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;list-style:none;padding:0;margin:0 0 40px}
+.card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;height:100%}
+.thumb{aspect-ratio:4/3;display:grid;place-items:center;font:700 64px var(--font-display);color:rgba(255,255,255,.92)}
+.open{all:unset;display:block;cursor:pointer;width:100%}
+.open:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.meta{padding:12px 14px 16px}
+.meta h2{font:600 17px var(--font-display);margin:0 0 8px;padding-right:44px}
+.tag{display:inline-block;font-size:12px;padding:2px 10px;border-radius:999px;background:var(--chip);color:var(--muted);margin-right:4px}
+.fav{position:absolute;top:8px;right:8px;width:40px;height:40px;border-radius:50%;border:0;background:var(--surface);color:var(--muted);display:grid;place-items:center}
+.fav[aria-pressed=true]{color:var(--accent)}
+.fav svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2}
+.fav[aria-pressed=true] svg{fill:currentColor}
+.empty{text-align:center;color:var(--muted);padding:60px 0}
+dialog{border:0;border-radius:0;background:var(--surface);color:var(--fg);padding:0;width:100%;max-width:100%;height:100%;max-height:100%;inset:0;margin:0;overflow-y:auto;overscroll-behavior:contain}
+.top{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:12px;padding:calc(10px + env(safe-area-inset-top,0px)) 16px 10px;background:var(--surface);border-bottom:1px solid var(--line)}
+.top b{font:600 16px var(--font-display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.page{max-width:760px;margin:0 auto}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+.dlg{padding:20px 22px 24px}
+.dlg h2{font:700 24px var(--font-display);margin:0 0 8px}
+.dlg h3{font:600 16px var(--font-display);margin:20px 0 8px}
+.ing{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px;list-style:none;padding:0;margin:0}
+.ing li{display:flex;justify-content:space-between;gap:8px;background:var(--chip);border-radius:6px;padding:4px 10px;font-size:14px}
+.ing span:last-child{color:var(--muted)}
+.dlg ol{padding-left:20px;margin:0;max-width:60ch}.dlg li+li{margin-top:6px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+a.btn{display:inline-flex;align-items:center;text-decoration:none}
+.note{font-size:13px;color:var(--muted);margin:0 0 24px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:8px;z-index:30}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+
+<header><div class="wrap bar">
+  <span class="brand">🍽️ Recipes</span>
+  <form id="f" role="search"><label class="sr" for="q">Search recipes</label>
+    <input id="q" type="search" placeholder="Search recipes…"><button class="btn primary" type="submit">Search</button></form>
+  <div class="tabs"><button class="btn" id="tHome" aria-pressed="true">Browse</button><button class="btn" id="tFav" aria-pressed="false">Favorites <span id="n">0</span></button></div>
+  <button class="btn" id="theme" aria-label="Toggle dark or light theme">Theme</button>
+</div></header>
+
+<main class="wrap">
+  <nav aria-label="Categories"><ul class="chips" id="chips"></ul></nav>
+  <h1 id="h">Browse recipes</h1>
+  <ul class="grid" id="grid"></ul>
+  <p class="note">Works fully offline. Favorites are saved on this device only.</p>
+</main>
+<dialog id="dlg" aria-labelledby="dt"></dialog>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+const R=[
+{id:1,n:"Spaghetti Carbonara",c:"Pasta",a:"Italian",h:18,ing:[["Spaghetti","400 g"],["Guanciale","150 g"],["Egg yolks","4"],["Pecorino Romano","60 g"],["Black pepper","2 tsp"]],st:["Boil the spaghetti in well-salted water until al dente; save a cup of pasta water.","Fry the guanciale slowly until the fat renders and the edges crisp.","Whisk yolks with grated pecorino and plenty of pepper.","Off the heat, toss pasta with the guanciale, then stir in the egg mixture with splashes of pasta water until glossy."]},
+{id:2,n:"Grilled Salmon with Lemon",c:"Seafood",a:"American",h:200,ing:[["Salmon fillets","4"],["Lemon","2"],["Olive oil","3 tbsp"],["Garlic","2 cloves"],["Dill","1 bunch"]],st:["Marinate salmon in oil, garlic, lemon juice and dill for 20 minutes.","Heat the grill to medium-high and oil the grate.","Grill skin-side down for 5 minutes, flip, and cook 3 more.","Finish with lemon slices and fresh dill."]},
+{id:3,n:"Chicken Tikka Masala",c:"Chicken",a:"Indian",h:28,ing:[["Chicken thigh","700 g"],["Yogurt","200 g"],["Tikka paste","3 tbsp"],["Tomato passata","400 ml"],["Cream","100 ml"],["Onion","1"]],st:["Marinate chicken in yogurt and half the paste for at least an hour.","Grill or broil the chicken until charred at the edges.","Soften the onion, add remaining paste, then passata; simmer 15 minutes.","Stir in cream and chicken; simmer 5 minutes and serve with rice."]},
+{id:4,n:"Vegetable Stir Fry",c:"Vegetarian",a:"Chinese",h:150,ing:[["Broccoli","1 head"],["Carrot","2"],["Bell pepper","1"],["Soy sauce","3 tbsp"],["Ginger","1 thumb"],["Sesame oil","1 tsp"]],st:["Cut vegetables into even, bite-size pieces.","Stir fry ginger in a very hot wok for 15 seconds.","Add carrots and broccoli first, then pepper; cook 4 to 5 minutes.","Season with soy sauce and finish with sesame oil."]},
+{id:5,n:"Lasagne",c:"Pasta",a:"Italian",h:12,ing:[["Lasagne sheets","12"],["Beef mince","500 g"],["Tomato sauce","600 ml"],["Béchamel","500 ml"],["Mozzarella","200 g"]],st:["Brown the mince and simmer with tomato sauce for 30 minutes.","Layer sheets, meat sauce and béchamel in a baking dish.","Top with mozzarella.","Bake at 180°C for 40 minutes until bubbling and golden."]},
+{id:6,n:"Fish Tacos",c:"Seafood",a:"Mexican",h:35,ing:[["White fish","500 g"],["Corn tortillas","8"],["Cabbage","1/4 head"],["Lime","2"],["Chipotle mayo","4 tbsp"]],st:["Season fish with cumin, paprika and salt; pan-fry 3 minutes per side.","Shred cabbage and toss with lime juice.","Warm the tortillas on a dry pan.","Fill with fish, cabbage and chipotle mayo."]},
+{id:7,n:"Mushroom Risotto",c:"Vegetarian",a:"Italian",h:55,ing:[["Arborio rice","300 g"],["Mushrooms","300 g"],["Vegetable stock","1 L"],["White wine","100 ml"],["Parmesan","50 g"]],st:["Keep the stock hot in a pan beside the stove.","Brown the mushrooms; set aside.","Toast rice with onion, add wine, then stock a ladle at a time, stirring.","After about 18 minutes fold in mushrooms and parmesan."]},
+{id:8,n:"Lemon Roast Chicken",c:"Chicken",a:"British",h:95,ing:[["Whole chicken","1.6 kg"],["Lemon","1"],["Butter","50 g"],["Thyme","6 sprigs"],["Potatoes","800 g"]],st:["Rub the chicken with butter and season generously.","Stuff the cavity with lemon and thyme.","Roast at 200°C for 1 hour 15 minutes with potatoes underneath.","Rest 15 minutes before carving."]}];
+const CATS=[...new Set(R.map(r=>r.c))];
+const PHOTO=new Set([1,2,3,5,6]); // recipes with a cover photo in img/<id>.jpg
+const cover=r=>PHOTO.has(r.id)?`<img src="img/${r.id}.jpg" alt="${r.n}" style="width:100%;height:100%;object-fit:cover;display:block">`:art(r);
+const $=s=>document.querySelector(s);
+let q="",cat=null,view="home",favs=new Set();
+try{favs=new Set(JSON.parse(localStorage.getItem("favs")||"[]"))}catch(e){}
+const save=()=>{try{localStorage.setItem("favs",JSON.stringify([...favs]))}catch(e){}};
+const hue=id=>(id*47)%360;
+function toast(m){const t=$("#toast");t.textContent=m;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>t.hidden=true,1800)}
+const heart='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.6-9.3-9.1C1 8.6 2.9 5 6.4 5c2 0 3.6 1.1 4.6 2.7h2C14 6.1 15.600 5 17.600 5c3.500 0 5.400 3.600 3.700 6.900C19 16.400 12 21 12 21z"/></svg>';
+function chips(){$("#chips").innerHTML=CATS.map(c=>`<li><button class="chip" aria-pressed="${cat===c}" data-c="${c}">${c}</button></li>`).join("")}
+function render(){
+  $("#n").textContent=favs.size;
+  $("#tHome").setAttribute("aria-pressed",view==="home");$("#tFav").setAttribute("aria-pressed",view==="fav");
+  $("#chips").parentElement.hidden=view!=="home";
+  let list=R.filter(r=>(view==="fav"?favs.has(r.id):true)&&(!cat||view==="fav"||r.c===cat)&&r.n.toLowerCase().includes(q.toLowerCase()));
+  $("#h").textContent=view==="fav"?"Favorites":cat?cat+" recipes":q?`Results for “${q}”`:"Browse recipes";
+  $("#grid").innerHTML=list.length?list.map(r=>`<li><div class="card"><button class="open" data-id="${r.id}">
+    <div class="thumb" style="background:linear-gradient(135deg,hsl(${hue(r.id)} 45% 38%),hsl(${hue(r.id)+40} 50% 26%))">${cover(r)}</div>
+    <div class="meta"><h2>${r.n}</h2><span class="tag">${r.c}</span><span class="tag">${r.a}</span></div></button>
+    <button class="fav" data-f="${r.id}" aria-pressed="${favs.has(r.id)}" aria-label="${favs.has(r.id)?"Remove":"Add"} ${r.n} ${favs.has(r.id)?"from":"to"} favorites">${heart}</button></div></li>`).join(""):"";
+  if(!list.length){$("#grid").innerHTML=`<li class="empty" style="grid-column:1/-1">${view==="fav"?"No favorites yet. Tap the heart on a recipe to save it.":"No recipes found. Try another search."}</li>`}
+}
+/* Inline plate illustration per category (the real app shows TheMealDB photos). */
+function art(r){const h=hue(r.id);
+  const food={
+   Pasta:`<g fill="none" stroke="#f2c14e" stroke-width="5" stroke-linecap="round"><path d="M-34 -6c14-18 30-18 44 0s28 18 36 4"/><path d="M-38 8c14-18 30-18 44 0s28 18 38 2"/><path d="M-30 -20c12-10 26-8 38 4"/></g><circle cx="-8" cy="-2" r="7" fill="#d9482b"/><circle cx="22" cy="6" r="6" fill="#d9482b"/>`,
+   Seafood:`<path d="M-40 0c18-26 52-26 70 0c-18 26-52 26-70 0z" fill="#f08a6c"/><path d="M30 0l22-16v32z" fill="#f08a6c"/><circle cx="-22" cy="-4" r="3.500" fill="#222"/><path d="M-8-14c6 10 6 18 0 28" stroke="#fff" stroke-opacity=".6" stroke-width="3" fill="none"/><circle cx="-30" cy="26" r="9" fill="#f5e663"/>`,
+   Chicken:`<ellipse cx="0" cy="-4" rx="34" ry="24" fill="#c98a3b"/><rect x="26" y="6" width="34" height="9" rx="4" fill="#f1e4c8" transform="rotate(25 26 6)"/><circle cx="62" cy="26" r="7" fill="#f1e4c8"/><path d="M-22-14c10-8 26-8 36 2" stroke="#e8b667" stroke-width="5" fill="none" stroke-linecap="round"/>`,
+   Vegetarian:`<g fill="#4f9d4a"><circle cx="-18" cy="-12" r="14"/><circle cx="2" cy="-18" r="15"/><circle cx="20" cy="-10" r="13"/></g><rect x="-5" y="-6" width="10" height="26" rx="4" fill="#8bc37a"/><circle cx="-30" cy="20" r="8" fill="#ec8a2c"/><circle cx="32" cy="22" r="8" fill="#d9482b"/>`};
+  return `<svg viewBox="-100 -75 200 150" width="78%" height="78%" aria-hidden="true"><ellipse cx="0" cy="58" rx="78" ry="8" fill="#000" fill-opacity=".2"/><circle r="62" fill="#f6f3ec"/><circle r="48" fill="hsl(${h} 25% 92%)"/><g transform="translate(0 4)">${food[r.c]||""}</g></svg>`}
+function flip(id){const r=R.find(x=>x.id==id);favs.has(r.id)?favs.delete(r.id):favs.add(r.id);save();toast((favs.has(r.id)?"Saved ":"Removed ")+r.n);render()}
+function detail(id){const r=R.find(x=>x.id==id),d=$("#dlg");
+  d.innerHTML=`<div class="top"><button class="btn" id="bk">← Back</button><b>${r.n}</b></div><div class="page">${PHOTO.has(r.id)?`<img src="img/${r.id}.jpg" alt="${r.n}" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block">`:""}<div class="dlg"><h2 id="dt">${r.n}</h2><span class="tag">${r.c}</span><span class="tag">${r.a}</span>
+  <h3>Ingredients</h3><ul class="ing">${r.ing.map(i=>`<li><span>${i[0]}</span><span>${i[1]}</span></li>`).join("")}</ul>
+  <h3>Instructions</h3><ol>${r.st.map(s=>`<li>${s}</li>`).join("")}</ol>
+  <div class="row"><button class="btn primary" data-f="${r.id}" aria-pressed="${favs.has(r.id)}" id="df">${favs.has(r.id)?"Saved":"Save to favorites"}</button><a class="btn" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=${encodeURIComponent(r.n+' recipe')}">Watch on YouTube</a><button class="btn" id="cl">Close</button></div></div></div>`;
+  d.showModal();d.scrollTop=0;$("#cl").onclick=$("#bk").onclick=()=>d.close();
+  $("#df").onclick=e=>{flip(r.id);e.target.setAttribute("aria-pressed",favs.has(r.id));e.target.textContent=favs.has(r.id)?"Saved":"Save to favorites"}}
+document.addEventListener("click",e=>{
+  const f=e.target.closest("[data-f]");if(f&&!f.id){flip(f.dataset.f);return}
+  const o=e.target.closest(".open");if(o){detail(o.dataset.id);return}
+  const c=e.target.closest(".chip");if(c){cat=cat===c.dataset.c?null:c.dataset.c;chips();render()}});
+$("#f").onsubmit=e=>{e.preventDefault();q=$("#q").value.trim();view="home";cat=null;chips();render()};
+$("#tHome").onclick=()=>{view="home";render()};$("#tFav").onclick=()=>{view="fav";render()};
+$("#theme").onclick=()=>{const r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;r.dataset.theme=dark?"light":"dark"};
+
+chips();render();
+if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+</script>
+
+</body></html>

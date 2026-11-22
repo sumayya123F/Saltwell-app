@@ -1566,8 +1566,372 @@ const CHEESECAKES = [
     ]
   }
 ];
-const BUILTIN_VER = 13;
-const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 })), ...LUPIS_AND_SPREAD.map((r) => ({ ...r, v: 12 })), ...CHEESECAKES.map((r) => ({ ...r, v: 13 }))];
+const ASIAN_FOOD = [
+  {
+    "id": "th-pad-thai",
+    "name": "Pad Thai",
+    "ingredients": [
+      "200 g flat rice noodles",
+      "2 tbsp tamarind paste",
+      "2 tbsp fish sauce",
+      "2 tbsp palm sugar (or brown sugar)",
+      "2 tbsp vegetable oil",
+      "200 g prawns or chicken, sliced",
+      "2 eggs",
+      "2 garlic cloves, minced",
+      "100 g bean sprouts",
+      "3 spring onions, cut into pieces",
+      "3 tbsp roasted peanuts, crushed",
+      "Lime wedges, to serve"
+    ],
+    "steps": [
+      "Soak the noodles in warm water for 20 to 30 minutes until flexible but still firm, then drain.",
+      "Mix the tamarind paste, fish sauce and sugar to make the sauce.",
+      "Heat the oil in a wok over high heat and fry the garlic and prawns or chicken until nearly cooked.",
+      "Push everything aside, scramble the eggs in the gap, then stir them in.",
+      "Add the noodles and sauce and toss for 2 to 3 minutes until the noodles are tender and have absorbed the sauce.",
+      "Stir in the bean sprouts and spring onions, then serve topped with peanuts and a lime wedge."
+    ]
+  },
+  {
+    "id": "th-green-curry",
+    "name": "Thai Green Curry",
+    "ingredients": [
+      "2 tbsp vegetable oil",
+      "3 tbsp green curry paste",
+      "400 ml coconut milk",
+      "400 g chicken thigh, sliced",
+      "1 tbsp fish sauce",
+      "1 tbsp palm sugar (or brown sugar)",
+      "1 small aubergine, cut into chunks",
+      "100 g green beans",
+      "A handful of Thai basil leaves",
+      "Jasmine rice, to serve"
+    ],
+    "steps": [
+      "Heat the oil in a pan and fry the curry paste for 1 minute until fragrant.",
+      "Add half the coconut milk and cook until the oil starts to separate.",
+      "Add the chicken and cook for 5 minutes, stirring.",
+      "Pour in the rest of the coconut milk with the fish sauce and sugar and bring to a gentle simmer.",
+      "Add the aubergine and green beans and simmer for 10 to 12 minutes until tender.",
+      "Stir in the basil, taste and adjust the seasoning, then serve with rice."
+    ]
+  },
+  {
+    "id": "th-tom-yum",
+    "name": "Tom Yum Soup",
+    "ingredients": [
+      "1 litre chicken or prawn stock",
+      "2 stalks lemongrass, bruised and cut up",
+      "4 kaffir lime leaves",
+      "3 slices galangal (or ginger)",
+      "200 g mushrooms, halved",
+      "250 g prawns, peeled",
+      "2 tbsp fish sauce",
+      "3 tbsp lime juice",
+      "1 to 2 red chillies, sliced",
+      "Fresh coriander, to serve"
+    ],
+    "steps": [
+      "Bring the stock to a simmer with the lemongrass, lime leaves and galangal for 10 minutes.",
+      "Add the mushrooms and cook for 3 minutes.",
+      "Add the prawns and cook for 2 to 3 minutes until pink.",
+      "Turn off the heat and stir in the fish sauce, lime juice and chillies.",
+      "Taste: it should be sour, salty and hot. Adjust to your liking.",
+      "Serve in bowls topped with coriander. The lemongrass and leaves are for flavour and are not eaten."
+    ]
+  },
+  {
+    "id": "jp-chicken-teriyaki",
+    "name": "Chicken Teriyaki",
+    "ingredients": [
+      "4 chicken thighs, skin on",
+      "3 tbsp soy sauce",
+      "3 tbsp mirin",
+      "2 tbsp sake (or water)",
+      "1 tbsp sugar",
+      "1 tsp grated ginger",
+      "1 tbsp vegetable oil",
+      "Sesame seeds and sliced spring onion, to serve",
+      "Steamed rice, to serve"
+    ],
+    "steps": [
+      "Mix the soy sauce, mirin, sake, sugar and ginger to make the teriyaki sauce.",
+      "Heat the oil in a frying pan and cook the chicken skin-side down for 6 to 7 minutes until golden, then turn over and cook for 5 minutes.",
+      "Pour away excess fat from the pan.",
+      "Add the sauce and let it bubble, turning the chicken, for 3 to 4 minutes until thick and glossy.",
+      "Rest the chicken for a few minutes, slice, and spoon the sauce over.",
+      "Serve on rice, topped with sesame seeds and spring onion."
+    ]
+  },
+  {
+    "id": "jp-miso-soup",
+    "name": "Miso Soup",
+    "ingredients": [
+      "600 ml dashi stock (or water with 1 tsp dashi powder)",
+      "3 tbsp miso paste",
+      "150 g silken tofu, cubed",
+      "1 tbsp dried wakame seaweed",
+      "2 spring onions, sliced"
+    ],
+    "steps": [
+      "Soak the wakame in cold water for 5 minutes, then drain.",
+      "Heat the dashi until steaming, but do not let it boil hard.",
+      "Add the tofu and wakame and warm through for 2 minutes.",
+      "Put the miso in a ladle, dip it into the soup and whisk until dissolved, then stir it in.",
+      "Turn off the heat straight away, because boiling spoils the flavour of the miso.",
+      "Serve in bowls topped with spring onion."
+    ]
+  },
+  {
+    "id": "jp-gyoza",
+    "name": "Pork Gyoza (Pan-Fried Dumplings)",
+    "ingredients": [
+      "250 g minced pork",
+      "150 g cabbage, finely chopped",
+      "2 spring onions, finely chopped",
+      "1 garlic clove, grated",
+      "1 tsp grated ginger",
+      "1 tbsp soy sauce",
+      "1 tsp sesame oil",
+      "20 gyoza wrappers",
+      "1 tbsp vegetable oil",
+      "100 ml water",
+      "Soy sauce and rice vinegar, for dipping"
+    ],
+    "steps": [
+      "Mix the pork, cabbage, spring onions, garlic, ginger, soy sauce and sesame oil until well combined.",
+      "Put a teaspoon of filling in the middle of each wrapper, wet the edge, fold in half and pleat to seal.",
+      "Heat the oil in a non-stick frying pan and place the gyoza flat-side down in a single layer.",
+      "Fry for 2 to 3 minutes until the bottoms are golden.",
+      "Pour in the water, cover at once and steam for 5 to 6 minutes until the water is gone.",
+      "Uncover, crisp the bottoms for 1 more minute and serve with a dip of soy sauce and rice vinegar."
+    ]
+  },
+  {
+    "id": "kr-bibimbap",
+    "name": "Bibimbap",
+    "ingredients": [
+      "300 g cooked short-grain rice",
+      "200 g beef mince (or sliced beef)",
+      "2 tbsp soy sauce",
+      "1 tbsp sesame oil",
+      "1 tsp sugar",
+      "1 carrot, cut into matchsticks",
+      "150 g spinach",
+      "100 g bean sprouts",
+      "1 courgette, cut into matchsticks",
+      "2 eggs",
+      "2 tbsp gochujang",
+      "Sesame seeds, to serve"
+    ],
+    "steps": [
+      "Cook the beef with half the soy sauce, the sugar and half the sesame oil until browned, then set aside.",
+      "Separately stir-fry the carrot and courgette for 2 minutes each, with a pinch of salt.",
+      "Blanch the spinach and bean sprouts for 1 minute, drain, squeeze dry and season with the rest of the soy sauce and sesame oil.",
+      "Fry the eggs sunny-side up.",
+      "Divide the warm rice between two bowls and arrange the vegetables and beef in sections on top.",
+      "Add an egg, a spoonful of gochujang and sesame seeds, then mix everything together before eating."
+    ]
+  },
+  {
+    "id": "kr-kimchi-fried-rice",
+    "name": "Kimchi Fried Rice",
+    "ingredients": [
+      "300 g cooked rice, cold",
+      "200 g kimchi, chopped",
+      "2 tbsp kimchi juice",
+      "150 g pork belly or bacon, chopped",
+      "1 tbsp gochujang",
+      "1 tbsp soy sauce",
+      "1 tsp sesame oil",
+      "2 spring onions, sliced",
+      "2 fried eggs",
+      "Sesame seeds and seaweed strips, to serve"
+    ],
+    "steps": [
+      "Fry the pork in a large pan until the fat renders and it is browned.",
+      "Add the kimchi and cook for 3 to 4 minutes until softened.",
+      "Stir in the gochujang, soy sauce and kimchi juice.",
+      "Add the cold rice and stir-fry over high heat for 4 to 5 minutes, breaking up any lumps.",
+      "Stir in the sesame oil and most of the spring onions.",
+      "Serve topped with a fried egg, sesame seeds, seaweed and the rest of the spring onions."
+    ]
+  },
+  {
+    "id": "cn-mapo-tofu",
+    "name": "Mapo Tofu",
+    "ingredients": [
+      "400 g soft or firm tofu, cubed",
+      "150 g minced pork",
+      "2 tbsp doubanjiang (chilli bean paste)",
+      "2 garlic cloves, minced",
+      "1 tbsp grated ginger",
+      "200 ml chicken stock",
+      "1 tbsp soy sauce",
+      "1 tsp ground Sichuan pepper",
+      "1 tbsp cornflour mixed with 2 tbsp water",
+      "2 spring onions, sliced",
+      "Steamed rice, to serve"
+    ],
+    "steps": [
+      "Simmer the tofu in salted water for 3 minutes, then drain gently.",
+      "Fry the pork in a little oil in a wok until browned.",
+      "Add the doubanjiang, garlic and ginger and fry for 1 minute until the oil turns red.",
+      "Pour in the stock and soy sauce and bring to a simmer.",
+      "Slide in the tofu and simmer gently for 5 minutes, without stirring too much so it stays whole.",
+      "Stir in the cornflour mixture to thicken, sprinkle with Sichuan pepper and spring onions, and serve with rice."
+    ]
+  },
+  {
+    "id": "cn-kung-pao-chicken",
+    "name": "Kung Pao Chicken",
+    "ingredients": [
+      "500 g chicken breast or thigh, diced",
+      "1 tbsp soy sauce",
+      "1 tsp cornflour",
+      "2 tbsp vegetable oil",
+      "6 dried red chillies",
+      "1 tsp Sichuan peppercorns",
+      "3 garlic cloves, sliced",
+      "1 tbsp grated ginger",
+      "1 red pepper, diced",
+      "3 tbsp roasted peanuts",
+      "SAUCE: 2 tbsp soy sauce, 1 tbsp black vinegar, 1 tbsp sugar, 1 tsp cornflour, 2 tbsp water"
+    ],
+    "steps": [
+      "Toss the chicken with the soy sauce and cornflour and leave for 15 minutes.",
+      "Mix all the sauce ingredients in a small bowl.",
+      "Heat the oil in a wok over high heat and stir-fry the chicken until golden and cooked, then remove.",
+      "In the same wok, fry the chillies and Sichuan peppercorns for 30 seconds until fragrant.",
+      "Add the garlic, ginger and red pepper and stir-fry for 1 minute.",
+      "Return the chicken, pour in the sauce and toss until glossy, then stir in the peanuts and serve with rice."
+    ]
+  },
+  {
+    "id": "vn-pho-bo",
+    "name": "Pho Bo (Vietnamese Beef Noodle Soup)",
+    "ingredients": [
+      "1.5 litres beef stock",
+      "1 onion, halved and charred",
+      "5 cm ginger, sliced and charred",
+      "2 star anise",
+      "1 cinnamon stick",
+      "3 cloves",
+      "2 tbsp fish sauce",
+      "250 g rice noodles",
+      "250 g beef sirloin, very thinly sliced",
+      "Bean sprouts, Thai basil, coriander, lime wedges, sliced chilli, to serve"
+    ],
+    "steps": [
+      "Simmer the stock with the onion, ginger, star anise, cinnamon, cloves and fish sauce for 30 minutes, then strain.",
+      "Cook the rice noodles following the packet instructions and divide between bowls.",
+      "Lay the raw beef slices over the noodles.",
+      "Bring the stock back to a rolling boil and ladle it over the beef; the hot stock cooks the meat.",
+      "Top with bean sprouts, herbs and chilli.",
+      "Serve with lime wedges and add hoisin or chilli sauce to taste."
+    ]
+  },
+  {
+    "id": "ph-chicken-adobo",
+    "name": "Chicken Adobo",
+    "ingredients": [
+      "1 kg chicken thighs and drumsticks",
+      "100 ml soy sauce",
+      "100 ml white or cane vinegar",
+      "1 head garlic, cloves crushed",
+      "3 bay leaves",
+      "1 tsp black peppercorns",
+      "1 tbsp brown sugar",
+      "150 ml water",
+      "1 tbsp vegetable oil",
+      "Steamed rice, to serve"
+    ],
+    "steps": [
+      "Combine the chicken, soy sauce, vinegar, garlic, bay leaves and peppercorns and marinate for at least 30 minutes.",
+      "Lift the chicken from the marinade and brown it in the oil in a heavy pan, then pour in the marinade and the water.",
+      "Bring to a simmer without stirring for the first few minutes, so the vinegar mellows.",
+      "Cover and cook gently for 30 to 35 minutes until the chicken is tender.",
+      "Stir in the sugar, uncover and simmer for 10 minutes until the sauce reduces and thickens.",
+      "Serve over rice with plenty of sauce."
+    ]
+  },
+  {
+    "id": "in-chicken-biryani",
+    "name": "Chicken Biryani",
+    "ingredients": [
+      "500 g chicken, cut into pieces",
+      "200 g plain yoghurt",
+      "2 tbsp biryani masala (or garam masala)",
+      "1 tsp turmeric",
+      "2 tbsp ginger-garlic paste",
+      "2 onions, thinly sliced",
+      "3 tbsp oil or ghee",
+      "300 g basmati rice, rinsed",
+      "4 cloves, 4 cardamom pods, 1 cinnamon stick",
+      "Fresh mint and coriander",
+      "A pinch of saffron soaked in 3 tbsp warm milk"
+    ],
+    "steps": [
+      "Marinate the chicken with the yoghurt, masala, turmeric, ginger-garlic paste and 1 tsp salt for at least 1 hour.",
+      "Fry the sliced onions in the oil until deep golden, then set half aside for the top.",
+      "Add the chicken with its marinade to the pan and cook for 15 minutes until almost done.",
+      "Boil the rice in salted water with the whole spices until 70% cooked, about 6 minutes, then drain.",
+      "Layer the rice over the chicken, scatter with the reserved onions, herbs and saffron milk.",
+      "Cover tightly and cook on the lowest heat for 20 minutes, rest for 10 minutes, then gently fluff and serve."
+    ]
+  },
+  {
+    "id": "in-dal-tadka",
+    "name": "Dal Tadka",
+    "ingredients": [
+      "250 g red lentils (masoor dal) or split yellow lentils",
+      "750 ml water",
+      "1/2 tsp turmeric",
+      "1 tsp salt",
+      "2 tbsp ghee or oil",
+      "1 tsp cumin seeds",
+      "1 onion, finely chopped",
+      "2 tomatoes, chopped",
+      "3 garlic cloves, finely chopped",
+      "1 tsp chilli powder",
+      "Fresh coriander and lemon juice, to serve"
+    ],
+    "steps": [
+      "Rinse the lentils and simmer them with the water, turmeric and salt for 20 to 25 minutes until soft, then mash lightly.",
+      "Heat the ghee in a pan and add the cumin seeds until they sizzle.",
+      "Add the onion and cook until golden, then add the garlic and cook for 1 minute.",
+      "Stir in the tomatoes and chilli powder and cook until soft and pulpy.",
+      "Pour this tadka into the lentils and simmer for 5 minutes.",
+      "Finish with coriander and a squeeze of lemon, and serve with rice or flatbread."
+    ]
+  },
+  {
+    "id": "sg-hainanese-chicken-rice",
+    "name": "Hainanese Chicken Rice",
+    "ingredients": [
+      "1 whole chicken (about 1.4 kg)",
+      "5 cm ginger, sliced",
+      "4 spring onions",
+      "2 tsp salt",
+      "300 g jasmine rice",
+      "3 garlic cloves, minced",
+      "1 tbsp chicken fat or oil",
+      "Cucumber slices and coriander, to serve",
+      "SAUCE: 2 tbsp grated ginger, 2 tbsp oil, pinch of salt; chilli sauce and dark soy sauce on the side"
+    ],
+    "steps": [
+      "Place the chicken in a large pot with the ginger, spring onions and salt, cover with water, bring to the boil, then turn off the heat, cover and leave for 45 minutes.",
+      "Lift the chicken out and plunge it into iced water for 10 minutes for a silky skin, then drain.",
+      "Skim the broth. Fry the garlic in the chicken fat, add the rinsed rice and stir for 1 minute.",
+      "Cook the rice in a rice cooker or pot with about 450 ml of the chicken broth until tender.",
+      "Heat the oil until hot and pour it over the grated ginger and salt to make the ginger sauce.",
+      "Slice the chicken, serve it with the rice, cucumber, coriander, the sauces, and a bowl of warm broth."
+    ]
+  }
+];
+const BUILTIN_VER = 14;
+const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 })), ...LUPIS_AND_SPREAD.map((r) => ({ ...r, v: 12 })), ...CHEESECAKES.map((r) => ({ ...r, v: 13 })), ...ASIAN_FOOD.map((r) => ({ ...r, v: 14 }))];
 
 // Favorites are personal and saved on this device only.
 const FAV_KEY = "pantree-favs";
@@ -1680,7 +2044,7 @@ const META = {
   "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian"], "id-pempek": ["Seafood", "Indonesian"],
   "id-bakso": ["Soup", "Indonesian"], "id-es-campur": ["Dessert", "Indonesian"], "id-es-cendol": ["Dessert", "Indonesian"],
   "id-dodol": ["Dessert", "Indonesian"], "id-cheese-tteokbokki": ["Snacks", "Korean"], "id-bubble-tea": ["Drinks", "Taiwanese"],
-  "id-hummus": ["Sides", "Arab"], "id-lupis": ["Dessert", "Indonesian", "img/lupis.jpg"], "us-peanut-butter-cheesecake": ["Dessert", "American"], "dessert-banana-sour-cream-cheese-cake": ["Dessert", "International", "img/banana-sour-cream-cheese-cake.jpg"], "es-san-sebastian-cheesecake": ["Dessert", "Spanish"], "it-hazelnut-chocolate-spread": ["Dessert", "Italian"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese", "img/katsu-chicken-curry.jpg"],
+  "id-hummus": ["Sides", "Arab"], "id-lupis": ["Dessert", "Indonesian", "img/lupis.jpg"], "us-peanut-butter-cheesecake": ["Dessert", "American"], "dessert-banana-sour-cream-cheese-cake": ["Dessert", "International", "img/banana-sour-cream-cheese-cake.jpg"], "es-san-sebastian-cheesecake": ["Dessert", "Spanish"], "th-pad-thai": ["Rice & Noodles", "Thai"], "th-green-curry": ["Chicken", "Thai"], "th-tom-yum": ["Soup", "Thai"], "jp-chicken-teriyaki": ["Chicken", "Japanese"], "jp-miso-soup": ["Soup", "Japanese"], "jp-gyoza": ["Snacks", "Japanese"], "kr-bibimbap": ["Rice & Noodles", "Korean"], "kr-kimchi-fried-rice": ["Rice & Noodles", "Korean"], "cn-mapo-tofu": ["Pork", "Chinese"], "cn-kung-pao-chicken": ["Chicken", "Chinese"], "vn-pho-bo": ["Soup", "Vietnamese"], "ph-chicken-adobo": ["Chicken", "Filipino"], "in-chicken-biryani": ["Chicken", "Indian"], "in-dal-tadka": ["Vegetarian", "Indian"], "sg-hainanese-chicken-rice": ["Chicken", "Singaporean"], "it-hazelnut-chocolate-spread": ["Dessert", "Italian"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese", "img/katsu-chicken-curry.jpg"],
   "it-margherita-pizza": ["Pizza", "Italian"], "it-spaghetti-bolognese": ["Pasta", "Italian"], "it-chicken-parmigiana": ["Chicken", "Italian"],
   "it-minestrone": ["Soup", "Italian"], "it-bruschetta": ["Sides", "Italian"], "it-tiramisu": ["Dessert", "Italian", "img/tiramisu.jpg"], "it-panna-cotta": ["Dessert", "Italian"],
   "pl-pierogi-ruskie": ["Vegetarian", "Polish"], "pl-bigos": ["Pork", "Polish"], "pl-zurek": ["Soup", "Polish"], "pl-barszcz": ["Soup", "Polish"],

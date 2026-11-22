@@ -1814,3 +1814,4 @@ load();
 window.addEventListener("online", load);
 document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && navigator.onLine) load(); });
 if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+try { navigator.storage && navigator.storage.persist && navigator.storage.persist(); } catch {}   // ask the browser not to clear offline data

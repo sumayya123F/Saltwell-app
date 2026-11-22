@@ -1590,7 +1590,7 @@ async function save() {
 
 // Category and cuisine tags (and photos) for the built-in recipes. Owner-added recipes carry their own tags.
 const META = {
-  s1: ["Dessert", "American"], s2: ["Pasta", "Italian"], s3: ["Sides", "Mexican"], s4: ["Soup", "International"],
+  s1: ["Dessert", "American", "img/fluffy-pancakes.jpg"], s2: ["Pasta", "Italian"], s3: ["Sides", "Mexican"], s4: ["Soup", "International"],
   "sw-chicken-tikka-masala": ["Chicken", "Indian", "img/sw-chicken-tikka-masala.jpg"],
   "sw-classic-beef-lasagne": ["Pasta", "Italian"],
   "sw-lasagne": ["Pasta", "Italian", "img/sw-lasagne.jpg"],
@@ -1603,7 +1603,7 @@ const META = {
   "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian"], "id-pempek": ["Seafood", "Indonesian"],
   "id-bakso": ["Soup", "Indonesian"], "id-es-campur": ["Dessert", "Indonesian"], "id-es-cendol": ["Dessert", "Indonesian"],
   "id-dodol": ["Dessert", "Indonesian"], "id-cheese-tteokbokki": ["Snacks", "Korean"], "id-bubble-tea": ["Drinks", "Taiwanese"],
-  "id-hummus": ["Sides", "Arab"], "id-lupis": ["Dessert", "Indonesian"], "it-hazelnut-chocolate-spread": ["Dessert", "Italian"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese"],
+  "id-hummus": ["Sides", "Arab"], "id-lupis": ["Dessert", "Indonesian", "img/lupis.jpg"], "it-hazelnut-chocolate-spread": ["Dessert", "Italian"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese", "img/katsu-chicken-curry.jpg"],
   "it-margherita-pizza": ["Pizza", "Italian"], "it-spaghetti-bolognese": ["Pasta", "Italian"], "it-chicken-parmigiana": ["Chicken", "Italian"],
   "it-minestrone": ["Soup", "Italian"], "it-bruschetta": ["Sides", "Italian"], "it-tiramisu": ["Dessert", "Italian"], "it-panna-cotta": ["Dessert", "Italian"],
   "pl-pierogi-ruskie": ["Vegetarian", "Polish"], "pl-bigos": ["Pork", "Polish"], "pl-zurek": ["Soup", "Polish"], "pl-barszcz": ["Soup", "Polish"],

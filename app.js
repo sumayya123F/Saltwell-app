@@ -1440,8 +1440,57 @@ const FLAN_AND_KATSU = [
     ]
   }
 ];
-const BUILTIN_VER = 11;
-const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 }))];
+const LUPIS_AND_SPREAD = [
+  {
+    "id": "id-lupis",
+    "name": "Lupis (Pandan Sticky Rice Cake)",
+    "ingredients": [
+      "250 g glutinous rice flour",
+      "1/4 tsp salt",
+      "10 pandan leaves, or 1 tsp pandan paste",
+      "About 250 ml water, for the dough",
+      "Banana leaves, for wrapping (or baking paper and foil)",
+      "150 g young coconut, freshly grated",
+      "Pinch of salt, for the coconut",
+      "150 g palm sugar (gula merah), chopped",
+      "100 ml water, for the syrup",
+      "1 pandan leaf, knotted"
+    ],
+    "steps": [
+      "Blend the pandan leaves with about 250 ml water and strain through a sieve to get a bright green liquid (or mix in the pandan paste).",
+      "Mix the glutinous rice flour and salt, then add the green liquid gradually, kneading into a soft dough that does not stick to your hands.",
+      "Shape the dough into logs about 3 cm thick and 12 cm long.",
+      "Soften the banana leaves by passing them over a flame or dipping them in hot water, then wrap each log tightly and tie the ends with string.",
+      "Boil in plenty of water for 45 minutes (or steam for 40 minutes), then cool completely.",
+      "Steam the grated coconut with a pinch of salt for 10 minutes and let it cool.",
+      "Simmer the palm sugar, 100 ml water and the pandan leaf until the sugar dissolves and the syrup thickens slightly, then strain.",
+      "Unwrap the lupis, slice into rounds, roll them in the grated coconut, and pour the palm sugar syrup over."
+    ]
+  },
+  {
+    "id": "it-hazelnut-chocolate-spread",
+    "name": "Hazelnut Chocolate Spread",
+    "ingredients": [
+      "300 g hazelnuts",
+      "150 g milk chocolate, melted",
+      "3 tbsp unsweetened cocoa powder",
+      "80 g icing sugar",
+      "3 tbsp neutral oil (or more, if too thick)",
+      "1/2 tsp vanilla extract",
+      "Pinch of salt"
+    ],
+    "steps": [
+      "Roast the hazelnuts on a tray at 180°C for 10 to 12 minutes until fragrant and the skins start to crack.",
+      "Wrap the warm nuts in a clean towel and rub to remove most of the skins.",
+      "Blend the nuts in a strong food processor for 10 to 15 minutes, scraping down the sides, until they turn into a smooth runny nut butter.",
+      "Add the cocoa, icing sugar, vanilla and salt, and blend again.",
+      "Pour in the melted chocolate and the oil, and blend until glossy and completely smooth.",
+      "Spoon into a clean jar. Keep it in a cool place for up to 2 weeks, or in the fridge for up to a month. Stir before using."
+    ]
+  }
+];
+const BUILTIN_VER = 12;
+const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 })), ...LUPIS_AND_SPREAD.map((r) => ({ ...r, v: 12 }))];
 
 // Favorites are personal and saved on this device only.
 const FAV_KEY = "pantree-favs";
@@ -1554,7 +1603,7 @@ const META = {
   "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian"], "id-pempek": ["Seafood", "Indonesian"],
   "id-bakso": ["Soup", "Indonesian"], "id-es-campur": ["Dessert", "Indonesian"], "id-es-cendol": ["Dessert", "Indonesian"],
   "id-dodol": ["Dessert", "Indonesian"], "id-cheese-tteokbokki": ["Snacks", "Korean"], "id-bubble-tea": ["Drinks", "Taiwanese"],
-  "id-hummus": ["Sides", "Arab"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese"],
+  "id-hummus": ["Sides", "Arab"], "id-lupis": ["Dessert", "Indonesian"], "it-hazelnut-chocolate-spread": ["Dessert", "Italian"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese"],
   "it-margherita-pizza": ["Pizza", "Italian"], "it-spaghetti-bolognese": ["Pasta", "Italian"], "it-chicken-parmigiana": ["Chicken", "Italian"],
   "it-minestrone": ["Soup", "Italian"], "it-bruschetta": ["Sides", "Italian"], "it-tiramisu": ["Dessert", "Italian"], "it-panna-cotta": ["Dessert", "Italian"],
   "pl-pierogi-ruskie": ["Vegetarian", "Polish"], "pl-bigos": ["Pork", "Polish"], "pl-zurek": ["Soup", "Polish"], "pl-barszcz": ["Soup", "Polish"],

@@ -154,23 +154,6 @@ const SALTWELL = [
       "After about 18 minutes fold in mushrooms and parmesan."
     ]
   },
-  {
-    "id": "sw-lemon-roast-chicken",
-    "name": "Lemon Roast Chicken",
-    "ingredients": [
-      "1.6 kg Whole chicken",
-      "1 Lemon",
-      "50 g Butter",
-      "6 sprigs Thyme",
-      "800 g Potatoes"
-    ],
-    "steps": [
-      "Rub the chicken with butter and season generously.",
-      "Stuff the cavity with lemon and thyme.",
-      "Roast at 200°C for 1 hour 15 minutes with potatoes underneath.",
-      "Rest 15 minutes before carving."
-    ]
-  }
 ];
 SAMPLES.push(...SALTWELL);
 
@@ -895,56 +878,6 @@ const ARAB_FOOD = [
       "Lift out the chicken and stir the drained rice into the broth.",
       "Cook, covered, on low heat for about 20 minutes until the rice is fluffy.",
       "Grill or oven-roast the chicken for 10 minutes until golden, place it over the rice, and top with almonds and raisins."
-    ]
-  },
-  {
-    "id": "id-maqluba",
-    "name": "Maqluba",
-    "ingredients": [
-      "1 kg chicken pieces",
-      "2 eggplants, sliced",
-      "1 small cauliflower, in florets",
-      "2 tomatoes, sliced",
-      "1 onion, sliced",
-      "2 cups basmati rice, soaked",
-      "2 tsp Arab seven-spice (baharat)",
-      "1 tsp turmeric",
-      "3 cups chicken stock",
-      "Oil for frying",
-      "Toasted nuts and yoghurt (to serve)"
-    ],
-    "steps": [
-      "Boil the chicken with the onion and half the spices to make a flavourful stock, then strain and keep both the chicken and the stock.",
-      "Fry the eggplant slices and cauliflower until golden and drain.",
-      "Line the base of a deep pot with the tomato slices, then arrange the eggplant, chicken and cauliflower in layers.",
-      "Mix the rice with the remaining spices and spread it over the top.",
-      "Pour in the hot stock until it just covers the rice, cover, and simmer for 40 minutes.",
-      "Rest for 10 minutes, place a large plate on top, and flip the pot over to turn out the dish.",
-      "Top with toasted nuts and serve with yoghurt."
-    ]
-  },
-  {
-    "id": "id-shish-taouk",
-    "name": "Shish Taouk",
-    "ingredients": [
-      "700 g chicken breast, cubed",
-      "1/2 cup plain yoghurt",
-      "3 tbsp lemon juice",
-      "2 tbsp tomato paste",
-      "4 cloves garlic, minced",
-      "2 tbsp olive oil",
-      "1 tsp paprika",
-      "1 tsp salt",
-      "1/2 tsp black pepper",
-      "Skewers",
-      "Garlic sauce (toum) and flatbread (to serve)"
-    ],
-    "steps": [
-      "Mix the yoghurt, lemon juice, tomato paste, garlic, oil, paprika, salt and pepper.",
-      "Add the chicken, coat well, and marinate for at least 4 hours or overnight.",
-      "Thread the chicken onto skewers.",
-      "Grill or roast at 220°C for 12 to 15 minutes, turning, until charred and cooked through.",
-      "Serve with garlic sauce and warm flatbread."
     ]
   },
   {
@@ -1742,31 +1675,6 @@ const ASIAN_FOOD = [
     ]
   },
   {
-    "id": "in-dal-tadka",
-    "name": "Dal Tadka",
-    "ingredients": [
-      "250 g red lentils (masoor dal) or split yellow lentils",
-      "750 ml water",
-      "1/2 tsp turmeric",
-      "1 tsp salt",
-      "2 tbsp ghee or oil",
-      "1 tsp cumin seeds",
-      "1 onion, finely chopped",
-      "2 tomatoes, chopped",
-      "3 garlic cloves, finely chopped",
-      "1 tsp chilli powder",
-      "Fresh coriander and lemon juice, to serve"
-    ],
-    "steps": [
-      "Rinse the lentils and simmer them with the water, turmeric and salt for 20 to 25 minutes until soft, then mash lightly.",
-      "Heat the ghee in a pan and add the cumin seeds until they sizzle.",
-      "Add the onion and cook until golden, then add the garlic and cook for 1 minute.",
-      "Stir in the tomatoes and chilli powder and cook until soft and pulpy.",
-      "Pour this tadka into the lentils and simmer for 5 minutes.",
-      "Finish with coriander and a squeeze of lemon, and serve with rice or flatbread."
-    ]
-  },
-  {
     "id": "sg-hainanese-chicken-rice",
     "name": "Hainanese Chicken Rice",
     "ingredients": [
@@ -1819,10 +1727,35 @@ const KIMBAP = [
     ]
   }
 ];
-const BUILTIN_VER = 16;
-const REMOVED_IDS = ["pl-bigos", "pl-kotlet-schabowy", "jp-gyoza", "cn-mapo-tofu", "kr-kimchi-fried-rice", "pl-zurek"];   // deleted recipes (pork), also dropped from saved lists
+const TAIYAKI = [
+  {
+    "id": "jp-taiyaki",
+    "name": "Taiyaki (Japanese Fish-Shaped Cakes)",
+    "ingredients": [
+      "200 g plain flour",
+      "1 1/2 tsp baking powder",
+      "3 tbsp sugar",
+      "1 egg",
+      "250 ml milk",
+      "1 tbsp melted butter or oil, plus extra for the pan",
+      "Pinch of salt",
+      "200 g sweet red bean paste (anko), or custard or chocolate spread, for the filling"
+    ],
+    "steps": [
+      "Whisk the flour, baking powder, sugar and salt together in a bowl.",
+      "Beat the egg with the milk and melted butter, then pour into the dry ingredients and whisk until just smooth. Rest the batter for 15 minutes.",
+      "Heat a taiyaki pan over medium heat and brush both sides of the moulds with oil.",
+      "Fill each fish mould about two-thirds with batter.",
+      "Add a spoonful of red bean paste in the middle of each, then cover with a little more batter.",
+      "Close the pan and cook for 3 minutes, flip, and cook for 3 more minutes until golden and crisp on the outside.",
+      "Trim any batter that has leaked out, and serve warm. If you have no taiyaki pan, a waffle iron or small round pancakes with the filling folded inside also work."
+    ]
+  }
+];
+const BUILTIN_VER = 17;
+const REMOVED_IDS = ["pl-bigos", "pl-kotlet-schabowy", "jp-gyoza", "cn-mapo-tofu", "kr-kimchi-fried-rice", "pl-zurek", "sw-lemon-roast-chicken", "id-maqluba", "id-shish-taouk", "in-dal-tadka"];   // deleted recipes (pork), also dropped from saved lists
 const FIX_VERS = { "sw-spaghetti-carbonara": 15, "id-cabbage-rolls": 15, "it-panna-cotta": 16 };   // recipe corrected in this built-in version (no pork products)
-const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 })), ...LUPIS_AND_SPREAD.map((r) => ({ ...r, v: 12 })), ...CHEESECAKES.map((r) => ({ ...r, v: 13 })), ...ASIAN_FOOD.map((r) => ({ ...r, v: 14 })), ...KIMBAP.map((r) => ({ ...r, v: 15 }))];
+const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 })), ...LUPIS_AND_SPREAD.map((r) => ({ ...r, v: 12 })), ...CHEESECAKES.map((r) => ({ ...r, v: 13 })), ...ASIAN_FOOD.map((r) => ({ ...r, v: 14 })), ...KIMBAP.map((r) => ({ ...r, v: 15 })), ...TAIYAKI.map((r) => ({ ...r, v: 17 }))];
 
 // Favorites are personal and saved on this device only.
 const FAV_KEY = "pantree-favs";
@@ -1935,18 +1868,18 @@ const META = {
   "sw-grilled-salmon": ["Seafood", "Modern", "img/sw-grilled-salmon.jpg"],
   "sw-fish-tacos": ["Seafood", "Mexican", "img/sw-fish-tacos.jpg"],
   "sw-spaghetti-carbonara": ["Pasta", "Italian", "img/sw-spaghetti-carbonara.jpg"],
-  "sw-vegetable-stir-fry": ["Vegetarian", "Chinese"], "sw-mushroom-risotto": ["Vegetarian", "Italian"], "sw-lemon-roast-chicken": ["Chicken", "British"],
+  "sw-vegetable-stir-fry": ["Vegetarian", "Chinese"], "sw-mushroom-risotto": ["Vegetarian", "Italian"],
   "id-nasi-goreng": ["Rice & Noodles", "Indonesian"], "id-mie-goreng": ["Rice & Noodles", "Indonesian"], "id-soto-ayam": ["Soup", "Indonesian"],
   "id-beef-rendang": ["Beef", "Indonesian"], "id-gado-gado": ["Vegetarian", "Indonesian"], "id-sate-ayam": ["Chicken", "Indonesian"],
   "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian"], "id-pempek": ["Seafood", "Indonesian"],
   "id-bakso": ["Soup", "Indonesian"], "id-es-campur": ["Dessert", "Indonesian"], "id-es-cendol": ["Dessert", "Indonesian"],
   "id-dodol": ["Dessert", "Indonesian"], "id-cheese-tteokbokki": ["Snacks", "Korean"], "id-bubble-tea": ["Drinks", "Taiwanese"],
-  "id-hummus": ["Sides", "Arab"], "id-lupis": ["Dessert", "Indonesian", "img/lupis.jpg"], "us-peanut-butter-cheesecake": ["Dessert", "American"], "dessert-banana-sour-cream-cheese-cake": ["Dessert", "International", "img/banana-sour-cream-cheese-cake.jpg"], "es-san-sebastian-cheesecake": ["Dessert", "Spanish"], "kr-kimbap": ["Snacks", "Korean"], "th-pad-thai": ["Rice & Noodles", "Thai"], "th-green-curry": ["Chicken", "Thai"], "th-tom-yum": ["Soup", "Thai"], "jp-chicken-teriyaki": ["Chicken", "Japanese"], "jp-miso-soup": ["Soup", "Japanese"], "kr-bibimbap": ["Rice & Noodles", "Korean"], "cn-kung-pao-chicken": ["Chicken", "Chinese"], "vn-pho-bo": ["Soup", "Vietnamese"], "ph-chicken-adobo": ["Chicken", "Filipino"], "in-chicken-biryani": ["Chicken", "Indian"], "in-dal-tadka": ["Vegetarian", "Indian"], "sg-hainanese-chicken-rice": ["Chicken", "Singaporean"], "it-hazelnut-chocolate-spread": ["Dessert", "Italian"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese", "img/katsu-chicken-curry.jpg"],
+  "id-hummus": ["Sides", "Arab"], "id-lupis": ["Dessert", "Indonesian", "img/lupis.jpg"], "us-peanut-butter-cheesecake": ["Dessert", "American"], "dessert-banana-sour-cream-cheese-cake": ["Dessert", "International", "img/banana-sour-cream-cheese-cake.jpg"], "es-san-sebastian-cheesecake": ["Dessert", "Spanish"], "kr-kimbap": ["Snacks", "Korean"], "jp-taiyaki": ["Dessert", "Japanese"], "th-pad-thai": ["Rice & Noodles", "Thai"], "th-green-curry": ["Chicken", "Thai"], "th-tom-yum": ["Soup", "Thai"], "jp-chicken-teriyaki": ["Chicken", "Japanese"], "jp-miso-soup": ["Soup", "Japanese"], "kr-bibimbap": ["Rice & Noodles", "Korean"], "cn-kung-pao-chicken": ["Chicken", "Chinese"], "vn-pho-bo": ["Soup", "Vietnamese"], "ph-chicken-adobo": ["Chicken", "Filipino"], "in-chicken-biryani": ["Chicken", "Indian"], "sg-hainanese-chicken-rice": ["Chicken", "Singaporean"], "it-hazelnut-chocolate-spread": ["Dessert", "Italian"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese", "img/katsu-chicken-curry.jpg"],
   "it-margherita-pizza": ["Pizza", "Italian"], "it-spaghetti-bolognese": ["Pasta", "Italian"], "it-chicken-parmigiana": ["Chicken", "Italian"],
   "it-minestrone": ["Soup", "Italian"], "it-bruschetta": ["Sides", "Italian"], "it-tiramisu": ["Dessert", "Italian", "img/tiramisu.jpg"], "it-panna-cotta": ["Dessert", "Italian"],
   "pl-pierogi-ruskie": ["Vegetarian", "Polish"], "pl-barszcz": ["Soup", "Polish"],
   "pl-placki-ziemniaczane": ["Sides", "Polish"], "pl-sernik": ["Dessert", "Polish"], "pl-paczki": ["Dessert", "Polish", "img/paczki.jpg"], "id-shakshuka": ["Breakfast", "Arab"], "id-tabbouleh": ["Sides", "Arab"], "id-fattoush": ["Sides", "Arab"],
-  "id-chicken-kabsa": ["Chicken", "Arab"], "id-maqluba": ["Chicken", "Arab"], "id-shish-taouk": ["Chicken", "Arab"],
+  "id-chicken-kabsa": ["Chicken", "Arab"],
   "id-shorbat-adas": ["Soup", "Arab"], "id-kunafa": ["Dessert", "Arab"], "id-umm-ali": ["Dessert", "Arab"],
   "id-falafel": ["Vegetarian", "Arab"], "id-cheese-sticks": ["Snacks", "American"], "id-cinnamon-roll-biscuits": ["Dessert", "American"],
   "id-cabbage-rolls": ["Beef", "Polish"], "id-nalesniki": ["Dessert", "Polish"], "id-arepa": ["Breakfast", "Venezuelan"],

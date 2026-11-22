@@ -1975,8 +1975,10 @@ function openView(id) {
   $("view-cover").className = coverClass(r);
   $("view-cover").setAttribute("style", coverStyle(r));
   $("view-cover").innerHTML = coverHtml(r);
-  $("view").innerHTML =
-    `<h2>${esc(r.name)}</h2><div class="tags">${tagsOf(r).map((t) => `<button class="tag" data-q="${esc(t)}">${esc(t)}</button>`).join("")}</div><a class="yt" href="${esc(videoUrl(r))}" target="_blank" rel="noopener noreferrer">▶ Watch on YouTube</a><h3>Ingredients</h3><ul>${r.ingredients.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>` +
+  $("view-head").innerHTML =
+    `<h2>${esc(r.name)}</h2><div class="tags">${tagsOf(r).map((t) => `<button class="tag" data-q="${esc(t)}">${esc(t)}</button>`).join("")}</div><a class="yt" href="${esc(videoUrl(r))}" target="_blank" rel="noopener noreferrer">▶ Watch on YouTube</a>`;
+  $("view-body").innerHTML =
+    `<h3>Ingredients</h3><ul>${r.ingredients.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>` +
     `<h3>Steps</h3><ol>${r.steps.map((s) => `<li>${esc(s)}</li>`).join("")}</ol>`;
   $("edit").hidden = !admin;
   $("delete").hidden = !admin;

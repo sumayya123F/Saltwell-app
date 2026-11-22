@@ -105,17 +105,18 @@ const SALTWELL = [
     "name": "Spaghetti Carbonara",
     "ingredients": [
       "400g Spaghetti",
-      "150g Pancetta, diced",
+      "150g Beef bacon (or smoked turkey bacon), diced",
+      "1 tbsp Olive oil",
       "3 Eggs + 2 yolks",
       "80g Pecorino or parmesan",
       "Black pepper",
       "Parsley"
     ],
     "steps": [
-      "Crisp pancetta in a dry pan.",
+      "Fry the beef bacon in the olive oil until crisp.",
       "Boil spaghetti; reserve a cup of pasta water.",
       "Whisk eggs, cheese and plenty of pepper.",
-      "Off the heat, toss pasta with pancetta and egg mix, loosening with pasta water until creamy."
+      "Off the heat, toss pasta with the bacon and egg mix, loosening with pasta water until creamy."
     ]
   },
   {
@@ -687,7 +688,7 @@ const MORE_RECIPES = [
     "name": "Cabbage Rolls (Golabki)",
     "ingredients": [
       "1 large head of cabbage",
-      "500 g minced beef or pork",
+      "500 g minced beef",
       "1/2 cup cooked rice",
       "1 onion, finely chopped",
       "1 egg",
@@ -1930,8 +1931,38 @@ const ASIAN_FOOD = [
     ]
   }
 ];
-const BUILTIN_VER = 14;
-const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 })), ...LUPIS_AND_SPREAD.map((r) => ({ ...r, v: 12 })), ...CHEESECAKES.map((r) => ({ ...r, v: 13 })), ...ASIAN_FOOD.map((r) => ({ ...r, v: 14 }))];
+const KIMBAP = [
+  {
+    "id": "kr-kimbap",
+    "name": "Kimbap (Korean Rice Rolls)",
+    "ingredients": [
+      "3 cups cooked short-grain rice, warm",
+      "1 tbsp sesame oil, plus extra for brushing",
+      "1 tsp salt",
+      "1 tsp toasted sesame seeds",
+      "4 sheets nori (seaweed)",
+      "200 g beef (bulgogi-style, sliced thin), or imitation crab",
+      "2 tsp soy sauce, 1 tsp sugar and 1 garlic clove, for the beef",
+      "1 carrot, cut into matchsticks",
+      "1 cucumber, cut into long strips",
+      "100 g spinach, blanched and squeezed dry",
+      "3 eggs, beaten and cooked as a thin omelette, cut into strips",
+      "4 strips pickled yellow radish (danmuji)"
+    ],
+    "steps": [
+      "Mix the warm rice with the sesame oil, salt and sesame seeds, and let it cool slightly.",
+      "Cook the sliced beef with the soy sauce, sugar and garlic until browned and dry. Leave to cool.",
+      "Stir-fry the carrot for 2 minutes with a pinch of salt. Season the spinach with a little sesame oil and salt.",
+      "Lay a nori sheet shiny-side down on a bamboo mat and spread a thin, even layer of rice over it, leaving 2 cm bare at the far edge.",
+      "Arrange a strip of each filling across the rice near the near edge.",
+      "Roll up tightly using the mat, pressing firmly, and seal the edge with a few grains of rice.",
+      "Brush the roll with sesame oil, sprinkle with sesame seeds and slice into rounds with a sharp, damp knife. Serve with extra pickled radish."
+    ]
+  }
+];
+const BUILTIN_VER = 15;
+const FIX_IDS = ["sw-spaghetti-carbonara", "id-cabbage-rolls"];   // corrected in version 15 (no pork)
+const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 })), ...LUPIS_AND_SPREAD.map((r) => ({ ...r, v: 12 })), ...CHEESECAKES.map((r) => ({ ...r, v: 13 })), ...ASIAN_FOOD.map((r) => ({ ...r, v: 14 })), ...KIMBAP.map((r) => ({ ...r, v: 15 }))];
 
 // Favorites are personal and saved on this device only.
 const FAV_KEY = "pantree-favs";
@@ -1982,7 +2013,12 @@ async function load() {
     // Built-in recipes newer than what the owner last saved still show up for everyone.
     const extra = BUILTINS.filter((b) => !(have && have.has(b.id)) && (!have || b.v > ver)).map(({ v, ...r }) => r);
     recipes = [...(j.recipes || []), ...extra];
-    try { localStorage.setItem(CACHE_KEY, JSON.stringify(recipes)); } catch {}
+    // Corrected built-in recipes replace older saved copies, until the owner saves again.
+    if (ver < 15) for (const fx of BUILTINS.filter((b) => FIX_IDS.includes(b.id))) {
+      const i = recipes.findIndex((x) => x.id === fx.id);
+      const { v, ...clean } = fx;
+      if (i >= 0) recipes[i] = clean;
+    }    try { localStorage.setItem(CACHE_KEY, JSON.stringify(recipes)); } catch {}
   } catch {}
   if (adminCode) await checkAdmin(adminCode, true);
   render();
@@ -2044,7 +2080,7 @@ const META = {
   "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian"], "id-pempek": ["Seafood", "Indonesian"],
   "id-bakso": ["Soup", "Indonesian"], "id-es-campur": ["Dessert", "Indonesian"], "id-es-cendol": ["Dessert", "Indonesian"],
   "id-dodol": ["Dessert", "Indonesian"], "id-cheese-tteokbokki": ["Snacks", "Korean"], "id-bubble-tea": ["Drinks", "Taiwanese"],
-  "id-hummus": ["Sides", "Arab"], "id-lupis": ["Dessert", "Indonesian", "img/lupis.jpg"], "us-peanut-butter-cheesecake": ["Dessert", "American"], "dessert-banana-sour-cream-cheese-cake": ["Dessert", "International", "img/banana-sour-cream-cheese-cake.jpg"], "es-san-sebastian-cheesecake": ["Dessert", "Spanish"], "th-pad-thai": ["Rice & Noodles", "Thai"], "th-green-curry": ["Chicken", "Thai"], "th-tom-yum": ["Soup", "Thai"], "jp-chicken-teriyaki": ["Chicken", "Japanese"], "jp-miso-soup": ["Soup", "Japanese"], "jp-gyoza": ["Snacks", "Japanese"], "kr-bibimbap": ["Rice & Noodles", "Korean"], "kr-kimchi-fried-rice": ["Rice & Noodles", "Korean"], "cn-mapo-tofu": ["Pork", "Chinese"], "cn-kung-pao-chicken": ["Chicken", "Chinese"], "vn-pho-bo": ["Soup", "Vietnamese"], "ph-chicken-adobo": ["Chicken", "Filipino"], "in-chicken-biryani": ["Chicken", "Indian"], "in-dal-tadka": ["Vegetarian", "Indian"], "sg-hainanese-chicken-rice": ["Chicken", "Singaporean"], "it-hazelnut-chocolate-spread": ["Dessert", "Italian"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese", "img/katsu-chicken-curry.jpg"],
+  "id-hummus": ["Sides", "Arab"], "id-lupis": ["Dessert", "Indonesian", "img/lupis.jpg"], "us-peanut-butter-cheesecake": ["Dessert", "American"], "dessert-banana-sour-cream-cheese-cake": ["Dessert", "International", "img/banana-sour-cream-cheese-cake.jpg"], "es-san-sebastian-cheesecake": ["Dessert", "Spanish"], "kr-kimbap": ["Rice & Noodles", "Korean"], "th-pad-thai": ["Rice & Noodles", "Thai"], "th-green-curry": ["Chicken", "Thai"], "th-tom-yum": ["Soup", "Thai"], "jp-chicken-teriyaki": ["Chicken", "Japanese"], "jp-miso-soup": ["Soup", "Japanese"], "jp-gyoza": ["Snacks", "Japanese"], "kr-bibimbap": ["Rice & Noodles", "Korean"], "kr-kimchi-fried-rice": ["Rice & Noodles", "Korean"], "cn-mapo-tofu": ["Pork", "Chinese"], "cn-kung-pao-chicken": ["Chicken", "Chinese"], "vn-pho-bo": ["Soup", "Vietnamese"], "ph-chicken-adobo": ["Chicken", "Filipino"], "in-chicken-biryani": ["Chicken", "Indian"], "in-dal-tadka": ["Vegetarian", "Indian"], "sg-hainanese-chicken-rice": ["Chicken", "Singaporean"], "it-hazelnut-chocolate-spread": ["Dessert", "Italian"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese", "img/katsu-chicken-curry.jpg"],
   "it-margherita-pizza": ["Pizza", "Italian"], "it-spaghetti-bolognese": ["Pasta", "Italian"], "it-chicken-parmigiana": ["Chicken", "Italian"],
   "it-minestrone": ["Soup", "Italian"], "it-bruschetta": ["Sides", "Italian"], "it-tiramisu": ["Dessert", "Italian", "img/tiramisu.jpg"], "it-panna-cotta": ["Dessert", "Italian"],
   "pl-pierogi-ruskie": ["Vegetarian", "Polish"], "pl-bigos": ["Pork", "Polish"], "pl-zurek": ["Soup", "Polish"], "pl-barszcz": ["Soup", "Polish"],

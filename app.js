@@ -1489,8 +1489,85 @@ const LUPIS_AND_SPREAD = [
     ]
   }
 ];
-const BUILTIN_VER = 12;
-const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 })), ...LUPIS_AND_SPREAD.map((r) => ({ ...r, v: 12 }))];
+const CHEESECAKES = [
+  {
+    "id": "us-peanut-butter-cheesecake",
+    "name": "Peanut Butter Cheesecake",
+    "ingredients": [
+      "200 g chocolate sandwich biscuits (or digestive biscuits)",
+      "80 g butter, melted",
+      "500 g full-fat cream cheese, at room temperature",
+      "200 g smooth peanut butter",
+      "120 g icing sugar",
+      "1 tsp vanilla extract",
+      "300 ml double cream, whipped to soft peaks",
+      "Chopped roasted peanuts and melted chocolate, to decorate"
+    ],
+    "steps": [
+      "Crush the biscuits to fine crumbs, mix with the melted butter and press firmly into the base of a lined 20 cm springform tin. Chill for 30 minutes.",
+      "Beat the cream cheese, peanut butter, icing sugar and vanilla until completely smooth.",
+      "Gently fold in the whipped cream until no streaks remain.",
+      "Spread the filling over the base and smooth the top.",
+      "Chill for at least 6 hours, or overnight, until set.",
+      "Loosen the tin, remove the cheesecake and top with chopped peanuts and a drizzle of melted chocolate. Slice with a hot knife."
+    ]
+  },
+  {
+    "id": "dessert-banana-sour-cream-cheese-cake",
+    "name": "Banana Sour Cream Cheese Cake",
+    "ingredients": [
+      "3 very ripe bananas, mashed",
+      "200 g plain flour",
+      "1 1/2 tsp baking powder",
+      "1/2 tsp bicarbonate of soda",
+      "1/4 tsp salt",
+      "150 g butter, softened",
+      "150 g sugar",
+      "3 eggs",
+      "120 g sour cream",
+      "1 tsp vanilla extract",
+      "250 g cream cheese, softened, for the frosting",
+      "150 ml sour cream, for the frosting",
+      "60 g icing sugar",
+      "100 g cheddar or processed cheese, finely grated, for the top",
+      "Chocolate cereal balls, to decorate"
+    ],
+    "steps": [
+      "Heat the oven to 170°C. Grease and line a rectangular cake tin.",
+      "Mix the flour, baking powder, bicarbonate of soda and salt.",
+      "Beat the butter and sugar until pale and fluffy, then beat in the eggs one at a time.",
+      "Stir in the mashed bananas, the sour cream and the vanilla, then fold in the dry ingredients until just combined.",
+      "Pour into the tin and bake for 35 to 40 minutes, until a skewer comes out clean. Cool completely.",
+      "Beat the cream cheese, sour cream and icing sugar into a smooth, thick frosting.",
+      "Cover the top and sides of the cake with the frosting.",
+      "Cover the top thickly with the grated cheese and decorate the edges with chocolate cereal balls. Chill for at least 1 hour before slicing."
+    ]
+  },
+  {
+    "id": "es-san-sebastian-cheesecake",
+    "name": "San Sebastián Cheesecake (Basque Burnt Cheesecake)",
+    "ingredients": [
+      "800 g full-fat cream cheese, at room temperature",
+      "200 g caster sugar",
+      "5 eggs",
+      "400 ml double cream",
+      "1 tbsp plain flour",
+      "1 tsp vanilla extract",
+      "Pinch of salt"
+    ],
+    "steps": [
+      "Heat the oven to 220°C. Line a 20 cm springform tin with two overlapping sheets of baking paper, letting it stand well above the rim; creases are fine.",
+      "Beat the cream cheese and sugar until completely smooth.",
+      "Beat in the eggs one at a time, then the cream, vanilla and salt.",
+      "Sift in the flour and mix until just combined. The batter will be very runny.",
+      "Pour into the tin and bake for 40 to 45 minutes, until deeply browned on top and still very wobbly in the middle.",
+      "Cool in the tin, then chill for at least 4 hours or overnight. The centre will firm up as it chills.",
+      "Serve slightly chilled or at room temperature."
+    ]
+  }
+];
+const BUILTIN_VER = 13;
+const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 })), ...LUPIS_AND_SPREAD.map((r) => ({ ...r, v: 12 })), ...CHEESECAKES.map((r) => ({ ...r, v: 13 }))];
 
 // Favorites are personal and saved on this device only.
 const FAV_KEY = "pantree-favs";
@@ -1603,9 +1680,9 @@ const META = {
   "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian"], "id-pempek": ["Seafood", "Indonesian"],
   "id-bakso": ["Soup", "Indonesian"], "id-es-campur": ["Dessert", "Indonesian"], "id-es-cendol": ["Dessert", "Indonesian"],
   "id-dodol": ["Dessert", "Indonesian"], "id-cheese-tteokbokki": ["Snacks", "Korean"], "id-bubble-tea": ["Drinks", "Taiwanese"],
-  "id-hummus": ["Sides", "Arab"], "id-lupis": ["Dessert", "Indonesian", "img/lupis.jpg"], "it-hazelnut-chocolate-spread": ["Dessert", "Italian"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese", "img/katsu-chicken-curry.jpg"],
+  "id-hummus": ["Sides", "Arab"], "id-lupis": ["Dessert", "Indonesian", "img/lupis.jpg"], "us-peanut-butter-cheesecake": ["Dessert", "American"], "dessert-banana-sour-cream-cheese-cake": ["Dessert", "International", "img/banana-sour-cream-cheese-cake.jpg"], "es-san-sebastian-cheesecake": ["Dessert", "Spanish"], "it-hazelnut-chocolate-spread": ["Dessert", "Italian"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese", "img/katsu-chicken-curry.jpg"],
   "it-margherita-pizza": ["Pizza", "Italian"], "it-spaghetti-bolognese": ["Pasta", "Italian"], "it-chicken-parmigiana": ["Chicken", "Italian"],
-  "it-minestrone": ["Soup", "Italian"], "it-bruschetta": ["Sides", "Italian"], "it-tiramisu": ["Dessert", "Italian"], "it-panna-cotta": ["Dessert", "Italian"],
+  "it-minestrone": ["Soup", "Italian"], "it-bruschetta": ["Sides", "Italian"], "it-tiramisu": ["Dessert", "Italian", "img/tiramisu.jpg"], "it-panna-cotta": ["Dessert", "Italian"],
   "pl-pierogi-ruskie": ["Vegetarian", "Polish"], "pl-bigos": ["Pork", "Polish"], "pl-zurek": ["Soup", "Polish"], "pl-barszcz": ["Soup", "Polish"],
   "pl-kotlet-schabowy": ["Pork", "Polish"], "pl-placki-ziemniaczane": ["Sides", "Polish"], "pl-sernik": ["Dessert", "Polish"], "pl-paczki": ["Dessert", "Polish", "img/paczki.jpg"], "id-shakshuka": ["Breakfast", "Arab"], "id-tabbouleh": ["Sides", "Arab"], "id-fattoush": ["Sides", "Arab"],
   "id-chicken-kabsa": ["Chicken", "Arab"], "id-maqluba": ["Chicken", "Arab"], "id-shish-taouk": ["Chicken", "Arab"],

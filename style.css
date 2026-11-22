@@ -8,7 +8,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.5 system-ui
 header { position:sticky; top:0; z-index:5; background:var(--card); border-bottom:1px solid var(--line); padding-top:env(safe-area-inset-top); }
 .bar { display:flex; flex-wrap:wrap; align-items:center; gap:12px; padding-block:12px; }
 .brand { font:700 1.3rem system-ui; color:var(--accent); margin-right:auto; display:inline-flex; align-items:center; gap:8px; }
-.brand img { border-radius:8px; display:block; }
+.brand .logo { display:block; flex:none; }
 input, textarea { width:100%; padding:10px; border:1px solid var(--line); border-radius:10px; font:inherit; background:var(--bg); color:var(--ink); }
 .bar input[type=search] { flex:1 1 280px; max-width:520px; height:42px; order:2; }
 .bar .btn { order:3; }

@@ -1,4 +1,4 @@
-const CACHE = "pantree-v33";
+const CACHE = "pantree-v34";
 const FILES = ["./", "index.html", "style.css", "app.js", "manifest.json", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png", "icons/apple-touch-icon-v2.png", "apple-touch-icon.png", "icons/favicon-32.png", "img/sw-chicken-tikka-masala.jpg", "img/sw-fish-tacos.jpg", "img/sw-grilled-salmon.jpg", "img/sw-lasagne.jpg", "img/sw-spaghetti-carbonara.jpg"];
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES)));

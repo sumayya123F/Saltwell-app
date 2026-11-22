@@ -54,7 +54,9 @@ dialog.full .topbar button { background:transparent; color:var(--accent-fg); bor
 dialog.full .hero { display:flex; align-items:flex-start; gap:16px; margin-bottom:8px; }
 dialog.full .hero-text { flex:1; min-width:0; }
 dialog.full .hero .thumb { order:2; flex:none; width:40%; max-width:300px; height:auto; aspect-ratio:1; font-size:56px; border-radius:14px; background:var(--chip); }
-dialog.full .hero .thumb img { object-fit:contain; }
+dialog.full .hero .thumb.skel { aspect-ratio:auto; height:auto; background:transparent; }
+dialog.full .hero .thumb.skel:not(.loaded) { aspect-ratio:3/2; }
+dialog.full .hero .thumb img { height:auto; object-fit:contain; border-radius:14px; }
 dialog.full .hero h2 { font-size:1.35rem; line-height:1.25; }
 dialog.full .hero a.yt { padding:8px 14px; font-size:.95rem; }
 @media (min-width:600px) { dialog.full .hero h2 { font-size:1.7rem; } dialog.full .hero a.yt { padding:10px 18px; font-size:1rem; } }

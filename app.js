@@ -1194,15 +1194,15 @@ const ITALIAN_POLISH = [
       "250 ml milk",
       "80 g sugar",
       "1 vanilla pod or 1 tsp vanilla",
-      "3 sheets gelatine (or 2 tsp powder)",
+      "1 1/2 tsp agar-agar powder (about 4 g)",
       "Berry sauce or caramel, to serve"
     ],
     "steps": [
-      "Soak the gelatine in cold water for 5 minutes.",
-      "Heat the cream, milk, sugar and vanilla until just steaming, but not boiling.",
-      "Squeeze the gelatine and stir it into the hot cream until dissolved.",
-      "Strain into 6 moulds or glasses and cool.",
-      "Chill for at least 5 hours until set.",
+      "Pour the milk into a saucepan and whisk in the agar-agar powder. Leave for 5 minutes.",
+      "Bring the milk to a boil, stirring, and simmer gently for 2 minutes so the agar dissolves completely.",
+      "Add the cream, sugar and vanilla and heat until just steaming, but not boiling hard.",
+      "Strain into 6 moulds or glasses. Agar starts to set as it cools, so work quickly.",
+      "Cool for 10 minutes, then chill for at least 2 hours until set. Agar sets firmer than gelatine, so the texture is a little less wobbly.",
       "Turn out or serve in the glasses with berry sauce."
     ]
   },
@@ -1819,9 +1819,9 @@ const KIMBAP = [
     ]
   }
 ];
-const BUILTIN_VER = 15;
+const BUILTIN_VER = 16;
 const REMOVED_IDS = ["pl-bigos", "pl-kotlet-schabowy", "jp-gyoza", "cn-mapo-tofu", "kr-kimchi-fried-rice", "pl-zurek"];   // deleted recipes (pork), also dropped from saved lists
-const FIX_IDS = ["sw-spaghetti-carbonara", "id-cabbage-rolls"];   // corrected in version 15 (no pork)
+const FIX_VERS = { "sw-spaghetti-carbonara": 15, "id-cabbage-rolls": 15, "it-panna-cotta": 16 };   // recipe corrected in this built-in version (no pork products)
 const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 })), ...LUPIS_AND_SPREAD.map((r) => ({ ...r, v: 12 })), ...CHEESECAKES.map((r) => ({ ...r, v: 13 })), ...ASIAN_FOOD.map((r) => ({ ...r, v: 14 })), ...KIMBAP.map((r) => ({ ...r, v: 15 }))];
 
 // Favorites are personal and saved on this device only.
@@ -1875,11 +1875,11 @@ async function load() {
     recipes = [...(j.recipes || []), ...extra];
     recipes = recipes.filter((r) => !REMOVED_IDS.includes(r.id));
     // Corrected built-in recipes replace older saved copies, until the owner saves again.
-    if (ver < 15) for (const fx of BUILTINS.filter((b) => FIX_IDS.includes(b.id))) {
+    for (const fx of BUILTINS.filter((b) => FIX_VERS[b.id] > ver)) {
       const i = recipes.findIndex((x) => x.id === fx.id);
       const { v, ...clean } = fx;
       if (i >= 0) recipes[i] = clean;
-    }    try { localStorage.setItem(CACHE_KEY, JSON.stringify(recipes)); } catch {}
+    }   try { localStorage.setItem(CACHE_KEY, JSON.stringify(recipes)); } catch {}
   } catch {}
   if (adminCode) await checkAdmin(adminCode, true);
   render();

@@ -1602,30 +1602,6 @@ const ASIAN_FOOD = [
     ]
   },
   {
-    "id": "vn-pho-bo",
-    "name": "Pho Bo (Vietnamese Beef Noodle Soup)",
-    "ingredients": [
-      "1.5 litres beef stock",
-      "1 onion, halved and charred",
-      "5 cm ginger, sliced and charred",
-      "2 star anise",
-      "1 cinnamon stick",
-      "3 cloves",
-      "2 tbsp fish sauce",
-      "250 g rice noodles",
-      "250 g beef sirloin, very thinly sliced",
-      "Bean sprouts, Thai basil, coriander, lime wedges, sliced chilli, to serve"
-    ],
-    "steps": [
-      "Simmer the stock with the onion, ginger, star anise, cinnamon, cloves and fish sauce for 30 minutes, then strain.",
-      "Cook the rice noodles following the packet instructions and divide between bowls.",
-      "Lay the raw beef slices over the noodles.",
-      "Bring the stock back to a rolling boil and ladle it over the beef; the hot stock cooks the meat.",
-      "Top with bean sprouts, herbs and chilli.",
-      "Serve with lime wedges and add hoisin or chilli sauce to taste."
-    ]
-  },
-  {
     "id": "ph-chicken-adobo",
     "name": "Chicken Adobo",
     "ingredients": [
@@ -1672,29 +1648,6 @@ const ASIAN_FOOD = [
       "Boil the rice in salted water with the whole spices until 70% cooked, about 6 minutes, then drain.",
       "Layer the rice over the chicken, scatter with the reserved onions, herbs and saffron milk.",
       "Cover tightly and cook on the lowest heat for 20 minutes, rest for 10 minutes, then gently fluff and serve."
-    ]
-  },
-  {
-    "id": "sg-hainanese-chicken-rice",
-    "name": "Hainanese Chicken Rice",
-    "ingredients": [
-      "1 whole chicken (about 1.4 kg)",
-      "5 cm ginger, sliced",
-      "4 spring onions",
-      "2 tsp salt",
-      "300 g jasmine rice",
-      "3 garlic cloves, minced",
-      "1 tbsp chicken fat or oil",
-      "Cucumber slices and coriander, to serve",
-      "SAUCE: 2 tbsp grated ginger, 2 tbsp oil, pinch of salt; chilli sauce and dark soy sauce on the side"
-    ],
-    "steps": [
-      "Place the chicken in a large pot with the ginger, spring onions and salt, cover with water, bring to the boil, then turn off the heat, cover and leave for 45 minutes.",
-      "Lift the chicken out and plunge it into iced water for 10 minutes for a silky skin, then drain.",
-      "Skim the broth. Fry the garlic in the chicken fat, add the rinsed rice and stir for 1 minute.",
-      "Cook the rice in a rice cooker or pot with about 450 ml of the chicken broth until tender.",
-      "Heat the oil until hot and pour it over the grated ginger and salt to make the ginger sauce.",
-      "Slice the chicken, serve it with the rice, cucumber, coriander, the sauces, and a bowl of warm broth."
     ]
   }
 ];
@@ -1753,7 +1706,7 @@ const TAIYAKI = [
   }
 ];
 const BUILTIN_VER = 17;
-const REMOVED_IDS = ["pl-bigos", "pl-kotlet-schabowy", "jp-gyoza", "cn-mapo-tofu", "kr-kimchi-fried-rice", "pl-zurek", "sw-lemon-roast-chicken", "id-maqluba", "id-shish-taouk", "in-dal-tadka"];   // deleted recipes (pork), also dropped from saved lists
+const REMOVED_IDS = ["pl-bigos", "pl-kotlet-schabowy", "jp-gyoza", "cn-mapo-tofu", "kr-kimchi-fried-rice", "pl-zurek", "sw-lemon-roast-chicken", "id-maqluba", "id-shish-taouk", "in-dal-tadka", "vn-pho-bo", "sg-hainanese-chicken-rice"];   // deleted recipes (pork), also dropped from saved lists
 const FIX_VERS = { "sw-spaghetti-carbonara": 15, "id-cabbage-rolls": 15, "it-panna-cotta": 16 };   // recipe corrected in this built-in version (no pork products)
 const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 })), ...LUPIS_AND_SPREAD.map((r) => ({ ...r, v: 12 })), ...CHEESECAKES.map((r) => ({ ...r, v: 13 })), ...ASIAN_FOOD.map((r) => ({ ...r, v: 14 })), ...KIMBAP.map((r) => ({ ...r, v: 15 })), ...TAIYAKI.map((r) => ({ ...r, v: 17 }))];
 
@@ -1869,12 +1822,12 @@ const META = {
   "sw-fish-tacos": ["Seafood", "Mexican", "img/sw-fish-tacos.jpg"],
   "sw-spaghetti-carbonara": ["Pasta", "Italian", "img/sw-spaghetti-carbonara.jpg"],
   "sw-vegetable-stir-fry": ["Vegetarian", "Chinese"], "sw-mushroom-risotto": ["Vegetarian", "Italian"],
-  "id-nasi-goreng": ["Rice & Noodles", "Indonesian"], "id-mie-goreng": ["Rice & Noodles", "Indonesian"], "id-soto-ayam": ["Soup", "Indonesian"],
-  "id-beef-rendang": ["Beef", "Indonesian"], "id-gado-gado": ["Vegetarian", "Indonesian"], "id-sate-ayam": ["Chicken", "Indonesian"],
+  "id-nasi-goreng": ["Rice & Noodles", "Indonesian", "img/nasi-goreng.jpg"], "id-mie-goreng": ["Rice & Noodles", "Indonesian", "img/mie-goreng.jpg"], "id-soto-ayam": ["Soup", "Indonesian", "img/soto-ayam.jpg"],
+  "id-beef-rendang": ["Beef", "Indonesian", "img/beef-rendang.jpg"], "id-gado-gado": ["Vegetarian", "Indonesian"], "id-sate-ayam": ["Chicken", "Indonesian"],
   "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian"], "id-pempek": ["Seafood", "Indonesian"],
   "id-bakso": ["Soup", "Indonesian"], "id-es-campur": ["Dessert", "Indonesian"], "id-es-cendol": ["Dessert", "Indonesian"],
   "id-dodol": ["Dessert", "Indonesian"], "id-cheese-tteokbokki": ["Snacks", "Korean"], "id-bubble-tea": ["Drinks", "Taiwanese"],
-  "id-hummus": ["Sides", "Arab"], "id-lupis": ["Dessert", "Indonesian", "img/lupis.jpg"], "us-peanut-butter-cheesecake": ["Dessert", "American"], "dessert-banana-sour-cream-cheese-cake": ["Dessert", "International", "img/banana-sour-cream-cheese-cake.jpg"], "es-san-sebastian-cheesecake": ["Dessert", "Spanish"], "kr-kimbap": ["Snacks", "Korean"], "jp-taiyaki": ["Dessert", "Japanese"], "th-pad-thai": ["Rice & Noodles", "Thai"], "th-green-curry": ["Chicken", "Thai"], "th-tom-yum": ["Soup", "Thai"], "jp-chicken-teriyaki": ["Chicken", "Japanese"], "jp-miso-soup": ["Soup", "Japanese"], "kr-bibimbap": ["Rice & Noodles", "Korean"], "cn-kung-pao-chicken": ["Chicken", "Chinese"], "vn-pho-bo": ["Soup", "Vietnamese"], "ph-chicken-adobo": ["Chicken", "Filipino"], "in-chicken-biryani": ["Chicken", "Indian"], "sg-hainanese-chicken-rice": ["Chicken", "Singaporean"], "it-hazelnut-chocolate-spread": ["Dessert", "Italian"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese", "img/katsu-chicken-curry.jpg"],
+  "id-hummus": ["Sides", "Arab"], "id-lupis": ["Dessert", "Indonesian", "img/lupis.jpg"], "us-peanut-butter-cheesecake": ["Dessert", "American", "img/peanut-butter-cheesecake.jpg"], "dessert-banana-sour-cream-cheese-cake": ["Dessert", "International", "img/banana-sour-cream-cheese-cake.jpg"], "es-san-sebastian-cheesecake": ["Dessert", "Spanish", "img/san-sebastian-cheesecake.jpg"], "kr-kimbap": ["Snacks", "Korean", "img/kimbap.jpg"], "jp-taiyaki": ["Dessert", "Japanese", "img/taiyaki.jpg"], "th-pad-thai": ["Rice & Noodles", "Thai", "img/pad-thai.jpg"], "th-green-curry": ["Chicken", "Thai", "img/green-curry.jpg"], "th-tom-yum": ["Soup", "Thai", "img/tom-yum.jpg"], "jp-chicken-teriyaki": ["Chicken", "Japanese", "img/chicken-teriyaki.jpg"], "jp-miso-soup": ["Soup", "Japanese", "img/miso-soup.jpg"], "kr-bibimbap": ["Rice & Noodles", "Korean", "img/bibimbap.jpg"], "cn-kung-pao-chicken": ["Chicken", "Chinese", "img/kung-pao-chicken.jpg"], "ph-chicken-adobo": ["Chicken", "Filipino", "img/chicken-adobo.jpg"], "in-chicken-biryani": ["Chicken", "Indian", "img/chicken-biryani.jpg"], "it-hazelnut-chocolate-spread": ["Dessert", "Italian"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese", "img/katsu-chicken-curry.jpg"],
   "it-margherita-pizza": ["Pizza", "Italian"], "it-spaghetti-bolognese": ["Pasta", "Italian"], "it-chicken-parmigiana": ["Chicken", "Italian"],
   "it-minestrone": ["Soup", "Italian"], "it-bruschetta": ["Sides", "Italian"], "it-tiramisu": ["Dessert", "Italian", "img/tiramisu.jpg"], "it-panna-cotta": ["Dessert", "Italian"],
   "pl-pierogi-ruskie": ["Vegetarian", "Polish"], "pl-barszcz": ["Soup", "Polish"],

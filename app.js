@@ -390,7 +390,7 @@ const MORE_INDONESIAN = [
   },
   {
     "id": "id-bakso",
-    "name": "Bakso (Indonesian Meatball Soup)",
+    "name": "Bakso Sambal (Spicy Meatballs in Sambal)",
     "ingredients": [
       "500 g beef mince",
       "100 g tapioca starch",
@@ -400,21 +400,27 @@ const MORE_INDONESIAN = [
       "1 tsp white pepper",
       "1 egg white",
       "100 g crushed ice",
-      "1.5 L beef stock",
-      "2 cloves garlic, fried",
-      "Rice noodles or egg noodles",
-      "Bok choy or choy sum",
-      "Fried shallots, celery leaf and sliced spring onion (to serve)",
-      "Sambal, kecap manis and lime (to serve)"
+      "10 red chillies, for the sambal (fewer for a milder sambal)",
+      "5 bird's eye chillies (optional, for extra heat)",
+      "6 shallots, for the sambal",
+      "4 cloves garlic, for the sambal",
+      "2 tomatoes",
+      "1 tbsp palm sugar or brown sugar",
+      "1 tsp salt, for the sambal",
+      "3 tbsp oil",
+      "100 ml water",
+      "Fried shallots and celery leaf or parsley (to serve)"
     ],
     "steps": [
       "Blend the beef, garlic, shallots, salt, pepper, egg white and ice into a smooth paste.",
       "Mix in the tapioca starch until sticky.",
       "Bring a pot of salted water to a gentle simmer. Form the paste into balls by squeezing it through your fist, and drop them in.",
-      "Cook until the balls float, about 8 minutes, then lift them out.",
-      "Heat the stock with the fried garlic and season to taste.",
-      "Place cooked noodles and greens in bowls, add the meatballs, and ladle over the hot stock.",
-      "Top with fried shallots, celery leaf and spring onion, and serve with sambal, kecap manis and lime."
+      "Cook until the balls float, about 8 minutes, then lift them out and drain.",
+      "For the sambal, blend the chillies, shallots, garlic and tomatoes into a coarse paste.",
+      "Heat the oil in a wok and fry the paste over medium heat for 8–10 minutes, until fragrant and darker red.",
+      "Stir in the palm sugar, salt and water, and simmer until thick and glossy. Taste and adjust.",
+      "Add the meatballs and toss for 2–3 minutes until well coated and heated through.",
+      "Serve topped with fried shallots and celery leaf or parsley, with extra sambal on the side."
     ]
   }
 ];
@@ -1705,9 +1711,9 @@ const TAIYAKI = [
     ]
   }
 ];
-const BUILTIN_VER = 17;
+const BUILTIN_VER = 18;
 const REMOVED_IDS = ["pl-bigos", "pl-kotlet-schabowy", "jp-gyoza", "cn-mapo-tofu", "kr-kimchi-fried-rice", "pl-zurek", "sw-lemon-roast-chicken", "id-maqluba", "id-shish-taouk", "in-dal-tadka", "vn-pho-bo", "sg-hainanese-chicken-rice"];   // deleted recipes (pork), also dropped from saved lists
-const FIX_VERS = { "sw-spaghetti-carbonara": 15, "id-cabbage-rolls": 15, "it-panna-cotta": 16 };   // recipe corrected in this built-in version (no pork products)
+const FIX_VERS = { "sw-spaghetti-carbonara": 15, "id-cabbage-rolls": 15, "it-panna-cotta": 16, "id-bakso": 18 };   // recipe corrected in this built-in version
 const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 })), ...LUPIS_AND_SPREAD.map((r) => ({ ...r, v: 12 })), ...CHEESECAKES.map((r) => ({ ...r, v: 13 })), ...ASIAN_FOOD.map((r) => ({ ...r, v: 14 })), ...KIMBAP.map((r) => ({ ...r, v: 15 })), ...TAIYAKI.map((r) => ({ ...r, v: 17 }))];
 
 // Favorites are personal and saved on this device only.
@@ -1825,7 +1831,7 @@ const META = {
   "id-nasi-goreng": ["Rice & Noodles", "Indonesian", "img/nasi-goreng.jpg"], "id-mie-goreng": ["Rice & Noodles", "Indonesian", "img/mie-goreng.jpg"], "id-soto-ayam": ["Soup", "Indonesian", "img/soto-ayam.jpg"],
   "id-beef-rendang": ["Beef", "Indonesian", "img/beef-rendang.jpg"], "id-gado-gado": ["Vegetarian", "Indonesian", "img/gado-gado.jpg"], "id-sate-ayam": ["Chicken", "Indonesian", "img/sate-ayam.jpg"],
   "id-ayam-goreng": ["Chicken", "Indonesian", "img/ayam-goreng.jpg"], "id-pisang-goreng": ["Dessert", "Indonesian", "img/pisang-goreng.jpg"], "id-pempek": ["Seafood", "Indonesian", "img/pempek.jpg"],
-  "id-bakso": ["Soup", "Indonesian"], "id-es-campur": ["Dessert", "Indonesian"], "id-es-cendol": ["Dessert", "Indonesian"],
+  "id-bakso": ["Beef", "Indonesian", "img/bakso-sambal.jpg"], "id-es-campur": ["Dessert", "Indonesian", "img/es-campur.jpg"], "id-es-cendol": ["Dessert", "Indonesian"],
   "id-dodol": ["Dessert", "Indonesian"], "id-cheese-tteokbokki": ["Snacks", "Korean"], "id-bubble-tea": ["Drinks", "Taiwanese"],
   "id-hummus": ["Sides", "Arab"], "id-lupis": ["Dessert", "Indonesian", "img/lupis.jpg"], "us-peanut-butter-cheesecake": ["Dessert", "American", "img/peanut-butter-cheesecake.jpg"], "dessert-banana-sour-cream-cheese-cake": ["Dessert", "International", "img/banana-sour-cream-cheese-cake.jpg"], "es-san-sebastian-cheesecake": ["Dessert", "Spanish", "img/san-sebastian-cheesecake.jpg"], "kr-kimbap": ["Snacks", "Korean", "img/kimbap.jpg"], "jp-taiyaki": ["Dessert", "Japanese", "img/taiyaki.jpg"], "th-pad-thai": ["Rice & Noodles", "Thai", "img/pad-thai.jpg"], "th-green-curry": ["Chicken", "Thai", "img/green-curry.jpg"], "th-tom-yum": ["Soup", "Thai", "img/tom-yum.jpg"], "jp-chicken-teriyaki": ["Chicken", "Japanese", "img/chicken-teriyaki.jpg"], "jp-miso-soup": ["Soup", "Japanese", "img/miso-soup.jpg"], "kr-bibimbap": ["Rice & Noodles", "Korean", "img/bibimbap.jpg"], "cn-kung-pao-chicken": ["Chicken", "Chinese", "img/kung-pao-chicken.jpg"], "ph-chicken-adobo": ["Chicken", "Filipino", "img/chicken-adobo.jpg"], "in-chicken-biryani": ["Chicken", "Indian", "img/chicken-biryani.jpg"], "it-hazelnut-chocolate-spread": ["Dessert", "Italian"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese", "img/katsu-chicken-curry.jpg"],
   "it-margherita-pizza": ["Pizza", "Italian"], "it-spaghetti-bolognese": ["Pasta", "Italian"], "it-chicken-parmigiana": ["Chicken", "Italian"],

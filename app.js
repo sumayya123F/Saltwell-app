@@ -1831,7 +1831,7 @@ const META = {
   "it-margherita-pizza": ["Pizza", "Italian"], "it-spaghetti-bolognese": ["Pasta", "Italian"], "it-chicken-parmigiana": ["Chicken", "Italian"],
   "it-minestrone": ["Soup", "Italian"], "it-bruschetta": ["Sides", "Italian"], "it-tiramisu": ["Dessert", "Italian", "img/tiramisu.jpg"], "it-panna-cotta": ["Dessert", "Italian"],
   "pl-pierogi-ruskie": ["Vegetarian", "Polish"], "pl-barszcz": ["Soup", "Polish"],
-  "pl-placki-ziemniaczane": ["Sides", "Polish"], "pl-sernik": ["Dessert", "Polish"], "pl-paczki": ["Dessert", "Polish", "img/paczki.jpg"], "id-shakshuka": ["Breakfast", "Arab"], "id-tabbouleh": ["Sides", "Arab", "img/tabbouleh.jpg"], "id-fattoush": ["Sides", "Arab"],
+  "pl-placki-ziemniaczane": ["Sides", "Polish"], "pl-sernik": ["Dessert", "Polish"], "pl-paczki": ["Dessert", "Polish", "img/paczki.jpg"], "id-shakshuka": ["Breakfast", "Arab"], "id-tabbouleh": ["Sides", "Arab", "img/tabbouleh.jpg"], "id-fattoush": ["Sides", "Arab", "img/fattoush.jpg"],
   "id-chicken-kabsa": ["Chicken", "Arab"],
   "id-shorbat-adas": ["Soup", "Arab"], "id-kunafa": ["Dessert", "Arab"], "id-umm-ali": ["Dessert", "Arab"],
   "id-falafel": ["Vegetarian", "Arab", "img/falafel.jpg"], "id-cheese-sticks": ["Snacks", "American", "img/cheese-sticks.jpg"], "id-cinnamon-roll-biscuits": ["Dessert", "American", "img/cinnamon-roll-biscuits.jpg"],

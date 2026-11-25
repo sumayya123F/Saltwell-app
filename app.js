@@ -1826,7 +1826,7 @@ const META = {
   "id-beef-rendang": ["Beef", "Indonesian", "img/beef-rendang.jpg"], "id-gado-gado": ["Vegetarian", "Indonesian"], "id-sate-ayam": ["Chicken", "Indonesian"],
   "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian"], "id-pempek": ["Seafood", "Indonesian"],
   "id-bakso": ["Soup", "Indonesian"], "id-es-campur": ["Dessert", "Indonesian"], "id-es-cendol": ["Dessert", "Indonesian", "img/es-cendol.jpg"],
-  "id-dodol": ["Dessert", "Indonesian", "img/dodol.jpg"], "id-cheese-tteokbokki": ["Snacks", "Korean"], "id-bubble-tea": ["Drinks", "Taiwanese"],
+  "id-dodol": ["Dessert", "Indonesian", "img/dodol.jpg"], "id-cheese-tteokbokki": ["Snacks", "Korean", "img/cheese-tteokbokki.jpg"], "id-bubble-tea": ["Drinks", "Taiwanese", "img/bubble-tea.jpg"],
   "id-hummus": ["Sides", "Arab"], "id-lupis": ["Dessert", "Indonesian", "img/lupis.jpg"], "us-peanut-butter-cheesecake": ["Dessert", "American", "img/peanut-butter-cheesecake.jpg"], "dessert-banana-sour-cream-cheese-cake": ["Dessert", "International", "img/banana-sour-cream-cheese-cake.jpg"], "es-san-sebastian-cheesecake": ["Dessert", "Spanish", "img/san-sebastian-cheesecake.jpg"], "kr-kimbap": ["Snacks", "Korean", "img/kimbap.jpg"], "jp-taiyaki": ["Dessert", "Japanese", "img/taiyaki.jpg"], "th-pad-thai": ["Rice & Noodles", "Thai", "img/pad-thai.jpg"], "th-green-curry": ["Chicken", "Thai", "img/green-curry.jpg"], "th-tom-yum": ["Soup", "Thai", "img/tom-yum.jpg"], "jp-chicken-teriyaki": ["Chicken", "Japanese", "img/chicken-teriyaki.jpg"], "jp-miso-soup": ["Soup", "Japanese", "img/miso-soup.jpg"], "kr-bibimbap": ["Rice & Noodles", "Korean", "img/bibimbap.jpg"], "cn-kung-pao-chicken": ["Chicken", "Chinese", "img/kung-pao-chicken.jpg"], "ph-chicken-adobo": ["Chicken", "Filipino", "img/chicken-adobo.jpg"], "in-chicken-biryani": ["Chicken", "Indian", "img/chicken-biryani.jpg"], "it-hazelnut-chocolate-spread": ["Dessert", "Italian"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese", "img/katsu-chicken-curry.jpg"],
   "it-margherita-pizza": ["Pizza", "Italian"], "it-spaghetti-bolognese": ["Pasta", "Italian"], "it-chicken-parmigiana": ["Chicken", "Italian"],
   "it-minestrone": ["Soup", "Italian"], "it-bruschetta": ["Sides", "Italian"], "it-tiramisu": ["Dessert", "Italian", "img/tiramisu.jpg"], "it-panna-cotta": ["Dessert", "Italian"],
@@ -1834,9 +1834,9 @@ const META = {
   "pl-placki-ziemniaczane": ["Sides", "Polish"], "pl-sernik": ["Dessert", "Polish"], "pl-paczki": ["Dessert", "Polish", "img/paczki.jpg"], "id-shakshuka": ["Breakfast", "Arab"], "id-tabbouleh": ["Sides", "Arab"], "id-fattoush": ["Sides", "Arab"],
   "id-chicken-kabsa": ["Chicken", "Arab"],
   "id-shorbat-adas": ["Soup", "Arab"], "id-kunafa": ["Dessert", "Arab"], "id-umm-ali": ["Dessert", "Arab"],
-  "id-falafel": ["Vegetarian", "Arab"], "id-cheese-sticks": ["Snacks", "American"], "id-cinnamon-roll-biscuits": ["Dessert", "American"],
+  "id-falafel": ["Vegetarian", "Arab"], "id-cheese-sticks": ["Snacks", "American", "img/cheese-sticks.jpg"], "id-cinnamon-roll-biscuits": ["Dessert", "American", "img/cinnamon-roll-biscuits.jpg"],
   "id-cabbage-rolls": ["Beef", "Polish"], "id-nalesniki": ["Dessert", "Polish"], "id-arepa": ["Breakfast", "Venezuelan"],
-  "id-flatbread": ["Sides", "Arab"], "id-shawarma": ["Chicken", "Arab"], "id-ice-cream-mochi": ["Dessert", "Japanese"], "id-martabak-manis": ["Dessert", "Indonesian", "img/martabak-manis.jpg"]
+  "id-flatbread": ["Sides", "Arab"], "id-shawarma": ["Chicken", "Arab"], "id-ice-cream-mochi": ["Dessert", "Japanese", "img/ice-cream-mochi.jpg"], "id-martabak-manis": ["Dessert", "Indonesian", "img/martabak-manis.jpg"]
 };
 const ICONS = { Dessert:"🍨", Soup:"🍲", Pasta:"🍝", Seafood:"🐟", Chicken:"🍗", Beef:"🥩", Vegetarian:"🥗", Snacks:"🥟", Breakfast:"🥞", "Rice & Noodles":"🍜", Drinks:"🥤", Sides:"🥑", Pizza:"🍕", Pork:"🥓" };
 const YT_OK = /^https:\/\/((www|m)\.)?(youtube\.com|youtu\.be)\//i;

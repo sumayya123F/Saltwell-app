@@ -954,29 +954,26 @@ const SHAKSHUKA = [
     "id": "id-shakshuka",
     "name": "Shakshuka",
     "ingredients": [
+      "6 eggs",
+      "2 cans (about 160 g each) tuna, drained",
+      "2 ripe tomatoes, cut into very tiny cubes",
       "2 tbsp olive oil",
-      "1 onion, chopped",
-      "1 red pepper, diced",
-      "3 cloves garlic, minced",
-      "1 tsp ground cumin",
-      "1 tsp paprika",
-      "1/2 tsp chilli flakes",
-      "800 g canned chopped tomatoes",
-      "1 tbsp tomato paste",
-      "1 tsp sugar",
+      "1 small onion, finely chopped (optional)",
+      "1 to 2 cloves garlic, minced",
+      "1/2 to 1 tsp chilli flakes, plus extra to finish",
       "Salt and pepper",
-      "5 eggs",
-      "Crumbled feta (optional)",
-      "Parsley or coriander",
-      "Khubz or crusty bread (to serve)"
+      "A small handful of parsley, finely chopped",
+      "Khubz or pita bread (to serve)"
     ],
     "steps": [
-      "Soften the onion and red pepper in the olive oil for 6 to 8 minutes.",
-      "Add the garlic, cumin, paprika and chilli flakes and cook for 1 minute.",
-      "Stir in the tomatoes, tomato paste, sugar, salt and pepper, and simmer for 15 minutes until thick.",
-      "Make small wells in the sauce and crack an egg into each.",
-      "Cover and cook on low heat for 5 to 8 minutes, until the whites are set and the yolks are still soft.",
-      "Top with feta and herbs, and serve from the pan with bread."
+      "Drain the tuna well and break it into flakes with a fork.",
+      "Beat the eggs with a pinch of salt and pepper.",
+      "Warm the olive oil in a frying pan over medium heat and soften the onion, if using, for 3 to 4 minutes. Add the garlic and chilli flakes and cook for 30 seconds.",
+      "Add the tiny tomato cubes and cook for 2 to 3 minutes, until soft and most of the juice has cooked off.",
+      "Stir in the tuna and warm it through for 1 to 2 minutes.",
+      "Turn the heat to low, pour in the eggs and stir gently until softly scrambled and just set.",
+      "Take off the heat, fold in most of the parsley, and finish with the rest of the parsley and a pinch of chilli flakes.",
+      "Serve warm from the pan with bread."
     ]
   }
 ];
@@ -1705,9 +1702,9 @@ const TAIYAKI = [
     ]
   }
 ];
-const BUILTIN_VER = 17;
+const BUILTIN_VER = 18;
 const REMOVED_IDS = ["pl-bigos", "pl-kotlet-schabowy", "jp-gyoza", "cn-mapo-tofu", "kr-kimchi-fried-rice", "pl-zurek", "sw-lemon-roast-chicken", "id-maqluba", "id-shish-taouk", "in-dal-tadka", "vn-pho-bo", "sg-hainanese-chicken-rice"];   // deleted recipes (pork), also dropped from saved lists
-const FIX_VERS = { "sw-spaghetti-carbonara": 15, "id-cabbage-rolls": 15, "it-panna-cotta": 16 };   // recipe corrected in this built-in version (no pork products)
+const FIX_VERS = { "sw-spaghetti-carbonara": 15, "id-cabbage-rolls": 15, "it-panna-cotta": 16, "id-shakshuka": 18 };   // recipe corrected in this built-in version (no pork products; Shakshuka changed to tuna scramble)
 const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 })), ...LUPIS_AND_SPREAD.map((r) => ({ ...r, v: 12 })), ...CHEESECAKES.map((r) => ({ ...r, v: 13 })), ...ASIAN_FOOD.map((r) => ({ ...r, v: 14 })), ...KIMBAP.map((r) => ({ ...r, v: 15 })), ...TAIYAKI.map((r) => ({ ...r, v: 17 }))];
 
 // Favorites are personal and saved on this device only.

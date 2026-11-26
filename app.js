@@ -980,7 +980,7 @@ const SHAKSHUKA = [
 const ITALIAN_POLISH = [
   {
     "id": "it-margherita-pizza",
-    "name": "Margherita Pizza",
+    "name": "Margherita Pepperoni Pizza",
     "ingredients": [
       "500 g strong bread flour",
       "1 tsp instant yeast",
@@ -989,7 +989,9 @@ const ITALIAN_POLISH = [
       "320 ml warm water",
       "400 g canned tomatoes, crushed",
       "2 balls fresh mozzarella",
+      "About 30 slices beef pepperoni (halal, no pork)",
       "Fresh basil leaves",
+      "1/2 tsp dried oregano",
       "Olive oil, to finish"
     ],
     "steps": [
@@ -998,7 +1000,8 @@ const ITALIAN_POLISH = [
       "Heat the oven to its highest setting (250°C or more) with a tray or stone inside.",
       "Divide the dough into 2 or 3 balls and stretch each into a thin round.",
       "Spread with a thin layer of crushed tomatoes seasoned with salt.",
-      "Top with torn mozzarella and bake for 6 to 8 minutes until the crust is blistered.",
+      "Top with torn mozzarella and the pepperoni slices, then sprinkle with oregano.",
+      "Bake for 6 to 8 minutes until the crust is blistered and the pepperoni edges crisp.",
       "Finish with basil and a drizzle of olive oil."
     ]
   },
@@ -1702,9 +1705,9 @@ const TAIYAKI = [
     ]
   }
 ];
-const BUILTIN_VER = 18;
+const BUILTIN_VER = 19;
 const REMOVED_IDS = ["pl-bigos", "pl-kotlet-schabowy", "jp-gyoza", "cn-mapo-tofu", "kr-kimchi-fried-rice", "pl-zurek", "sw-lemon-roast-chicken", "id-maqluba", "id-shish-taouk", "in-dal-tadka", "vn-pho-bo", "sg-hainanese-chicken-rice"];   // deleted recipes (pork), also dropped from saved lists
-const FIX_VERS = { "sw-spaghetti-carbonara": 15, "id-cabbage-rolls": 15, "it-panna-cotta": 16, "id-shakshuka": 18 };   // recipe corrected in this built-in version (no pork products; Shakshuka changed to tuna scramble)
+const FIX_VERS = { "sw-spaghetti-carbonara": 15, "id-cabbage-rolls": 15, "it-panna-cotta": 16, "id-shakshuka": 18, "it-margherita-pizza": 19 };   // recipe corrected in this built-in version (no pork products; Shakshuka changed to tuna scramble; beef pepperoni added to pizza)
 const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 })), ...LUPIS_AND_SPREAD.map((r) => ({ ...r, v: 12 })), ...CHEESECAKES.map((r) => ({ ...r, v: 13 })), ...ASIAN_FOOD.map((r) => ({ ...r, v: 14 })), ...KIMBAP.map((r) => ({ ...r, v: 15 })), ...TAIYAKI.map((r) => ({ ...r, v: 17 }))];
 
 // Favorites are personal and saved on this device only.

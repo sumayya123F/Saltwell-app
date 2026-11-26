@@ -980,7 +980,7 @@ const SHAKSHUKA = [
 const ITALIAN_POLISH = [
   {
     "id": "it-margherita-pizza",
-    "name": "Margherita Pizza",
+    "name": "Margherita Pepperoni Pizza",
     "ingredients": [
       "500 g strong bread flour",
       "1 tsp instant yeast",
@@ -989,7 +989,9 @@ const ITALIAN_POLISH = [
       "320 ml warm water",
       "400 g canned tomatoes, crushed",
       "2 balls fresh mozzarella",
+      "About 30 slices beef pepperoni (halal, no pork)",
       "Fresh basil leaves",
+      "1/2 tsp dried oregano",
       "Olive oil, to finish"
     ],
     "steps": [
@@ -998,7 +1000,8 @@ const ITALIAN_POLISH = [
       "Heat the oven to its highest setting (250°C or more) with a tray or stone inside.",
       "Divide the dough into 2 or 3 balls and stretch each into a thin round.",
       "Spread with a thin layer of crushed tomatoes seasoned with salt.",
-      "Top with torn mozzarella and bake for 6 to 8 minutes until the crust is blistered.",
+      "Top with torn mozzarella and the pepperoni slices, then sprinkle with oregano.",
+      "Bake for 6 to 8 minutes until the crust is blistered and the pepperoni edges crisp.",
       "Finish with basil and a drizzle of olive oil."
     ]
   },
@@ -1702,9 +1705,9 @@ const TAIYAKI = [
     ]
   }
 ];
-const BUILTIN_VER = 18;
+const BUILTIN_VER = 19;
 const REMOVED_IDS = ["pl-bigos", "pl-kotlet-schabowy", "jp-gyoza", "cn-mapo-tofu", "kr-kimchi-fried-rice", "pl-zurek", "sw-lemon-roast-chicken", "id-maqluba", "id-shish-taouk", "in-dal-tadka", "vn-pho-bo", "sg-hainanese-chicken-rice"];   // deleted recipes (pork), also dropped from saved lists
-const FIX_VERS = { "sw-spaghetti-carbonara": 15, "id-cabbage-rolls": 15, "it-panna-cotta": 16, "id-shakshuka": 18 };   // recipe corrected in this built-in version (no pork products; Shakshuka changed to tuna scramble)
+const FIX_VERS = { "sw-spaghetti-carbonara": 15, "id-cabbage-rolls": 15, "it-panna-cotta": 16, "id-shakshuka": 18, "it-margherita-pizza": 19 };   // recipe corrected in this built-in version (no pork products; Shakshuka changed to tuna scramble; beef pepperoni added to pizza)
 const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 })), ...LUPIS_AND_SPREAD.map((r) => ({ ...r, v: 12 })), ...CHEESECAKES.map((r) => ({ ...r, v: 13 })), ...ASIAN_FOOD.map((r) => ({ ...r, v: 14 })), ...KIMBAP.map((r) => ({ ...r, v: 15 })), ...TAIYAKI.map((r) => ({ ...r, v: 17 }))];
 
 // Favorites are personal and saved on this device only.
@@ -1818,14 +1821,14 @@ const META = {
   "sw-grilled-salmon": ["Seafood", "Modern", "img/sw-grilled-salmon.jpg"],
   "sw-fish-tacos": ["Seafood", "Mexican", "img/sw-fish-tacos.jpg"],
   "sw-spaghetti-carbonara": ["Pasta", "Italian", "img/sw-spaghetti-carbonara.jpg"],
-  "sw-vegetable-stir-fry": ["Vegetarian", "Chinese"], "sw-mushroom-risotto": ["Vegetarian", "Italian"],
+  "sw-vegetable-stir-fry": ["Vegetarian", "Chinese"], "sw-mushroom-risotto": ["Vegetarian", "Italian", "img/mushroom-risotto.jpg"],
   "id-nasi-goreng": ["Rice & Noodles", "Indonesian", "img/nasi-goreng.jpg"], "id-mie-goreng": ["Rice & Noodles", "Indonesian", "img/mie-goreng.jpg"], "id-soto-ayam": ["Soup", "Indonesian", "img/soto-ayam.jpg"],
   "id-beef-rendang": ["Beef", "Indonesian", "img/beef-rendang.jpg"], "id-gado-gado": ["Vegetarian", "Indonesian"], "id-sate-ayam": ["Chicken", "Indonesian"],
   "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian"], "id-pempek": ["Seafood", "Indonesian"],
   "id-bakso": ["Soup", "Indonesian"], "id-es-campur": ["Dessert", "Indonesian"], "id-es-cendol": ["Dessert", "Indonesian", "img/es-cendol.jpg"],
   "id-dodol": ["Dessert", "Indonesian", "img/dodol.jpg"], "id-cheese-tteokbokki": ["Snacks", "Korean", "img/cheese-tteokbokki.jpg"], "id-bubble-tea": ["Drinks", "Taiwanese", "img/bubble-tea.jpg"],
   "id-hummus": ["Sides", "Arab", "img/hummus.jpg"], "id-lupis": ["Dessert", "Indonesian", "img/lupis.jpg"], "us-peanut-butter-cheesecake": ["Dessert", "American", "img/peanut-butter-cheesecake.jpg"], "dessert-banana-sour-cream-cheese-cake": ["Dessert", "International", "img/banana-sour-cream-cheese-cake.jpg"], "es-san-sebastian-cheesecake": ["Dessert", "Spanish", "img/san-sebastian-cheesecake.jpg"], "kr-kimbap": ["Snacks", "Korean", "img/kimbap.jpg"], "jp-taiyaki": ["Dessert", "Japanese", "img/taiyaki.jpg"], "th-pad-thai": ["Rice & Noodles", "Thai", "img/pad-thai.jpg"], "th-green-curry": ["Chicken", "Thai", "img/green-curry.jpg"], "th-tom-yum": ["Soup", "Thai", "img/tom-yum.jpg"], "jp-chicken-teriyaki": ["Chicken", "Japanese", "img/chicken-teriyaki.jpg"], "jp-miso-soup": ["Soup", "Japanese", "img/miso-soup.jpg"], "kr-bibimbap": ["Rice & Noodles", "Korean", "img/bibimbap.jpg"], "cn-kung-pao-chicken": ["Chicken", "Chinese", "img/kung-pao-chicken.jpg"], "ph-chicken-adobo": ["Chicken", "Filipino", "img/chicken-adobo.jpg"], "in-chicken-biryani": ["Chicken", "Indian", "img/chicken-biryani.jpg"], "it-hazelnut-chocolate-spread": ["Dessert", "Italian"], "es-flan": ["Dessert", "Spanish"], "jp-katsu-chicken-curry": ["Chicken", "Japanese", "img/katsu-chicken-curry.jpg"],
-  "it-margherita-pizza": ["Pizza", "Italian"], "it-spaghetti-bolognese": ["Pasta", "Italian"], "it-chicken-parmigiana": ["Chicken", "Italian"],
+  "it-margherita-pizza": ["Pizza", "Italian", "img/margherita-pizza.jpg"], "it-spaghetti-bolognese": ["Pasta", "Italian", "img/spaghetti-bolognese.jpg"], "it-chicken-parmigiana": ["Chicken", "Italian", "img/chicken-parmigiana.jpg"],
   "it-minestrone": ["Soup", "Italian"], "it-bruschetta": ["Sides", "Italian"], "it-tiramisu": ["Dessert", "Italian", "img/tiramisu.jpg"], "it-panna-cotta": ["Dessert", "Italian"],
   "pl-pierogi-ruskie": ["Vegetarian", "Polish"], "pl-barszcz": ["Soup", "Polish"],
   "pl-placki-ziemniaczane": ["Sides", "Polish"], "pl-sernik": ["Dessert", "Polish"], "pl-paczki": ["Dessert", "Polish", "img/paczki.jpg"], "id-shakshuka": ["Breakfast", "Arab", "img/shakshuka.jpg"], "id-tabbouleh": ["Sides", "Arab", "img/tabbouleh.jpg"], "id-fattoush": ["Sides", "Arab", "img/fattoush.jpg"],

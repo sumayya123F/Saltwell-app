@@ -1804,14 +1804,14 @@ async function save() {
 
 // Category and cuisine tags (and photos) for the built-in recipes. Owner-added recipes carry their own tags.
 const META = {
-  s1: ["Dessert", "American", "img/fluffy-pancakes.jpg"], s2: ["Pasta", "Italian", "img/aglio-e-olio.jpg"], s3: ["Sides", "Mexican"], s4: ["Soup", "International"],
+  s1: ["Dessert", "American", "img/fluffy-pancakes.jpg"], s2: ["Pasta", "Italian", "img/aglio-e-olio.jpg"], s3: ["Sides", "Mexican", "img/guacamole.jpg"], s4: ["Soup", "International", "img/tomato-soup.jpg"],
   "sw-chicken-tikka-masala": ["Chicken", "Indian", "img/sw-chicken-tikka-masala.jpg"],
   "sw-classic-beef-lasagne": ["Pasta", "Italian"],
   "sw-lasagne": ["Pasta", "Italian", "img/sw-lasagne.jpg"],
   "sw-grilled-salmon": ["Seafood", "Modern", "img/sw-grilled-salmon.jpg"],
   "sw-fish-tacos": ["Seafood", "Mexican", "img/sw-fish-tacos.jpg"],
   "sw-spaghetti-carbonara": ["Pasta", "Italian", "img/sw-spaghetti-carbonara.jpg"],
-  "sw-vegetable-stir-fry": ["Vegetarian", "Chinese"], "sw-mushroom-risotto": ["Vegetarian", "Italian", "img/mushroom-risotto.jpg"],
+  "sw-vegetable-stir-fry": ["Vegetarian", "Chinese", "img/vegetable-stir-fry.jpg"], "sw-mushroom-risotto": ["Vegetarian", "Italian", "img/mushroom-risotto.jpg"],
   "id-nasi-goreng": ["Rice & Noodles", "Indonesian", "img/nasi-goreng.jpg"], "id-mie-goreng": ["Rice & Noodles", "Indonesian", "img/mie-goreng.jpg"], "id-soto-ayam": ["Soup", "Indonesian", "img/soto-ayam.jpg"],
   "id-beef-rendang": ["Beef", "Indonesian", "img/beef-rendang.jpg"], "id-gado-gado": ["Vegetarian", "Indonesian", "img/gado-gado.jpg"], "id-sate-ayam": ["Chicken", "Indonesian", "img/sate-ayam.jpg"],
   "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian", "img/pisang-goreng.jpg"], "id-pempek": ["Seafood", "Indonesian", "img/pempek.jpg"],
@@ -1825,7 +1825,7 @@ const META = {
   "id-chicken-kabsa": ["Chicken", "Arab", "img/chicken-kabsa.jpg"],
   "id-shorbat-adas": ["Soup", "Arab", "img/lentil-soup.jpg"], "id-kunafa": ["Dessert", "Arab", "img/kunafa.jpg"], "id-umm-ali": ["Dessert", "Arab", "img/umm-ali.jpg"],
   "id-falafel": ["Vegetarian", "Arab", "img/falafel.jpg"], "id-cheese-sticks": ["Snacks", "American", "img/cheese-sticks.jpg"], "id-cinnamon-roll-biscuits": ["Dessert", "American", "img/cinnamon-roll-biscuits.jpg"],
-  "id-cabbage-rolls": ["Beef", "Polish"], "id-nalesniki": ["Dessert", "Polish"], "id-arepa": ["Breakfast", "Venezuelan"],
+  "id-cabbage-rolls": ["Beef", "Polish"], "id-nalesniki": ["Dessert", "Polish"], "id-arepa": ["Breakfast", "Venezuelan", "img/arepas.jpg"],
   "id-flatbread": ["Sides", "Arab", "img/khubz.jpg"], "id-shawarma": ["Chicken", "Arab", "img/shawarma.jpg"], "id-ice-cream-mochi": ["Dessert", "Japanese", "img/ice-cream-mochi.jpg"], "id-martabak-manis": ["Dessert", "Indonesian", "img/martabak-manis.jpg"]
 };
 const ICONS = { Dessert:"🍨", Soup:"🍲", Pasta:"🍝", Seafood:"🐟", Chicken:"🍗", Beef:"🥩", Vegetarian:"🥗", Snacks:"🥟", Breakfast:"🥞", "Rice & Noodles":"🍜", Drinks:"🥤", Sides:"🥑", Pizza:"🍕", Pork:"🥓" };

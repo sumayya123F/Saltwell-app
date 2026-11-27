@@ -712,15 +712,17 @@ const MORE_RECIPES = [
       "2 tbsp sugar",
       "1 tsp vanilla",
       "Butter for frying",
-      "Icing sugar or jam (to serve)"
+      "About 6 tbsp strawberry or raspberry jam (for the filling)",
+      "Icing sugar, fresh berries and mint (to serve)"
     ],
     "steps": [
       "Whisk the flour, milk, water, eggs, oil and salt into a smooth thin batter, and rest for 15 minutes.",
-      "Mix the cheese with the sugar and vanilla.",
+      "Mix the cheese with the sugar and vanilla until smooth and creamy.",
       "Fry thin crepes in a buttered pan, about 1 minute per side.",
-      "Spread each crepe with the cheese filling and fold into an envelope or roll.",
+      "Spread a layer of the sweet cheese over half of each crepe and spoon a line of jam on top.",
+      "Fold each crepe in half, then in half again into a triangle.",
       "Fry the filled crepes in butter for 1 minute per side until golden.",
-      "Serve dusted with icing sugar or with jam."
+      "Serve dusted with icing sugar, with fresh berries and a sprig of mint."
     ]
   },
   {
@@ -1697,9 +1699,9 @@ const TAIYAKI = [
     ]
   }
 ];
-const BUILTIN_VER = 21;
+const BUILTIN_VER = 22;
 const REMOVED_IDS = ["pl-bigos", "pl-kotlet-schabowy", "jp-gyoza", "cn-mapo-tofu", "kr-kimchi-fried-rice", "pl-zurek", "sw-lemon-roast-chicken", "id-maqluba", "id-shish-taouk", "in-dal-tadka", "vn-pho-bo", "sg-hainanese-chicken-rice", "it-bruschetta"];   // deleted recipes (pork, or removed on request), also dropped from saved lists
-const FIX_VERS = { "sw-spaghetti-carbonara": 15, "id-cabbage-rolls": 15, "it-panna-cotta": 16, "id-shakshuka": 18, "it-margherita-pizza": 19, "id-bakso": 20, "id-arepa": 21 };   // recipe corrected in this built-in version (no pork products; Shakshuka changed to tuna scramble; beef pepperoni added to pizza; Bakso changed to sambal meatballs; Arepas changed to sweet jam and chocolate)
+const FIX_VERS = { "sw-spaghetti-carbonara": 15, "id-cabbage-rolls": 15, "it-panna-cotta": 16, "id-shakshuka": 18, "it-margherita-pizza": 19, "id-bakso": 20, "id-arepa": 21, "id-nalesniki": 22 };   // recipe corrected in this built-in version (no pork products; Shakshuka changed to tuna scramble; beef pepperoni added to pizza; Bakso changed to sambal meatballs; Arepas changed to sweet jam and chocolate; Nalesniki filled with sweet cheese and jam)
 const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 })), ...LUPIS_AND_SPREAD.map((r) => ({ ...r, v: 12 })), ...CHEESECAKES.map((r) => ({ ...r, v: 13 })), ...ASIAN_FOOD.map((r) => ({ ...r, v: 14 })), ...KIMBAP.map((r) => ({ ...r, v: 15 })), ...TAIYAKI.map((r) => ({ ...r, v: 17 }))];
 
 // Favorites are personal and saved on this device only.

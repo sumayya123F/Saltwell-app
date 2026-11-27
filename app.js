@@ -712,15 +712,17 @@ const MORE_RECIPES = [
       "2 tbsp sugar",
       "1 tsp vanilla",
       "Butter for frying",
-      "Icing sugar or jam (to serve)"
+      "About 6 tbsp strawberry or raspberry jam (for the filling)",
+      "Icing sugar, fresh berries and mint (to serve)"
     ],
     "steps": [
       "Whisk the flour, milk, water, eggs, oil and salt into a smooth thin batter, and rest for 15 minutes.",
-      "Mix the cheese with the sugar and vanilla.",
+      "Mix the cheese with the sugar and vanilla until smooth and creamy.",
       "Fry thin crepes in a buttered pan, about 1 minute per side.",
-      "Spread each crepe with the cheese filling and fold into an envelope or roll.",
+      "Spread a layer of the sweet cheese over half of each crepe and spoon a line of jam on top.",
+      "Fold each crepe in half, then in half again into a triangle.",
       "Fry the filled crepes in butter for 1 minute per side until golden.",
-      "Serve dusted with icing sugar or with jam."
+      "Serve dusted with icing sugar, with fresh berries and a sprig of mint."
     ]
   },
   {
@@ -1697,9 +1699,9 @@ const TAIYAKI = [
     ]
   }
 ];
-const BUILTIN_VER = 21;
+const BUILTIN_VER = 22;
 const REMOVED_IDS = ["pl-bigos", "pl-kotlet-schabowy", "jp-gyoza", "cn-mapo-tofu", "kr-kimchi-fried-rice", "pl-zurek", "sw-lemon-roast-chicken", "id-maqluba", "id-shish-taouk", "in-dal-tadka", "vn-pho-bo", "sg-hainanese-chicken-rice", "it-bruschetta"];   // deleted recipes (pork, or removed on request), also dropped from saved lists
-const FIX_VERS = { "sw-spaghetti-carbonara": 15, "id-cabbage-rolls": 15, "it-panna-cotta": 16, "id-shakshuka": 18, "it-margherita-pizza": 19, "id-bakso": 20, "id-arepa": 21 };   // recipe corrected in this built-in version (no pork products; Shakshuka changed to tuna scramble; beef pepperoni added to pizza; Bakso changed to sambal meatballs; Arepas changed to sweet jam and chocolate)
+const FIX_VERS = { "sw-spaghetti-carbonara": 15, "id-cabbage-rolls": 15, "it-panna-cotta": 16, "id-shakshuka": 18, "it-margherita-pizza": 19, "id-bakso": 20, "id-arepa": 21, "id-nalesniki": 22 };   // recipe corrected in this built-in version (no pork products; Shakshuka changed to tuna scramble; beef pepperoni added to pizza; Bakso changed to sambal meatballs; Arepas changed to sweet jam and chocolate; Nalesniki filled with sweet cheese and jam)
 const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 })), ...LUPIS_AND_SPREAD.map((r) => ({ ...r, v: 12 })), ...CHEESECAKES.map((r) => ({ ...r, v: 13 })), ...ASIAN_FOOD.map((r) => ({ ...r, v: 14 })), ...KIMBAP.map((r) => ({ ...r, v: 15 })), ...TAIYAKI.map((r) => ({ ...r, v: 17 }))];
 
 // Favorites are personal and saved on this device only.
@@ -1816,7 +1818,7 @@ const META = {
   "sw-vegetable-stir-fry": ["Vegetarian", "Chinese", "img/vegetable-stir-fry.jpg"], "sw-mushroom-risotto": ["Vegetarian", "Italian", "img/mushroom-risotto.jpg"],
   "id-nasi-goreng": ["Rice & Noodles", "Indonesian", "img/nasi-goreng.jpg"], "id-mie-goreng": ["Rice & Noodles", "Indonesian", "img/mie-goreng.jpg"], "id-soto-ayam": ["Soup", "Indonesian", "img/soto-ayam.jpg"],
   "id-beef-rendang": ["Beef", "Indonesian", "img/beef-rendang.jpg"], "id-gado-gado": ["Vegetarian", "Indonesian", "img/gado-gado.jpg"], "id-sate-ayam": ["Chicken", "Indonesian", "img/sate-ayam.jpg"],
-  "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian", "img/pisang-goreng.jpg"], "id-pempek": ["Seafood", "Indonesian", "img/pempek.jpg"],
+  "id-ayam-goreng": ["Chicken", "Indonesian", "img/ayam-goreng.jpg"], "id-pisang-goreng": ["Dessert", "Indonesian", "img/pisang-goreng.jpg"], "id-pempek": ["Seafood", "Indonesian", "img/pempek.jpg"],
   "id-bakso": ["Beef", "Indonesian", "img/bakso.jpg"], "id-es-campur": ["Dessert", "Indonesian", "img/es-campur.jpg"], "id-es-cendol": ["Dessert", "Indonesian", "img/es-cendol.jpg"],
   "id-dodol": ["Dessert", "Indonesian", "img/dodol.jpg"], "id-cheese-tteokbokki": ["Snacks", "Korean", "img/cheese-tteokbokki.jpg"], "id-bubble-tea": ["Drinks", "Taiwanese", "img/bubble-tea.jpg"],
   "id-hummus": ["Sides", "Arab", "img/hummus.jpg"], "id-lupis": ["Dessert", "Indonesian", "img/lupis.jpg"], "us-peanut-butter-cheesecake": ["Dessert", "American", "img/peanut-butter-cheesecake.jpg"], "dessert-banana-sour-cream-cheese-cake": ["Dessert", "International", "img/banana-sour-cream-cheese-cake.jpg"], "es-san-sebastian-cheesecake": ["Dessert", "Spanish", "img/san-sebastian-cheesecake.jpg"], "kr-kimbap": ["Snacks", "Korean", "img/kimbap.jpg"], "jp-taiyaki": ["Dessert", "Japanese", "img/taiyaki.jpg"], "th-pad-thai": ["Rice & Noodles", "Thai", "img/pad-thai.jpg"], "th-green-curry": ["Chicken", "Thai", "img/green-curry.jpg"], "th-tom-yum": ["Soup", "Thai", "img/tom-yum.jpg"], "jp-chicken-teriyaki": ["Chicken", "Japanese", "img/chicken-teriyaki.jpg"], "jp-miso-soup": ["Soup", "Japanese", "img/miso-soup.jpg"], "kr-bibimbap": ["Rice & Noodles", "Korean", "img/bibimbap.jpg"], "cn-kung-pao-chicken": ["Chicken", "Chinese", "img/kung-pao-chicken.jpg"], "ph-chicken-adobo": ["Chicken", "Filipino", "img/chicken-adobo.jpg"], "in-chicken-biryani": ["Chicken", "Indian", "img/chicken-biryani.jpg"], "it-hazelnut-chocolate-spread": ["Dessert", "Italian", "img/hazelnut-chocolate-spread.jpg"], "es-flan": ["Dessert", "Spanish", "img/flan.jpg"], "jp-katsu-chicken-curry": ["Chicken", "Japanese", "img/katsu-chicken-curry.jpg"],
@@ -1827,7 +1829,7 @@ const META = {
   "id-chicken-kabsa": ["Chicken", "Arab", "img/chicken-kabsa.jpg"],
   "id-shorbat-adas": ["Soup", "Arab", "img/lentil-soup.jpg"], "id-kunafa": ["Dessert", "Arab", "img/kunafa.jpg"], "id-umm-ali": ["Dessert", "Arab", "img/umm-ali.jpg"],
   "id-falafel": ["Vegetarian", "Arab", "img/falafel.jpg"], "id-cheese-sticks": ["Snacks", "American", "img/cheese-sticks.jpg"], "id-cinnamon-roll-biscuits": ["Dessert", "American", "img/cinnamon-roll-biscuits.jpg"],
-  "id-cabbage-rolls": ["Beef", "Polish"], "id-nalesniki": ["Dessert", "Polish"], "id-arepa": ["Breakfast", "Venezuelan", "img/arepas.jpg"],
+  "id-cabbage-rolls": ["Beef", "Polish", "img/cabbage-rolls.jpg"], "id-nalesniki": ["Dessert", "Polish", "img/nalesniki.jpg"], "id-arepa": ["Breakfast", "Venezuelan", "img/arepas.jpg"],
   "id-flatbread": ["Sides", "Arab", "img/khubz.jpg"], "id-shawarma": ["Chicken", "Arab", "img/shawarma.jpg"], "id-ice-cream-mochi": ["Dessert", "Japanese", "img/ice-cream-mochi.jpg"], "id-martabak-manis": ["Dessert", "Indonesian", "img/martabak-manis.jpg"]
 };
 const ICONS = { Dessert:"🍨", Soup:"🍲", Pasta:"🍝", Seafood:"🐟", Chicken:"🍗", Beef:"🥩", Vegetarian:"🥗", Snacks:"🥟", Breakfast:"🥞", "Rice & Noodles":"🍜", Drinks:"🥤", Sides:"🥑", Pizza:"🍕", Pork:"🥓" };

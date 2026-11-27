@@ -1795,7 +1795,7 @@ async function save() {
 
 // Category and cuisine tags (and photos) for the built-in recipes. Owner-added recipes carry their own tags.
 const META = {
-  s1: ["Dessert", "American", "img/fluffy-pancakes.jpg"], s2: ["Pasta", "Italian"], s3: ["Sides", "Mexican"], s4: ["Soup", "International"],
+  s1: ["Dessert", "American", "img/fluffy-pancakes.jpg"], s2: ["Pasta", "Italian", "img/aglio-e-olio.jpg"], s3: ["Sides", "Mexican"], s4: ["Soup", "International"],
   "sw-chicken-tikka-masala": ["Chicken", "Indian", "img/sw-chicken-tikka-masala.jpg"],
   "sw-classic-beef-lasagne": ["Pasta", "Italian"],
   "sw-lasagne": ["Pasta", "Italian", "img/sw-lasagne.jpg"],

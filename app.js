@@ -725,22 +725,24 @@ const MORE_RECIPES = [
   },
   {
     "id": "id-arepa",
-    "name": "Arepas",
+    "name": "Sweet Arepas with Jam and Chocolate",
     "ingredients": [
       "2 cups pre-cooked white cornmeal (masarepa)",
-      "2 1/2 cups warm water",
-      "1 tsp salt",
-      "1 tbsp oil",
-      "Shredded cheese, avocado or shredded chicken (to fill)",
-      "Butter"
+      "2 1/2 cups warm water (or half water, half milk)",
+      "1/2 tsp salt",
+      "2 tbsp sugar",
+      "1 tbsp butter, melted",
+      "Strawberry jam (to fill)",
+      "Chocolate hazelnut spread (to fill)"
     ],
     "steps": [
-      "Mix the warm water and salt, then stir in the cornmeal and oil until a soft dough forms.",
+      "Stir the salt and sugar into the warm water, then mix in the cornmeal and melted butter until a soft, smooth dough forms.",
       "Rest the dough for 5 minutes.",
       "Shape into 6 to 8 thick discs, about 1.5 cm high.",
-      "Cook on a lightly oiled pan over medium heat for 5 minutes per side until golden with a crisp crust.",
+      "Cook on a lightly oiled pan or grill pan over medium heat for 5 minutes per side until golden with charred grill marks.",
       "Bake at 180°C for 10 minutes so the centre cooks through.",
-      "Split open, spread with butter, and fill with cheese, avocado or chicken."
+      "While still warm, split each arepa open like a pocket.",
+      "Fill some with a generous spoonful of strawberry jam and some with chocolate hazelnut spread, and serve warm."
     ]
   },
   {
@@ -1695,9 +1697,9 @@ const TAIYAKI = [
     ]
   }
 ];
-const BUILTIN_VER = 20;
+const BUILTIN_VER = 21;
 const REMOVED_IDS = ["pl-bigos", "pl-kotlet-schabowy", "jp-gyoza", "cn-mapo-tofu", "kr-kimchi-fried-rice", "pl-zurek", "sw-lemon-roast-chicken", "id-maqluba", "id-shish-taouk", "in-dal-tadka", "vn-pho-bo", "sg-hainanese-chicken-rice", "it-bruschetta"];   // deleted recipes (pork, or removed on request), also dropped from saved lists
-const FIX_VERS = { "sw-spaghetti-carbonara": 15, "id-cabbage-rolls": 15, "it-panna-cotta": 16, "id-shakshuka": 18, "it-margherita-pizza": 19, "id-bakso": 20 };   // recipe corrected in this built-in version (no pork products; Shakshuka changed to tuna scramble; beef pepperoni added to pizza; Bakso changed to sambal meatballs)
+const FIX_VERS = { "sw-spaghetti-carbonara": 15, "id-cabbage-rolls": 15, "it-panna-cotta": 16, "id-shakshuka": 18, "it-margherita-pizza": 19, "id-bakso": 20, "id-arepa": 21 };   // recipe corrected in this built-in version (no pork products; Shakshuka changed to tuna scramble; beef pepperoni added to pizza; Bakso changed to sambal meatballs; Arepas changed to sweet jam and chocolate)
 const BUILTINS = [...SAMPLES.map((r) => ({ ...r, v: 1 })), ...INDONESIAN.map((r) => ({ ...r, v: 2 })), ...MORE_INDONESIAN.map((r) => ({ ...r, v: 3 })), ...EVEN_MORE.map((r) => ({ ...r, v: 4 })), ...KOREAN.map((r) => ({ ...r, v: 5 })), ...DRINKS_AND_MOCHI.map((r) => ({ ...r, v: 6 })), ...MORE_RECIPES.map((r) => ({ ...r, v: 7 })), ...ARAB_FOOD.map((r) => ({ ...r, v: 8 })), ...SHAKSHUKA.map((r) => ({ ...r, v: 9 })), ...ITALIAN_POLISH.map((r) => ({ ...r, v: 10 })), ...FLAN_AND_KATSU.map((r) => ({ ...r, v: 11 })), ...LUPIS_AND_SPREAD.map((r) => ({ ...r, v: 12 })), ...CHEESECAKES.map((r) => ({ ...r, v: 13 })), ...ASIAN_FOOD.map((r) => ({ ...r, v: 14 })), ...KIMBAP.map((r) => ({ ...r, v: 15 })), ...TAIYAKI.map((r) => ({ ...r, v: 17 }))];
 
 // Favorites are personal and saved on this device only.
@@ -1804,14 +1806,14 @@ async function save() {
 
 // Category and cuisine tags (and photos) for the built-in recipes. Owner-added recipes carry their own tags.
 const META = {
-  s1: ["Dessert", "American", "img/fluffy-pancakes.jpg"], s2: ["Pasta", "Italian", "img/aglio-e-olio.jpg"], s3: ["Sides", "Mexican"], s4: ["Soup", "International"],
+  s1: ["Dessert", "American", "img/fluffy-pancakes.jpg"], s2: ["Pasta", "Italian", "img/aglio-e-olio.jpg"], s3: ["Sides", "Mexican", "img/guacamole.jpg"], s4: ["Soup", "International", "img/tomato-soup.jpg"],
   "sw-chicken-tikka-masala": ["Chicken", "Indian", "img/sw-chicken-tikka-masala.jpg"],
   "sw-classic-beef-lasagne": ["Pasta", "Italian"],
   "sw-lasagne": ["Pasta", "Italian", "img/sw-lasagne.jpg"],
   "sw-grilled-salmon": ["Seafood", "Modern", "img/sw-grilled-salmon.jpg"],
   "sw-fish-tacos": ["Seafood", "Mexican", "img/sw-fish-tacos.jpg"],
   "sw-spaghetti-carbonara": ["Pasta", "Italian", "img/sw-spaghetti-carbonara.jpg"],
-  "sw-vegetable-stir-fry": ["Vegetarian", "Chinese"], "sw-mushroom-risotto": ["Vegetarian", "Italian", "img/mushroom-risotto.jpg"],
+  "sw-vegetable-stir-fry": ["Vegetarian", "Chinese", "img/vegetable-stir-fry.jpg"], "sw-mushroom-risotto": ["Vegetarian", "Italian", "img/mushroom-risotto.jpg"],
   "id-nasi-goreng": ["Rice & Noodles", "Indonesian", "img/nasi-goreng.jpg"], "id-mie-goreng": ["Rice & Noodles", "Indonesian", "img/mie-goreng.jpg"], "id-soto-ayam": ["Soup", "Indonesian", "img/soto-ayam.jpg"],
   "id-beef-rendang": ["Beef", "Indonesian", "img/beef-rendang.jpg"], "id-gado-gado": ["Vegetarian", "Indonesian", "img/gado-gado.jpg"], "id-sate-ayam": ["Chicken", "Indonesian", "img/sate-ayam.jpg"],
   "id-ayam-goreng": ["Chicken", "Indonesian"], "id-pisang-goreng": ["Dessert", "Indonesian", "img/pisang-goreng.jpg"], "id-pempek": ["Seafood", "Indonesian", "img/pempek.jpg"],
@@ -1825,7 +1827,7 @@ const META = {
   "id-chicken-kabsa": ["Chicken", "Arab", "img/chicken-kabsa.jpg"],
   "id-shorbat-adas": ["Soup", "Arab", "img/lentil-soup.jpg"], "id-kunafa": ["Dessert", "Arab", "img/kunafa.jpg"], "id-umm-ali": ["Dessert", "Arab", "img/umm-ali.jpg"],
   "id-falafel": ["Vegetarian", "Arab", "img/falafel.jpg"], "id-cheese-sticks": ["Snacks", "American", "img/cheese-sticks.jpg"], "id-cinnamon-roll-biscuits": ["Dessert", "American", "img/cinnamon-roll-biscuits.jpg"],
-  "id-cabbage-rolls": ["Beef", "Polish"], "id-nalesniki": ["Dessert", "Polish"], "id-arepa": ["Breakfast", "Venezuelan"],
+  "id-cabbage-rolls": ["Beef", "Polish"], "id-nalesniki": ["Dessert", "Polish"], "id-arepa": ["Breakfast", "Venezuelan", "img/arepas.jpg"],
   "id-flatbread": ["Sides", "Arab", "img/khubz.jpg"], "id-shawarma": ["Chicken", "Arab", "img/shawarma.jpg"], "id-ice-cream-mochi": ["Dessert", "Japanese", "img/ice-cream-mochi.jpg"], "id-martabak-manis": ["Dessert", "Indonesian", "img/martabak-manis.jpg"]
 };
 const ICONS = { Dessert:"🍨", Soup:"🍲", Pasta:"🍝", Seafood:"🐟", Chicken:"🍗", Beef:"🥩", Vegetarian:"🥗", Snacks:"🥟", Breakfast:"🥞", "Rice & Noodles":"🍜", Drinks:"🥤", Sides:"🥑", Pizza:"🍕", Pork:"🥓" };
